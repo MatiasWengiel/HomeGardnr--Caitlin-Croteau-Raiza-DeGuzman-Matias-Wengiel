@@ -1,0 +1,77 @@
+User Stories
+
+- As a logged-in user I can view my existing library of plants, and see plant details
+- As a logged-in user, I can add a new plant to my library
+- As a logged-in user, I can delete a plant from my library
+- As a logged-in user, I can view the current weather for my location
+- As a logged-in user, I can receive weather warnings
+- As a logged-in user, I can receive notifications for when a plant is due for watering
+- As a visitor, I can only view the welcome page with a summary of the app
+- As a visitor, I can view the register page
+- As a visitor, I can view the login page
+- As a visitor, I can view plant information (but not create new plants)
+<!-- 
+Stretch Features
+
+
+- As a logged-in user, I can find gardens that allow people to harvest in a map (API)
+- As a logged-in user, I can participate in a discussion forum to share knowledge
+- As a logged-in user, I will be able to take pictures from seed packages and it will fill out the information directly
+- As a logged-in user, I will be able to see compatible plants that can be grown together
+  -->
+
+User Nouns
+
+- User
+- Plants
+- User library
+- Weather
+- Warnings
+- Notifications
+
+Tables:
+
+- Users -
+- Plant Library - (one library per user, many plants per library)
+- Plants
+- Local-Weather (rain amounts - temperature warnings/frost warnings, etc) -> Updated every 24 hours?
+
+Routes
+
+- Create
+- Read all
+- Read one
+- Update
+- Delete
+
+* Users
+
+- C - POST /users
+<!-- - Ra - GET /users STRETCH -->
+- Ro - GET /users/:id
+- U - PUT /users/:id
+- D - DELETE /users/:id
+
+* Plants - main database of plants
+
+- C - POST /plants
+- Ra - GET /plants
+- Ro - GET /plants/:id
+- U - PUT /plants/:id
+- D - DELETE /plants/:id
+
+* User Plants
+
+- C - POST /my_plants
+- Ra - GET /my_plants
+- Ro - GET /my_plants/:id
+- U - PUT /plants/:id
+- D - DELETE /plants/:id
+
+* Location Weather
+
+- C - POST /location (create a new location in the database)
+- Ra - GET /location
+- Ro - GET /location/:id
+- U - PUT /location/:id
+<!-- - D - DELETE /location/:id Probably not needed -->
