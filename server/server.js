@@ -25,12 +25,12 @@ app.use(morgan("dev"));
 
 app.use(express.static("public"))
 
-// PG database client/connection setup UNCOMMENT ONCE DB MIGRATIONS ARE READY
-// const { Pool } = require("pg");
-// const dbParams = require("./lib/db.js");
-// const db = new Pool(dbParams);
-// db.connect();
-const db = "Temporary-delete"
+// PG database client/connection setup 
+const { Pool } = require("pg");
+const dbParams = require("./lib/db.js");
+const db = new Pool(dbParams);
+db.connect();
+
 
 
 //Set up router and routes
