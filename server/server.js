@@ -4,7 +4,7 @@ require("dotenv").config();
 const PORT = 8080 //Development port
 const express = require("express");
 const app = express();
-// const sassMiddleware = require("./lib/sass-middleware");
+const sassMiddleware = require("./lib/sass-middleware");
 const morgan = require("morgan");
 
 //Add cookieSession if planning on user Auth
@@ -14,14 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(morgan("dev"));
-// app.use(
-//   "/styles",
-//   sassMiddleware({
-//     source: __dirname + "/styles",
-//     destination: __dirname + "/public/styles",
-//     isSass: false, // false => scss, true => sass
-//   })
-// );
+app.use(
+  "/styles",
+  sassMiddleware({
+    source: __dirname + "/styles",
+    destination: __dirname + "/public/styles",
+    isSass: false, // false => scss, true => sass
+  })
+);
 
 app.use(express.static("public"))
 
