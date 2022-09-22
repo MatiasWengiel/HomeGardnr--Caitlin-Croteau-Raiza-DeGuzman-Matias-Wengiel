@@ -1,0 +1,3 @@
+-- Seeds for Plants Table --
+
+INSERT INTO plants (generic_name, specific_name, thumbnail_photo_url, large_plant_card_photo_url, when_to_plant, water_needs, sunlight_needs, temperature_thresholds, how_far_apart_to_plant, how_deep_to_plant, how_long_until_mature) VALUES ('Cucumber', 'Cucumis sativus', 'https://images.pexels.com/photos/128420/pexels-photo-128420.jpeg?auto=compress&cs=tinysrgb&w=1600', 'https://images.pexels.com/photos/128420/pexels-photo-128420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'April to June', '2 to 3 times per week', 'Daily 6-8 hours', 'Below 1 C and no higher than 40 C', '6 inches apart', 'One inch deep');
