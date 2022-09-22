@@ -5,8 +5,9 @@ export default function PlantCard(props) {
     ...props,
   };
   const borderType = (status) => {
+    //Returns the color, or black if no waterStatus passed
     if (status === "watered") {
-      return "#198754"; //Matches the green from the Bootstrap button. Should we make the button change color too?
+      return "#198754"; //The bootstrap green
     }
     if (status === "should water") {
       return "gold";
@@ -14,12 +15,12 @@ export default function PlantCard(props) {
     if (status === "urgent water") {
       return "red";
     }
+    return "gray";
   };
   return (
     <Card
       style={{
         width: "15rem",
-        height: "17rem",
         padding: "0.5rem",
         borderColor: borderType(waterStatus),
       }}
@@ -27,8 +28,12 @@ export default function PlantCard(props) {
       <Card.Img variant="top" src={picture} alt={altText} />
       <Card.Body className="p-0">
         <Card.Title className="m-0">{plant}</Card.Title>
-        <Card.Text className="m-0">last watered: {lastWatered}</Card.Text>
-        <Card.Text className="m-0">next watering: {nextWatering}</Card.Text>
+        <Card.Text className="m-0">
+          {lastWatered && `last watered: ${lastWatered}`}
+        </Card.Text>
+        <Card.Text className="m-0">
+          {nextWatering && `next watering: ${nextWatering}`}
+        </Card.Text>
         <Button
           style={{ backgroundColor: borderType(waterStatus), border: "none" }}
         >
