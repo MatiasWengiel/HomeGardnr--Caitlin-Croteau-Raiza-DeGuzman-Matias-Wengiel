@@ -10,6 +10,7 @@ CREATE TABLE user_plant (
   when_to_water_next DATE NOT NULL,
   high_temperature_notification INTEGER,
   low_temperature_notification INTEGER,
-  plant_id INTEGER REFERENCES plants(id) ON DELETE CASCADE
+  plant_id INTEGER REFERENCES plants(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 
 );
