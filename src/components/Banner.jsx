@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 export default function Banner(props) {
   const weatherWarning = props.weatherWarning;
@@ -10,7 +10,7 @@ export default function Banner(props) {
       <Alert variant="danger" onClose={() => setShow(false)} dismissible>
         <p className="m-0">
           <span style={{ fontWeight: "bold" }}>Weather Warning:</span>{" "}
-          {props.weatherWarning}
+          {weatherWarning}
         </p>
       </Alert>
     );
