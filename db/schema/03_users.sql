@@ -9,6 +9,6 @@ CREATE TABLE users (
   last_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  location_weather_id INTEGER REFERENCES location_weather(id) ON DELETE CASCADE
+  location VARCHAR(255) NOT NULL
 
 );
