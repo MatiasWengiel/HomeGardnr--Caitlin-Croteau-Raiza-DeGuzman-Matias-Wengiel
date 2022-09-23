@@ -1,25 +1,46 @@
 import React from "react";
 import "./Navbar.scss";
 
-
 export default function Navbar(props) {
-
-  return(
+  return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-      <a class="navbar-brand" href="/">Home Gardnr Brand Image</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarNavAltMarkup">
+      <a class="navbar-brand" href="/">
+        Home Gardnr Brand Image
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse flex-grow-1 text-right"
+        id="navbarNavAltMarkup"
+      >
         <div class="navbar-nav ms-auto flex-nowrap">
-          <div class="nav-item navbar-text m-2 menu-item nav-active">Hello, User!</div>
-          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">My Plants</a>
-          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">Add Plants</a>
-          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">Weather</a>
-          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">Logout</a>
+          <div class="nav-item navbar-text m-2 menu-item nav-active">
+            Hello, User!
+          </div>
+          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">
+            My Plants
+          </a>
+          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">
+            Add Plants
+          </a>
+          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">
+            Weather
+          </a>
+          <a class="nav-item nav-link m-2 menu-item nav-active" href="/">
+            Logout
+          </a>
         </div>
       </div>
-    </nav> 
+    </nav>
   );
 }
 
@@ -32,4 +53,4 @@ export default function Navbar(props) {
 //fix colour
 //connect user
 //add brand image
-//add background image
+//add background image - to header? Where do we add header in html?
