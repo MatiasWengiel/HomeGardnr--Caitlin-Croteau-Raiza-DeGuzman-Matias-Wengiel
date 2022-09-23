@@ -2,6 +2,7 @@
 import "./App.css";
 import Button from "./components/Button";
 import Navigation from "./components/Navigation";
+import PlantForm from "./components/PlantForm";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       >
         Except for this button
       </Button>
+      <PlantForm />
 
     </div>
   );
