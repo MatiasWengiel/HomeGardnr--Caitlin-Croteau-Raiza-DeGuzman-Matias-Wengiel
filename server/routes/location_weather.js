@@ -13,7 +13,7 @@ module.exports = () => {
         console.log(cityKey)
       })
       .then(
-        axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}&apikey=jURdoMXOLNcy90VzcO0dYyankIoJURwM`)
+        axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=jURdoMXOLNcy90VzcO0dYyankIoJURwM`)
       )
       .then(reply => console.log(reply.data))
 
