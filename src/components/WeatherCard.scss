@@ -1,0 +1,14 @@
+.weather-container {
+  border: 1px solid black;
+  padding: 2rem 5rem 2rem 5rem;
+  width: 70%;
+  border-radius: 0.375rem;
+}
+.weather-headings {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.weather-values {
+  font-weight: bold;
+}
