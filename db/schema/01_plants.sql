@@ -10,7 +10,7 @@ CREATE TABLE plants (
   thumbnail_photo_url VARCHAR(255) NOT NULL,
   large_plant_card_photo_url VARCHAR(255) NOT NULL,
   when_to_plant VARCHAR(255) NOT NULL,
-  water_needs VARCHAR(255) NOT NULL,
+  water_needs INTEGER NOT NULL,
   sunlight_needs VARCHAR(255) NOT NULL,
   lowest_temp_tolerance INTEGER NOT NULL,
   highest_temp_tolerance INTEGER NOT NULL, 
