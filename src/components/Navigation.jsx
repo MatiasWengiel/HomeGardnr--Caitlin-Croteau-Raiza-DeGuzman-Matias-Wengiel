@@ -1,9 +1,16 @@
 import React from "react";
 import "./Navbar.scss";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-export default function Navbar(props) {
+export default function Navigation(props) {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    
+  );
+}
+
+{/* <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <a class="navbar-brand" href="/">
         Home Gardnr Brand Image
       </a>
@@ -40,9 +47,7 @@ export default function Navbar(props) {
           </a>
         </div>
       </div>
-    </nav>
-  );
-}
+    </nav> */}
 
 //source code: https://www.codeply.com/p/zzFC5XoyUm
 //https://getbootstrap.com/docs/5.0/utilities/flex/
