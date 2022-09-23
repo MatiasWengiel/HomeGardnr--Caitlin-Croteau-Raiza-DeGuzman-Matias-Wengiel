@@ -12,6 +12,8 @@ CREATE TABLE plants (
   when_to_plant VARCHAR(255) NOT NULL,
   water_needs VARCHAR(255) NOT NULL,
   sunlight_needs VARCHAR(255) NOT NULL,
+  lowest_temp_tolerance INTEGER NOT NULL,
+  highest_temp_tolerance INTEGER NOT NULL, 
   temperature_thresholds VARCHAR(255) NOT NULL,
   how_far_apart_to_plant VARCHAR(255) NOT NULL,
   how_deep_to_plant VARCHAR(255),
