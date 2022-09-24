@@ -4,26 +4,29 @@ import "./WeatherCard.scss";
 import axios from "axios";
 
 export default function WeatherCard(props) {
-  const { currentCity, currentProvince } = { ...props };
+  const { currentProvince } = { ...props };
   let localWarnings = "";
-
+  const [currentCity, setCurrentCity] = useState("");
   const [localHigh, setLocalHigh] = useState("");
   const [localLow, setLocalLow] = useState("");
   const [localPrecipitation, setLocalPrecipitation] = useState("");
+  const [forecastLink, setForecastLink] = useState("");
 
   useEffect(() => {
     axios
-      //Will need to modify the
-      .get(`/api/location/${currentCity}`)
+      .get("/api/users/location")
       .then((response) => {
-        console.log("API CALL");
+        setCurrentCity(response.data);
+        return axios.get(`/api/location/${response.data}`);
+      })
+      .then((response) => {
         setLocalHigh(response.data.dailyMax);
         setLocalLow(response.data.dailyMin);
         setLocalPrecipitation(response.data.rain);
+        setForecastLink(response.data.forecastLink);
       })
       .catch((error) => console.log(error));
-  }, [currentCity]);
-
+  }, []);
   return (
     <Container className="weather-container">
       <Alert variant="secondary">
@@ -48,6 +51,9 @@ export default function WeatherCard(props) {
         <div className="weather-headings">
           <p>Expected Precipitation: </p>
           <p className="weather-values">{localPrecipitation || "0"} mm</p>
+        </div>
+        <div className="weather-headings">
+          <a href={forecastLink}>See full weather report at AccuWeather</a>
         </div>
       </Stack>
     </Container>
