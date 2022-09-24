@@ -8,7 +8,7 @@ export default function LargeCardVisitor(props) {
   return (
     <Container>
       <Card>
-        <Card.Body className="d-flex flex-row mb-3">
+        <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
             <Card.Title>Cucumber</Card.Title>
             <Card.Img
@@ -18,11 +18,9 @@ export default function LargeCardVisitor(props) {
               src="https://images.pexels.com/photos/128420/pexels-photo-128420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             />
           </div>
-          <div>
-            <Card.Title text-align="center">
-              Cucumis sativus
-            </Card.Title>
-            <ListGroup variant="flush">
+          <div style={{ width: "40%" }}>
+            <Card.Title>Cucumis sativus</Card.Title>
+            <ListGroup className="text-start">
               <ListGroup.Item>When to Plant: </ListGroup.Item>
               <ListGroup.Item>Water Needs: </ListGroup.Item>
               <ListGroup.Item>Sunlight Needs: </ListGroup.Item>
