@@ -13,13 +13,16 @@ export default function WeatherCard(props) {
   const [forecastLink, setForecastLink] = useState("");
 
   useEffect(() => {
+    //Get user location from DB
     axios
       .get("/api/users/location")
       .then((response) => {
         setCurrentCity(response.data);
+        //Get the weather for the currentCity
         return axios.get(`/api/location/${response.data}`);
       })
       .then((response) => {
+        //Update weather state
         setLocalHigh(response.data.dailyMax);
         setLocalLow(response.data.dailyMin);
         setLocalPrecipitation(response.data.rain);
