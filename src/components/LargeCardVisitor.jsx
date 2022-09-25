@@ -1,16 +1,34 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import axios from "axios";
+
 
 export default function LargeCardVisitor(props) {
+
+  const [genericName, setGenericName] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("/api/plants")
+      .then((response) => {
+        setGenericName(response.data[0].generic_name);
+        return axios.get(`/api/plants`);
+      })
+      .then((response) => {
+        setGenericName(response.data[0].generic_name);
+        console.log(genericName);
+      })
+      .catch((error) => console.log(error));
+  }, [genericName]);
 
   return (
     <Container>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title>Cucumber</Card.Title>
+            <Card.Title>{genericName}</Card.Title>
             <Card.Img
               width={400}
               height={400}
