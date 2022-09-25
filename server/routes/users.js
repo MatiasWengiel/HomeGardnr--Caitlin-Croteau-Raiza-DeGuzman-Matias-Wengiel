@@ -10,7 +10,7 @@ module.exports = (db) => {
   router.get('/location', (req, res) => {
     db.query(getUserLocation(1)).then(data => {
       console.log(data.rows[0].location)
-      res.json(data.rows[0].location)
+      return res.json(data.rows[0].location)
     })
   })
   return router;
