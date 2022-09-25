@@ -15,9 +15,10 @@ export default function PlantForm(props) {
       event.preventDefault();
       event.stopPropagation();
     }
-
     setValidated(true);
   };
+
+  //noValidate cancels browser's default validation
 
   return (
     <Container
@@ -160,22 +161,3 @@ export default function PlantForm(props) {
     </Container>
   );
 }
-
-/*
-  const [values, setValues] = useState({
-    genericName: "",
-    specificName: "",
-    season: "",
-    maturity: "",
-    spacing: "",
-    depth: "",
-    maxTemp: 0,
-    minTemp: 0,
-    sunlight: "",
-    water: 0,
-    description: ""
-
-  });
-
-  const [errors, setErrors] = useState({});
-  */
