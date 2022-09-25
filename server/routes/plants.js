@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getPlantInfo } = require('../../db/dbqueries.js')
+const { getPlantInfo } = require('../../db/query_functions.js')
 
 module.exports = (db) => {
   // router.get('/', (req, res) => {
