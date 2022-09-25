@@ -16,6 +16,7 @@ function App() {
       >
         Except for this button
       </Button>
+      <h2>Here is the form to add new plants!</h2>
       <PlantForm />
 
     </div>

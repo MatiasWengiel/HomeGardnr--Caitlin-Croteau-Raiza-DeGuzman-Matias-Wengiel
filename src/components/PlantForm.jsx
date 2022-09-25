@@ -8,9 +8,9 @@ import Col from "react-bootstrap/Col";
 
 export default function PlantForm(props) {
   return (
-    <Container className="ms-auto">
+    <Container className="ms-auto square border border-2 rounded text-start">
       <Form>
-        <Row className="mb-3">
+        <Row className="mb-4 mt-3 ">
           <Form.Group as={Col} controlId="formGenericName">
             <Form.Label>Generic Name</Form.Label>
             <Form.Control type="text" placeholder="Generic Name" />
