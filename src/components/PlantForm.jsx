@@ -28,24 +28,24 @@ export default function PlantForm(props) {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formPlantingSeason">
             <Form.Label>Planting Season</Form.Label>
-            <Form.Control type="text" placeholder="Planting Season" />
+            <Form.Control type="text" placeholder="Ex: Spring" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formMaturity">
             <Form.Label>Time to Maturity</Form.Label>
-            <Form.Control type="text" placeholder="Time to Maturity" />
+            <Form.Control type="text" placeholder="Ex: 2 years" />
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formSeedSpacing">
             <Form.Label>Seed Spacing</Form.Label>
-            <Form.Control type="text" placeholder="Seed Spacing" />
+            <Form.Control type="text" placeholder="Ex: 10cm apart" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formPlantDepth">
             <Form.Label>Seed Planting Depth</Form.Label>
-            <Form.Control type="text" placeholder="Planting Depth" />
+            <Form.Control type="text" placeholder="Ex: 10cm deep" />
           </Form.Group>
         </Row>
 
@@ -64,7 +64,12 @@ export default function PlantForm(props) {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formSunlightNeeds">
             <Form.Label>Sunlight Needs</Form.Label>
-            <Form.Control type="text" placeholder="Sunlight Needs" />
+            <Form.Select aria-label="Sunlight Needs">
+              <option>Select your plant's light requirments</option>
+              <option value="1">Direct sun</option>
+              <option value="2">Indirect sun</option>
+              <option value="3">Shade</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formWaterNeeds">
