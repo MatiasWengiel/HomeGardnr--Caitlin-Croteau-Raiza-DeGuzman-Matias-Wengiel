@@ -3,6 +3,7 @@ import "./App.css";
 import Button from "./components/Button";
 import Navigation from "./components/Navigation";
 
+import LargeCardVisitor from "./components/LargeCardVisitor";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       >
         Except for this button
       </Button>
-
+      <LargeCardVisitor />
     </div>
   );
 }
