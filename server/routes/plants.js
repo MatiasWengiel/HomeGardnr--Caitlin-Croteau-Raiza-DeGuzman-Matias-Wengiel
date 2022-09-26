@@ -9,7 +9,7 @@ module.exports = (db) => {
 
   router.get('/:query', (req, res) => {
     const query = req.params.query;
-    db.query(searchPlant(), [query]).then(data => console.log(data.rows))
+    db.query(searchPlant(), [query]).then(data => res.json(data.rows))
   })
   return router;
 };
