@@ -4,4 +4,8 @@ const getUserLocation = (userId) => {
   `
 }
 
-module.exports = { getUserLocation }
+const searchPlant = () => {
+  return (`SELECT * FROM plants WHERE generic_name LIKE '%'||$1||'%'`)
+}
+
+module.exports = { getUserLocation, searchPlant }
