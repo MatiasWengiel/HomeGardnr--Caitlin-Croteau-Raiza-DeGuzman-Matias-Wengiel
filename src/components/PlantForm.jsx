@@ -47,9 +47,9 @@ export default function PlantForm(props) {
         console.log(response);
         console.log(response.data);
       })
-      .then(
-        //resets form
-        setPlantInfo({
+      .then(() => {
+         //resets form
+         setPlantInfo({
           genericName: "",
           specificName: "",
           season: "",
@@ -61,8 +61,8 @@ export default function PlantForm(props) {
           sunlight: "",
           water: "",
           description: "",
-        })
-      )
+        });
+      })
       .catch((error) => {
         console.log(error);
       });
