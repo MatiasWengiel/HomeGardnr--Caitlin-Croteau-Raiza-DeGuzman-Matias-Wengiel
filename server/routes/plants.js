@@ -23,14 +23,22 @@ const mockPlant = {
 
 module.exports = (db) => {
   //create - how to access db query object
-  router
-    .post("/", (req, res) => {
-      db.query(addPlant({ mockPlant }));
-    })
-    .then((response) => {
-      response.status(204).json();
-    })
-    .catch((error) => console.log(error));
+  router.post("/", (req, res) => {
+    const plant = req.body;
+    console.log(plant);
+    const [queryString, values] = addPlant(plant);
+    db.query(queryString, values)
+      .then((result) => {
+        //results of the query
+        console.log(result);
+        //response from server
+        res.send();
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).send();
+      });
+  });
 
   //read
   router.get("/", (req, res) => {
