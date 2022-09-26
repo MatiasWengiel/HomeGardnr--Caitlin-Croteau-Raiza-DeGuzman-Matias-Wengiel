@@ -8,21 +8,22 @@ import "./LargeCardVisitor.scss";
 
 export default function LargeCardVisitor(props) {
 
-  const [data, setData] = useState({});
+  const [data, setPlantData] = useState({});
 
   useEffect(() => {
     axios
       .get("/api/plants/1")
+      // How to set the id so it's dynamic?
       .then((response) => {
         console.log(response.data[0])
-        setData(response.data[0]);
+        setPlantData(response.data[0]);
         // return axios.get(`/api/plants`);
       })
       .catch((error) => console.log(error));
   }, []);
 
   return (
-    <Container className="lc-container">
+    <Container className="lcv-container">
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
@@ -34,7 +35,7 @@ export default function LargeCardVisitor(props) {
               src={data.large_plant_card_photo_url}
             />
           </div>
-          <div className="lc-info">
+          <div className="lcv-info">
             <Card.Title>{data.specific_name}</Card.Title>
             <ListGroup variant="flush" className="text-start">
               <ListGroup.Item>
