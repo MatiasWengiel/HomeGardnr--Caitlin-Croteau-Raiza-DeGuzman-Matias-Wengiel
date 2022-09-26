@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
 
 export default function PlantForm(props) {
   const [validated, setValidated] = useState(false);
@@ -27,11 +28,6 @@ export default function PlantForm(props) {
     console.log({ ...plantInfo, [event.target.name]: event.target.value });
     console.log(event);
     setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
-
-    // setPlantInfo((prev) => ({
-    //   ...prev,
-    //   [event.target.name]: event.target.defaultValue,
-    // }));
   };
 
   const handleSubmit = (event) => {
@@ -46,21 +42,30 @@ export default function PlantForm(props) {
 
     //axios post request
     //rediret or...?
-
-    //resets form
-    setPlantInfo({
-      genericName: "",
-      specificName: "",
-      season: "",
-      maturity: "",
-      spacing: "",
-      depth: "",
-      maxTemp: "",
-      minTemp: "",
-      sunlight: "",
-      water: "",
-      description: "",
-    });
+    return axios
+      .post("/", plantInfo)
+      .then((response) => {
+        console.log(response);
+      })
+      .then(
+        //resets form
+        setPlantInfo({
+          genericName: "",
+          specificName: "",
+          season: "",
+          maturity: "",
+          spacing: "",
+          depth: "",
+          maxTemp: "",
+          minTemp: "",
+          sunlight: "",
+          water: "",
+          description: "",
+        })
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   //noValidate cancels browser's default validation
