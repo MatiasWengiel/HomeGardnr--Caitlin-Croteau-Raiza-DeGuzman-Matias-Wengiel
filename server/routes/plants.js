@@ -7,8 +7,9 @@ module.exports = (db) => {
   //   res.send("This would be the plants page");
   // });
 
-  router.get('/', (req, res) => {
-    db.query(getPlantInfo(1)).then(data => {
+  // GET request for an individual plant, selected by visitor
+  router.get('/:id', (req, res) => {
+    db.query(getPlantInfo(req.params.id)).then(data => {
       console.log(data);
       res.json(data.rows);
     })
