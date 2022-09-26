@@ -8,7 +8,47 @@ import "./LargeCardUser.scss";
 import Accordion from "react-bootstrap/Accordion";
 
 export default function LargeCardUser(props) {
+
   const [data, setPlantData] = useState({});
+
+  const formatDate = (inputDate) => {
+
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    const dateObj = new Date(inputDate);
+    // Wed, May 11, 2022
+
+    let formattedDate = ""
+    formattedDate += days[dateObj.getDay()] + ", ";
+    formattedDate += months[dateObj.getMonth()] + " ";
+    formattedDate += dateObj.getDate() + ", ";
+    formattedDate += dateObj.getFullYear();
+    return formattedDate;
+    // return new Date(inputDate).toDateString().split(" ").join(", ");
+  }
 
   useEffect(() => {
     axios
@@ -38,19 +78,21 @@ export default function LargeCardUser(props) {
           </div>
           <div className="lcu-info">
             <Card.Title>{data.specific_name}</Card.Title>
+
             <div className="lcu-data">
               <h6>Planted Date:</h6>
-              <p>{data.planted_date}</p>
+              {/* <p>{new Date(data.planted_date).toDateString()}</p> */}
+              <p>{formatDate(data.planted_date)}</p>
             </div>
 
             <div className="lcu-data">
               <h6>Last Watered:</h6>
-              <p>{data.last_watered_at}</p>
+              <p>{formatDate(data.last_watered_at)}</p>
             </div>
 
             <div className="lcu-data">
               <h6>When to Water Next:</h6>
-              <p>{data.when_to_water_next}</p>
+              <p>{formatDate(data.when_to_water_next)}</p>
             </div>
 
             <Accordion>
