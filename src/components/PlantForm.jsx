@@ -24,9 +24,9 @@ export default function PlantForm(props) {
   });
 
   const handleChange = (event) => {
-    console.log("in handleChange");
-    console.log({ ...plantInfo, [event.target.name]: event.target.value });
-    console.log(event);
+    // console.log("in handleChange");
+    // console.log({ ...plantInfo, [event.target.name]: event.target.value });
+    // console.log(event);
     setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
   };
 
@@ -38,14 +38,14 @@ export default function PlantForm(props) {
     }
     setValidated(true);
     event.preventDefault();
-    console.log(plantInfo);
+    // console.log(plantInfo);
 
-    //axios post request
     //rediret or...?
     return axios
-      .post("/", plantInfo)
+      .post("/api/plants", plantInfo)
       .then((response) => {
         console.log(response);
+        console.log(response.data);
       })
       .then(
         //resets form
