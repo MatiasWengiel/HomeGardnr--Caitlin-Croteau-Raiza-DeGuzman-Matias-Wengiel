@@ -9,14 +9,16 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import LargeCardVisitor from "./components/LargeCardVisitor";
+import LargeCardUser from "./components/LargeCardUser";
 
 function App() {
 
   return (
     <div className="App">
       <Navigation user="Waldo" />
-      <WeatherCard currentProvince="BC" />
-      <LargeCardVisitor />
+      {/* <WeatherCard currentProvince="BC" /> */}
+      {/* <LargeCardVisitor /> */}
+      <LargeCardUser />
     </div>
   );
 }
