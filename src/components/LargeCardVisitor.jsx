@@ -7,28 +7,25 @@ import axios from "axios";
 
 export default function LargeCardVisitor(props) {
 
-  const [genericName, setGenericName] = useState("");
+  const [data, setData] = useState({});
 
   useEffect(() => {
     axios
-      .get("/api/plants")
+      .get("/api/plants/1")
       .then((response) => {
-        setGenericName(response.data[0].generic_name);
-        return axios.get(`/api/plants`);
-      })
-      .then((response) => {
-        setGenericName(response.data[0].generic_name);
-        console.log(genericName);
+        console.log(response.data[0])
+        setData(response.data[0]);
+        // return axios.get(`/api/plants`);
       })
       .catch((error) => console.log(error));
-  }, [genericName]);
+  }, []);
 
   return (
     <Container>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title>{genericName}</Card.Title>
+            <Card.Title>{data.generic_name}</Card.Title>
             <Card.Img
               width={400}
               height={400}
@@ -37,16 +34,26 @@ export default function LargeCardVisitor(props) {
             />
           </div>
           <div style={{ width: "40%" }}>
-            <Card.Title>Cucumis sativus</Card.Title>
+            <Card.Title>{data.specific_name}</Card.Title>
             <ListGroup className="text-start">
-              <ListGroup.Item>When to Plant: </ListGroup.Item>
-              <ListGroup.Item>Water Needs: </ListGroup.Item>
-              <ListGroup.Item>Sunlight Needs: </ListGroup.Item>
-              <ListGroup.Item>High Temp Tolerance: </ListGroup.Item>
-              <ListGroup.Item>Low Temp Tolerance: </ListGroup.Item>
-              <ListGroup.Item>Planting Distance: </ListGroup.Item>
-              <ListGroup.Item>Planting Depth: </ListGroup.Item>
-              <ListGroup.Item>Time to Maturity: </ListGroup.Item>
+              <ListGroup.Item>
+                When to Plant: {data.when_to_plant}
+              </ListGroup.Item>
+              <ListGroup.Item>Water Needs: {data.water_needs}</ListGroup.Item>
+              <ListGroup.Item>
+                Sunlight Needs: {data.sunlight_needs}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                High Temp Tolerance: {data.highest_temp_tolerance}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                Low Temp Tolerance: {data.lowest_temp_tolerance}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                Planting Distance: {data.how_far_apart_to_plant}
+              </ListGroup.Item>
+              <ListGroup.Item>Planting Depth: {data.how_deep_to_plant}</ListGroup.Item>
+              <ListGroup.Item>Time to Maturity: {data.how_long_until_mature}</ListGroup.Item>
             </ListGroup>
           </div>
         </Card.Body>
