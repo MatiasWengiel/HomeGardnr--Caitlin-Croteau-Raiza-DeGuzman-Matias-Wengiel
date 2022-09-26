@@ -30,7 +30,7 @@ export default function LargeCardVisitor(props) {
               width={400}
               height={400}
               alt={"cucumber"}
-              src="https://images.pexels.com/photos/128420/pexels-photo-128420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={data.large_plant_card_photo_url}
             />
           </div>
           <div style={{ width: "40%" }}>
