@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import axios from "axios";
+import "./LargeCardVisitor.scss";
 
 
 export default function LargeCardVisitor(props) {
@@ -21,7 +22,7 @@ export default function LargeCardVisitor(props) {
   }, []);
 
   return (
-    <Container>
+    <Container className="lc-container">
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
@@ -33,9 +34,9 @@ export default function LargeCardVisitor(props) {
               src={data.large_plant_card_photo_url}
             />
           </div>
-          <div style={{ width: "40%" }}>
+          <div className="lc-info">
             <Card.Title>{data.specific_name}</Card.Title>
-            <ListGroup className="text-start">
+            <ListGroup variant="flush" className="text-start">
               <ListGroup.Item>
                 When to Plant: {data.when_to_plant}
               </ListGroup.Item>
@@ -52,8 +53,12 @@ export default function LargeCardVisitor(props) {
               <ListGroup.Item>
                 Planting Distance: {data.how_far_apart_to_plant}
               </ListGroup.Item>
-              <ListGroup.Item>Planting Depth: {data.how_deep_to_plant}</ListGroup.Item>
-              <ListGroup.Item>Time to Maturity: {data.how_long_until_mature}</ListGroup.Item>
+              <ListGroup.Item>
+                Planting Depth: {data.how_deep_to_plant}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                Time to Maturity: {data.how_long_until_mature}
+              </ListGroup.Item>
             </ListGroup>
           </div>
         </Card.Body>
