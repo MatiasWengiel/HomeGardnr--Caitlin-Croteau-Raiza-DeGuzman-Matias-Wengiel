@@ -23,7 +23,15 @@ export default function PlantForm(props) {
   });
 
   const handleChange = (event) => {
+    console.log("in handleChange");
+    console.log({ ...plantInfo, [event.target.name]: event.target.value });
+    console.log(event);
     setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
+
+    // setPlantInfo((prev) => ({
+    //   ...prev,
+    //   [event.target.name]: event.target.defaultValue,
+    // }));
   };
 
   const handleSubmit = (event) => {
@@ -35,6 +43,9 @@ export default function PlantForm(props) {
     setValidated(true);
     event.preventDefault();
     console.log(plantInfo);
+
+    //axios post request
+    //rediret or...?
 
     //resets form
     setPlantInfo({
@@ -68,6 +79,7 @@ export default function PlantForm(props) {
               required
               type="text"
               placeholder="Generic Name"
+              name="genericName"
               defaultValue={plantInfo.genericName}
               onChange={handleChange}
             />
@@ -82,6 +94,7 @@ export default function PlantForm(props) {
               required
               type="text"
               placeholder="Specific Name"
+              name="specificName"
               defaultValue={plantInfo.specificName}
               onChange={handleChange}
             />
@@ -98,6 +111,7 @@ export default function PlantForm(props) {
               required
               type="text"
               placeholder="Ex: Spring"
+              name="season"
               defaultValue={plantInfo.season}
               onChange={handleChange}
             />
@@ -112,6 +126,7 @@ export default function PlantForm(props) {
               required
               type="text"
               placeholder="Ex: 2 years"
+              name="maturity"
               defaultValue={plantInfo.maturity}
               onChange={handleChange}
             />
@@ -129,6 +144,7 @@ export default function PlantForm(props) {
               required
               type="text"
               placeholder="Ex: 10cm apart"
+              name="spacing"
               defaultValue={plantInfo.spacing}
               onChange={handleChange}
             />
@@ -143,6 +159,7 @@ export default function PlantForm(props) {
               required
               type="text"
               placeholder="Ex: 10cm deep"
+              name="depth"
               defaultValue={plantInfo.depth}
               onChange={handleChange}
             />
@@ -159,6 +176,7 @@ export default function PlantForm(props) {
               required
               type="number"
               placeholder="Please enter a number"
+              name="maxTemp"
               defaultValue={plantInfo.maxTemp}
               onChange={handleChange}
             />
@@ -173,6 +191,7 @@ export default function PlantForm(props) {
               required
               type="number"
               placeholder="Please enter a number"
+              name="minTemp"
               defaultValue={plantInfo.minTemp}
               onChange={handleChange}
             />
@@ -188,6 +207,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               as="select"
+              name="sunlight"
               defaultValue={plantInfo.sunlight}
               onChange={handleChange}
             >
@@ -206,6 +226,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               as="select"
+              name="water"
               defaultValue={plantInfo.water}
               onChange={handleChange}
             >
@@ -233,6 +254,7 @@ export default function PlantForm(props) {
             as="textarea"
             rows={3}
             placeholder="Tell us about your plant!"
+            name="description"
             defaultValue={plantInfo.description}
             onChange={handleChange}
           />
@@ -248,7 +270,6 @@ export default function PlantForm(props) {
     </Container>
   );
 }
-
 
 //onchange info:
 //best guide:
