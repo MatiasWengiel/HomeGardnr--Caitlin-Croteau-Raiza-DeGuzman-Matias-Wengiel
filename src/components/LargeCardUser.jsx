@@ -11,6 +11,7 @@ export default function LargeCardUser(props) {
 
   const [data, setPlantData] = useState({});
 
+  // Place this function in separate file to keep code here minimal
   const formatDate = (inputDate) => {
 
     const months = [
