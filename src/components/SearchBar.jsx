@@ -1,12 +1,14 @@
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import PlantCard from "./PlantCard";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function SearchBar(props) {
-  let plantCards = [];
+  const [plantInfo, setPlantInfo] = useState([]);
   const searchDB = (event) => {
     axios.get(`/api/plants/${event.target.value}`).then((response) => {
-      console.log(response.data);
+      setPlantInfo(response.data);
     });
   };
 
@@ -22,7 +24,7 @@ export default function SearchBar(props) {
           />
         </Form.Group>
       </Form>
-      {plantCards}
+      {/* {plantCards} */}
     </>
   );
 }
