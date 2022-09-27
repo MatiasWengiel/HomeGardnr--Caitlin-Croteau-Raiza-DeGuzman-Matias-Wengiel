@@ -24,6 +24,8 @@ export default function PlantForm(props) {
     imageURL: "",
   });
 
+  //need to do file input - needs it's own function
+
   const handleChange = (event) => {
     // console.log("in handleChange");
     // console.log({ ...plantInfo, [event.target.name]: event.target.value });

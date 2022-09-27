@@ -22,6 +22,7 @@ module.exports = (db) => {
       })
       .then(() => {
         //add plant to user_plants
+        //need to update hardcoded values
         const userId = 1;
         const [queryString, values] = addPlantToMyGarden(newPlantId, userId);
         db.query(queryString, values).then((data) => {
