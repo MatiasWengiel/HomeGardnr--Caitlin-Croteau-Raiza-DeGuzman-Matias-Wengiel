@@ -21,6 +21,7 @@ export default function PlantForm(props) {
     sunlight: "",
     water: "",
     description: "",
+    imageURL: "",
   });
 
   const handleChange = (event) => {
@@ -48,8 +49,8 @@ export default function PlantForm(props) {
         console.log(response.data);
       })
       .then(() => {
-         //resets form
-         setPlantInfo({
+        //resets form
+        setPlantInfo({
           genericName: "",
           specificName: "",
           season: "",
@@ -61,6 +62,7 @@ export default function PlantForm(props) {
           sunlight: "",
           water: "",
           description: "",
+          imageURL: "",
         });
       })
       .catch((error) => {
@@ -83,7 +85,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Generic Name"
+              value="Generic Name"
               name="genericName"
               defaultValue={plantInfo.genericName}
               onChange={handleChange}
@@ -98,7 +100,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Specific Name"
+              value="Specific Name"
               name="specificName"
               defaultValue={plantInfo.specificName}
               onChange={handleChange}
@@ -115,7 +117,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Ex: Spring"
+              value="Ex: Spring"
               name="season"
               defaultValue={plantInfo.season}
               onChange={handleChange}
@@ -130,7 +132,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Ex: 2 years"
+              value="Ex: 2 years"
               name="maturity"
               defaultValue={plantInfo.maturity}
               onChange={handleChange}
@@ -148,7 +150,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Ex: 10cm apart"
+              value="Ex: 10cm apart"
               name="spacing"
               defaultValue={plantInfo.spacing}
               onChange={handleChange}
@@ -163,7 +165,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Ex: 10cm deep"
+              value="Ex: 10cm deep"
               name="depth"
               defaultValue={plantInfo.depth}
               onChange={handleChange}
@@ -181,6 +183,7 @@ export default function PlantForm(props) {
               required
               type="number"
               placeholder="Please enter a number"
+              value="1"
               name="maxTemp"
               defaultValue={plantInfo.maxTemp}
               onChange={handleChange}
@@ -196,6 +199,7 @@ export default function PlantForm(props) {
               required
               type="number"
               placeholder="Please enter a number"
+              value="1"
               name="minTemp"
               defaultValue={plantInfo.minTemp}
               onChange={handleChange}
@@ -216,7 +220,7 @@ export default function PlantForm(props) {
               defaultValue={plantInfo.sunlight}
               onChange={handleChange}
             >
-              <option value="">Select your plant's light requirments</option>
+              {/* <option value="">Select your plant's light requirments</option> */}
               <option value="Direct Sun">Direct Sun</option>
               <option value="Indirect Sun">Indirect Sun</option>
               <option value="Shade">Shade</option>
@@ -235,9 +239,9 @@ export default function PlantForm(props) {
               defaultValue={plantInfo.water}
               onChange={handleChange}
             >
-              <option value="">
+              {/* <option value="">
                 Select how many days per week you want to water:
-              </option>
+              </option> */}
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -258,7 +262,7 @@ export default function PlantForm(props) {
             required
             as="textarea"
             rows={3}
-            placeholder="Tell us about your plant!"
+            value="Tell us about your plant!"
             name="description"
             defaultValue={plantInfo.description}
             onChange={handleChange}
