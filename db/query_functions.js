@@ -13,7 +13,7 @@ const getPlantInfo = (plantId) => {
 
 const getUserPlantInfo = (plantId) => {
   return `
-    SELECT * FROM user_plant
+    SELECT * FROM user_plants
     JOIN plants ON plant_id = plants.id
     WHERE plant_id = ${plantId}
   `
