@@ -1,8 +1,8 @@
 -- User Plant Table (A user's plant library) --
 
-DROP TABLE IF EXISTS user_plant CASCADE;
+DROP TABLE IF EXISTS user_plants CASCADE;
 
-CREATE TABLE user_plant (
+CREATE TABLE user_plants (
 
   id SERIAL PRIMARY KEY NOT NULL,
   planted_date DATE NOT NULL,
