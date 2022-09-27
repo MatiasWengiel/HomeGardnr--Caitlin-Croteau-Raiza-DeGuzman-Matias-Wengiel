@@ -42,8 +42,10 @@ export default function PlantForm(props) {
     // console.log(plantInfo);
 
     //rediret or...?
+    //using mockPlantObject for testing
+    //replace with plantInfo in order to use state
     return axios
-      .post("/api/plants", plantInfo)
+      .post("/api/plants", mockPlantObject)
       .then((response) => {
         console.log(response);
         console.log(response.data);
@@ -297,3 +299,18 @@ export default function PlantForm(props) {
 //defaultValue vs Value
 //this - uncontrolled components?
 //why does the console log disappear even why the reset is gone?
+
+const mockPlantObject = {
+  genericName: "tomato",
+  specificName: "cherry",
+  season: "spring",
+  maturity: "2 years",
+  spacing: "10cm apart",
+  depth: "10 cm deep",
+  maxTemp: 40,
+  minTemp: 2,
+  sunlight: "Direct Sun",
+  water: 6,
+  description: "This plant is so cute!",
+  imageURL: "this is a url",
+};
