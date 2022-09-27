@@ -12,7 +12,7 @@ export default function LargeCardVisitor(props) {
 
   useEffect(() => {
     axios
-      .get("/api/plants/1")
+      .get("/api/plants/2")
       // How to set the id so it's dynamic?
       .then((response) => {
         console.log(response.data[0])
@@ -37,30 +37,40 @@ export default function LargeCardVisitor(props) {
           </div>
           <div className="lcv-info">
             <Card.Title>{data.specific_name}</Card.Title>
-            <ListGroup variant="flush" className="text-start">
-              <ListGroup.Item>
-                When to Plant: {data.when_to_plant}
-              </ListGroup.Item>
-              <ListGroup.Item>Water Needs: {data.water_needs}</ListGroup.Item>
-              <ListGroup.Item>
-                Sunlight Needs: {data.sunlight_needs}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                High Temp Tolerance: {data.highest_temp_tolerance}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Low Temp Tolerance: {data.lowest_temp_tolerance}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Planting Distance: {data.how_far_apart_to_plant}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Planting Depth: {data.how_deep_to_plant}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Time to Maturity: {data.how_long_until_mature}
-              </ListGroup.Item>
-            </ListGroup>
+            <div className="lcv-data">
+              <h6>When To Plant:</h6>
+              <p>{data.when_to_plant}</p>
+            </div>
+
+            <div className="lcv-data">
+              <h6>Water Needs:</h6>
+              <p>{data.water_needs}</p>
+            </div>
+
+            <div className="lcv-data">
+              <h6>Sunlight Needs:</h6>
+              <p>{data.sunlight_needs}</p>
+            </div>
+
+            <div className="lcv-data">
+              <h6>Highest Temp Tolerance:</h6>
+              <p>{data.highest_temp_tolerance}</p>
+            </div>
+
+            <div className="lcv-data">
+              <h6>Lowest Temp Tolerance:</h6>
+              <p>{data.lowest_temp_tolerance}</p>
+            </div>
+
+            <div className="lcv-data">
+              <h6>Planting Distance:</h6>
+              <p>{data.how_far_apart_to_plant}</p>
+            </div>
+
+            <div className="lcv-data">
+              <h6>Time to Maturity:</h6>
+              <p>{data.how_long_until_mature}</p>
+            </div>
           </div>
         </Card.Body>
       </Card>
