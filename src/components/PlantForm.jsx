@@ -272,6 +272,15 @@ export default function PlantForm(props) {
           </Form.Control.Feedback>
         </Form.Group>
 
+        <Form.Group controlId="formFile" className="mb-3">
+          <Form.Label>Image upload</Form.Label>
+          <Form.Control
+            type="file"
+            // defaultValue={plantInfo.imageURL}
+            // onChange={handleChange}
+          />
+        </Form.Group>
+
         <Button variant="primary" type="submit">
           Submit
         </Button>
