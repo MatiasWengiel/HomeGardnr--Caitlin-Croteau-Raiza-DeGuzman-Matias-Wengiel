@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import axios from "axios";
 import "./LargeCardVisitor.scss";
 
