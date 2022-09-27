@@ -139,7 +139,7 @@ export default function LargeCardUser(props) {
             </Accordion>
 
             <div className="lcu-buttons">
-              <Button variant="primary">Watered</Button>
+              <Button variant="primary">Water Plant</Button>
               <Button variant="danger">Delete</Button>
             </div>
           </div>
