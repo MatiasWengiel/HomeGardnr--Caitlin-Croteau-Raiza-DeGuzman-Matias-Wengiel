@@ -24,6 +24,7 @@ export default function LargeCardVisitor(props) {
 
   return (
     <Container className="lcv-container">
+      <p>This is the VISITOR Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
