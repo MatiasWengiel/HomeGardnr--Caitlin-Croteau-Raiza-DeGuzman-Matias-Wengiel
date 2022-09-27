@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Navigation user="Waldo" />
       {/* <WeatherCard currentProvince="BC" /> */}
-      {/* <LargeCardVisitor /> */}
+      <LargeCardVisitor />
       <LargeCardUser />
     </div>
   );
