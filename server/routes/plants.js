@@ -1,7 +1,7 @@
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
-const { addPlant } = require("../../db/query_functions");
+const { addPlantToLibrary } = require("../../db/query_functions");
 
 const mockPlant = {
   generic_name: "Strawberry",
@@ -26,11 +26,17 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const plant = req.body;
     console.log(plant);
-    const [queryString, values] = addPlant(plant);
+    const [queryString, values] = addPlantToLibrary(plant);
+    let newPlantId = "";
+
     db.query(queryString, values)
       .then((result) => {
         //results of the query
-        console.log(result);
+        console.log(result.id);
+        //***new to console log the result so I can
+        //acess the id correctly***
+
+        //let newplnat update with resutl id
         //response from server
         res.send();
       })
@@ -38,6 +44,19 @@ module.exports = (db) => {
         console.log(error);
         res.status(500).send();
       });
+    //put new query to add plant to user_plants here
+    //use the newplantID variable
+    // db.query(queryString, values)
+    // .then((result) => {
+    //   //results of the query
+    //   console.log(result);
+    //   //response from server
+    //   res.send();
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   res.status(500).send();
+    // });
   });
 
   //read
