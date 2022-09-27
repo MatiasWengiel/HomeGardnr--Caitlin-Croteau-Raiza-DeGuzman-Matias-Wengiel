@@ -21,7 +21,6 @@ const getUserPlantInfo = (plantId) => {
 }
 
 
-module.exports = { getUserLocation, getPlantInfo, getUserPlantInfo }
 const addPlantToLibrary = function (plant) {
   const values = [
     plant.genericName,
@@ -69,4 +68,10 @@ const addPlantToMyGarden = function (plantId, userId) {
   return [queryString, values];
 };
 
-module.exports = { getUserLocation, addPlantToLibrary, addPlantToMyGarden };
+module.exports = {
+  getUserLocation,
+  getPlantInfo,
+  getUserPlantInfo,
+  addPlantToLibrary,
+  addPlantToMyGarden,
+};
