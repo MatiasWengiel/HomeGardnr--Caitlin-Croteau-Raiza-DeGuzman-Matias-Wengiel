@@ -4,8 +4,7 @@ import "./WeatherCard.scss";
 import axios from "axios";
 import { weatherContext } from "../providers/WeatherProvider";
 
-export default function WeatherCard(props) {
-  const { currentProvince } = { ...props };
+export default function WeatherCard() {
   let localWarnings = "";
 
   const { currentCity, localHigh, localLow, localPrecipitation, forecastLink } =
@@ -15,9 +14,7 @@ export default function WeatherCard(props) {
     <Container className="weather-container">
       <Alert variant="secondary">
         Today's Weather Information for{" "}
-        <span style={{ fontWeight: "bold" }}>
-          {currentCity}, {currentProvince}
-        </span>
+        <span style={{ fontWeight: "bold" }}>{currentCity}</span>
       </Alert>
       <Stack gap={3} style={{ display: "flex", alignItems: "start" }}>
         <div className="weather-headings">
