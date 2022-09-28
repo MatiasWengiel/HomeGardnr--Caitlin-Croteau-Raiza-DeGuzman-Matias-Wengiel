@@ -17,7 +17,13 @@ const getUserPlantInfo = (plantId) => {
     SELECT * FROM user_plants
     JOIN plants ON plant_id = plants.id
     WHERE plant_id = ${plantId}
-  `
+  `;
+}
+
+const deleteUserPlant = (plantId) => {
+  return `
+    DELETE FROM user_plants WHERE id = ${plantId}
+  `;
 }
 
 
@@ -72,6 +78,7 @@ module.exports = {
   getUserLocation,
   getPlantInfo,
   getUserPlantInfo,
+  deleteUserPlant,
   addPlantToLibrary,
   addPlantToMyGarden,
 };
