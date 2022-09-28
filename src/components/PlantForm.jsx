@@ -29,8 +29,9 @@ export default function PlantForm(props) {
   const handleChange = (event) => {
     // console.log("in handleChange");
     // console.log({ ...plantInfo, [event.target.name]: event.target.value });
-    // console.log(event);
-    setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
+    //set values to be stored in db as all lower case
+    const lowerCaseValue = event.target.value.toLowerCase();
+    setPlantInfo({ ...plantInfo, [event.target.name]: lowerCaseValue });
   };
 
   const handleSubmit = (event) => {
@@ -46,6 +47,7 @@ export default function PlantForm(props) {
     //rediret or...?
     //using mockPlantObject for testing
     //replace with plantInfo in order to use state
+
     return axios
       .post("/api/plants", mockPlantObject)
       .then((response) => {
@@ -233,7 +235,7 @@ export default function PlantForm(props) {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formWaterNeeds">
-            <Form.Label>Water needs</Form.Label>
+            <Form.Label>Water Needs</Form.Label>
             <Form.Control
               required
               as="select"
@@ -250,7 +252,7 @@ export default function PlantForm(props) {
               <option value="3">4</option>
               <option value="3">5</option>
               <option value="3">6</option>
-              <option value="3">Every day</option>
+              <option value="3">Every Day</option>
             </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please select a number.
@@ -275,11 +277,15 @@ export default function PlantForm(props) {
         </Form.Group>
 
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Image upload</Form.Label>
+          <Form.Label>Plant Image</Form.Label>
+          {/* update type="file" for proper file upload */}
           <Form.Control
-            type="file"
-            // defaultValue={plantInfo.imageURL}
-            // onChange={handleChange}
+            required
+            placeholder="Please submit a valid url."
+            type="text"
+            name="imageURL"
+            defaultValue={plantInfo.imageURL}
+            onChange={handleChange}
           />
         </Form.Group>
 
@@ -323,5 +329,5 @@ const mockPlantObject = {
   sunlight: "Direct Sun",
   water: 6,
   description: "This plant is so cute!",
-  imageURL: "this is a url",
+  imageURL: "http://www.this-is-a-url",
 };
