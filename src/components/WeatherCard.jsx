@@ -10,30 +10,7 @@ export default function WeatherCard(props) {
 
   const { currentCity, localHigh, localLow, localPrecipitation, forecastLink } =
     useContext(weatherContext);
-  // const [currentCity, setCurrentCity] = useState("");
-  // const [localHigh, setLocalHigh] = useState("");
-  // const [localLow, setLocalLow] = useState("");
-  // const [localPrecipitation, setLocalPrecipitation] = useState("");
-  // const [forecastLink, setForecastLink] = useState("");
 
-  // useEffect(() => {
-  //   //Get user location from DB
-  //   axios
-  //     .get("/api/users/location")
-  //     .then((response) => {
-  //       setCurrentCity(response.data);
-  //       //Get the weather for the currentCity
-  //       return axios.get(`/api/location/${response.data}`);
-  //     })
-  //     .then((response) => {
-  //       //Update weather state
-  //       setLocalHigh(response.data.dailyMax);
-  //       setLocalLow(response.data.dailyMin);
-  //       setLocalPrecipitation(response.data.rain);
-  //       setForecastLink(response.data.forecastLink);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
   return (
     <Container className="weather-container">
       <Alert variant="secondary">
