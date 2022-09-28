@@ -1,9 +1,9 @@
 import "./App.css";
-import Banner from "./components/Banner";
-import PlantCard from "./components/PlantCard";
-import WeatherCard from "./components/WeatherCard";
-import Navigation from "./components/Navigation";
-import PlantForm from "./components/PlantForm";
+import Banner from "./Components/Banner";
+import PlantCard from "./Components/PlantCard";
+import WeatherCard from "./Components/WeatherCard";
+import Navigation from "./Components/Navigation";
+import PlantForm from "./Components/PlantForm";
 import { useState, useEffect } from "react";
 import axios from "axios";
 

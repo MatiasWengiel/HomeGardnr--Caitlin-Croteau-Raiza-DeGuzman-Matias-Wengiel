@@ -14,7 +14,8 @@ export default function Navigation(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/user_plants">My Plants +</Nav.Link>
+          <Nav.Link href="/plants">Plant Library</Nav.Link>
+            <Nav.Link href="/user_plants">My Garden +</Nav.Link>
             <Nav.Link href="/weather">Weather Info</Nav.Link>
             <Nav.Link href="#link" disabled>
               Hello, {user}!
