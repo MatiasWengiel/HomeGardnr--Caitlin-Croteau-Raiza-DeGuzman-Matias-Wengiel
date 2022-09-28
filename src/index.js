@@ -10,6 +10,7 @@ import WeatherCard from "./components/WeatherCard";
 import Root from "./routes/Root";
 import PlantLibrary from "./components/PlantLibrary";
 import PlantCard from "./components/PlantCard";
+import LargeCardUser from "./components/LargeCardUser";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         path: "/plants/:id",
         element: <PlantCard />,
       },
+      {
+        path: "/user_plants/:id",
+        element: <LargeCardUser />
+      }
     ],
   },
 ]);
