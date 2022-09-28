@@ -36,15 +36,11 @@ module.exports = (db) => {
       });
   });
 
-  //read
-  router.get("/", (req, res) => {
-    res.send("This would be the plants page");
-  });
-
-  router.get('/search/:query', (req, res) => {
-    const query = req.params.query;
-    db.query(searchPlant(), [query]).then(data => res.json(data.rows))
+  //GET request to return the full plant table info
+  router.get('/', (req, res) => {
+    db.query(searchPlant()).then(data => res.json(data.rows))
   })
+
   // GET request for an individual plant, selected by visitor
   router.get('/:id', (req, res) => {
     db.query(getPlantInfo(req.params.id)).then(data => {
