@@ -25,10 +25,11 @@ module.exports = (db) => {
         //need to update hardcoded values
         const userId = 1;
         const [queryString, values] = addPlantToMyGarden(newPlantId, userId);
-        db.query(queryString, values).then((data) => {
-          //response from server
-          res.send();
-        });
+        return db.query(queryString, values) 
+      })
+      .then((data) => {
+        //response from server
+        res.send();
       })
       .catch((error) => {
         console.log(error);
