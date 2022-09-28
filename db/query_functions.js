@@ -20,18 +20,11 @@ const getUserPlantInfo = (plantId) => {
   `
 }
 
-<<<<<<< HEAD
 const searchPlant = () => {
   return (`
-  SELECT * FROM plants WHERE
-    generic_name LIKE '%'||$1||'%' 
-    OR specific_name LIKE '%'||$1||'%'
-    OR description LIKE '%'||$1||'%' 
+  SELECT * FROM plants 
     `)
 }
-
-module.exports = { getUserLocation, searchPlant }
-=======
 
 const addPlantToLibrary = function (plant) {
   const values = [
@@ -86,5 +79,6 @@ module.exports = {
   getUserPlantInfo,
   addPlantToLibrary,
   addPlantToMyGarden,
-};
->>>>>>> main
+  getUserLocation,
+  searchPlant
+}
