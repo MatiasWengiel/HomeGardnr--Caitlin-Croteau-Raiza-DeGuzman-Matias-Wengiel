@@ -29,8 +29,9 @@ export default function PlantForm(props) {
   const handleChange = (event) => {
     // console.log("in handleChange");
     // console.log({ ...plantInfo, [event.target.name]: event.target.value });
-    // console.log(event);
-    setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
+    //set values to be stored in db as all lower case
+    const lowerCaseValue = event.target.value.toLowerCase();
+    setPlantInfo({ ...plantInfo, [event.target.name]: lowerCaseValue });
   };
 
   const handleSubmit = (event) => {
@@ -41,7 +42,7 @@ export default function PlantForm(props) {
     }
     setValidated(true);
     event.preventDefault();
-    console.log(plantInfo);
+    // console.log(plantInfo);
 
     //rediret or...?
     //using mockPlantObject for testing
@@ -234,7 +235,7 @@ export default function PlantForm(props) {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formWaterNeeds">
-            <Form.Label>Water needs</Form.Label>
+            <Form.Label>Water Needs</Form.Label>
             <Form.Control
               required
               as="select"
@@ -251,7 +252,7 @@ export default function PlantForm(props) {
               <option value="3">4</option>
               <option value="3">5</option>
               <option value="3">6</option>
-              <option value="3">Every day</option>
+              <option value="3">Every Day</option>
             </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please select a number.
@@ -276,9 +277,11 @@ export default function PlantForm(props) {
         </Form.Group>
 
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Image upload</Form.Label>
+          <Form.Label>Plant Image</Form.Label>
           {/* update type="file" for proper file upload */}
           <Form.Control
+            required
+            placeholder="Please submit a valid url."
             type="text"
             name="imageURL"
             defaultValue={plantInfo.imageURL}
