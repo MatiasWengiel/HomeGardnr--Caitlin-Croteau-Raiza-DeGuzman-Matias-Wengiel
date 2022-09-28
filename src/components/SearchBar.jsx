@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function SearchBar(props) {
   const [plantInfo, setPlantInfo] = useState([]);
   const searchDB = (event) => {
-    axios.get(`/api/plants/${event.target.value}`).then((response) => {
+    axios.get(`/api/plants/search/${event.target.value}`).then((response) => {
       setPlantInfo(response.data);
     });
   };
