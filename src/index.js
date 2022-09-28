@@ -5,10 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import ErrorPage from "./error-page";
-import WeatherCard from "./Components/WeatherCard";
+import WeatherCard from "./components/WeatherCard";
 import Root from "./routes/Root";
-import PlantLibrary from "./Components/PlantLibrary";
-import PlantCard from "./Components/PlantCard";
+import PlantLibrary from "./components/PlantLibrary";
+import PlantCard from "./components/PlantCard";
 
 const router = createBrowserRouter([
   {
