@@ -4,12 +4,12 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "./LargeCardUser.scss";
-
 import Accordion from "react-bootstrap/Accordion";
+import { useParams } from "react-router-dom";
 
 export default function LargeCardUser(props) {
-
   const [data, setPlantData] = useState({});
+  const { id } = useParams();
 
   // Place this function in separate file to keep code here minimal
   const formatDate = (inputDate) => {
@@ -53,7 +53,7 @@ export default function LargeCardUser(props) {
 
   useEffect(() => {
     axios
-      .get("/api/user_plants/1")
+      .get(`/api/user_plants/${id}`)
       // How to set the id so it's dynamic?
       .then((response) => {
         console.log(response.data[0]);
@@ -62,6 +62,14 @@ export default function LargeCardUser(props) {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const deleteUserPlant = (id) => {
+    return axios.delete(`/api/user_plants/${id}`).then(() => {
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+  }
 
   return (
     <Container className="lcu-container">
@@ -140,7 +148,7 @@ export default function LargeCardUser(props) {
 
             <div className="lcu-buttons">
               <Button variant="primary">Water Plant</Button>
-              <Button variant="danger">Delete</Button>
+              <Button variant="danger" onClick={() => deleteUserPlant(id)}>Delete</Button>
             </div>
           </div>
         </Card.Body>
