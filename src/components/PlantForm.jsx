@@ -41,11 +41,12 @@ export default function PlantForm(props) {
     }
     setValidated(true);
     event.preventDefault();
-    // console.log(plantInfo);
+    console.log(plantInfo);
 
     //rediret or...?
     //using mockPlantObject for testing
     //replace with plantInfo in order to use state
+
     return axios
       .post("/api/plants", mockPlantObject)
       .then((response) => {
@@ -276,10 +277,12 @@ export default function PlantForm(props) {
 
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Image upload</Form.Label>
+          {/* update type="file" for proper file upload */}
           <Form.Control
-            type="file"
-            // defaultValue={plantInfo.imageURL}
-            // onChange={handleChange}
+            type="text"
+            name="imageURL"
+            defaultValue={plantInfo.imageURL}
+            onChange={handleChange}
           />
         </Form.Group>
 
@@ -323,5 +326,5 @@ const mockPlantObject = {
   sunlight: "Direct Sun",
   water: 6,
   description: "This plant is so cute!",
-  imageURL: "this is a url",
+  imageURL: "http://www.this-is-a-url",
 };
