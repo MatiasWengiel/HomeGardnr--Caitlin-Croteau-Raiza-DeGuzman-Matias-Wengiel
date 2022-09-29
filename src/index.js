@@ -20,10 +20,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/weather",
-        element: <WeatherCard />,
-      },
-      {
         path: "/plants",
         element: <PlantLibrary />,
       },
@@ -32,12 +28,16 @@ const router = createBrowserRouter([
         element: <PlantCard />,
       },
       {
-        path: "/user_plants/:id",
-        element: <LargeCardUser />
+        path: "/user_plants",
+        element: <UserGarden />,
       },
       {
-        path: "/user_plants",
-        element: <UserGarden />
+        path: "/user_plants/:id",
+        element: <LargeCardUser />,
+      },
+      {
+        path: "/weather",
+        element: <WeatherCard />,
       }
     ],
   },
