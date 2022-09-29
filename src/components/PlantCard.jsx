@@ -1,7 +1,15 @@
 import { Card, Button } from "react-bootstrap";
 
 export default function PlantCard(props) {
-  const { plant, picture, altText, waterStatus, lastWatered, nextWatering } = {
+  const {
+    plant,
+    picture,
+    altText,
+    waterStatus,
+    lastWatered,
+    nextWatering,
+    handleClick,
+  } = {
     ...props,
   };
   const borderType = (status) => {
@@ -36,6 +44,7 @@ export default function PlantCard(props) {
         </Card.Text>
         <Button
           style={{ backgroundColor: borderType(waterStatus), border: "none" }}
+          onClick={handleClick}
         >
           View Plant
         </Button>
