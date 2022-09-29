@@ -107,7 +107,7 @@ export default function LargeCardUser(props) {
 
             <Accordion>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>More Plant Details</Accordion.Header>
+                <Accordion.Header>Plant Details</Accordion.Header>
                 <Accordion.Body>
                   <div className="lcu-data">
                     <h6>When To Plant:</h6>
