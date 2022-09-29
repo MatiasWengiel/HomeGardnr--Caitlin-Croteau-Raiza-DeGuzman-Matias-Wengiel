@@ -78,7 +78,9 @@ export default function LargeCardUser(props) {
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title>{plantData.generic_name}</Card.Title>
+            <Card.Title className="text-center">
+              {plantData.generic_name}
+            </Card.Title>
             <Card.Img
               width={400}
               height={400}
@@ -87,7 +89,9 @@ export default function LargeCardUser(props) {
             />
           </div>
           <div className="lcu-info">
-            <Card.Title>{plantData.specific_name}</Card.Title>
+            <Card.Title className="text-center">
+              {plantData.specific_name}
+            </Card.Title>
 
             <div className="lcu-data">
               <h6>Planted Date:</h6>
