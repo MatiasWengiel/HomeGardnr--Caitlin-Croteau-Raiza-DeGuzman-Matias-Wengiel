@@ -27,13 +27,13 @@ const router = createBrowserRouter([
         element: <PlantLibrary />,
       },
       {
+        path: "/plants/search/",
+        element: <SearchView />
+      },
+      {
         path: "/plants/:id",
         element: <PlantCard />,
       },
-      {
-        path: "/plants/search/",
-        element: <SearchView />
-      }
     ],
   },
 ]);
