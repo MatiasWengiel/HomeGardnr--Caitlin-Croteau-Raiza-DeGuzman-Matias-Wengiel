@@ -4,14 +4,14 @@ const getUserLocation = (userId) => {
   `;
 };
 
-// Retrieve all info about an individual plant
+// Get all info about a plant from the main library (plants)
 const getPlantInfo = (plantId) => {
   return `
     SELECT * FROM plants WHERE id = ${plantId}
   `;
 };
 
-// Retrieve info about a plant in a user's garden (user_plants)
+// Get info about a plant in a user's garden (user_plants)
 const getUserPlantInfo = (plantId) => {
   return `
     SELECT * FROM user_plants
