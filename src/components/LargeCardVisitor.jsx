@@ -41,7 +41,7 @@ export default function LargeCardVisitor(props) {
             </div>
 
             <div className="lcv-data">
-              <h6>Water Needs:</h6>
+              <h6>Water Needs (per week):</h6>
               <p>{data.water_needs}</p>
             </div>
 
@@ -51,12 +51,12 @@ export default function LargeCardVisitor(props) {
             </div>
 
             <div className="lcv-data">
-              <h6>Highest Temp Tolerance:</h6>
+              <h6>Highest Temp Tolerance (Celsius):</h6>
               <p>{data.highest_temp_tolerance}</p>
             </div>
 
             <div className="lcv-data">
-              <h6>Lowest Temp Tolerance:</h6>
+              <h6>Lowest Temp Tolerance (Celsius):</h6>
               <p>{data.lowest_temp_tolerance}</p>
             </div>
 
