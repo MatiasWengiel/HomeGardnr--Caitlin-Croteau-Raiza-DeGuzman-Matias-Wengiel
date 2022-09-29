@@ -1,5 +1,5 @@
 import SearchBar from "../components/SearchBar";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
 import PlantCard from "../components/PlantCard";
@@ -46,9 +46,15 @@ export default function SearchView() {
 
   const cardsList = plantInfo !== "" ? generateCards() : null;
   return (
-    <>
-      <SearchBar searchDB={searchDB} />
-      <Container className="text-center">{plantInfo[0] && cardsList}</Container>
-    </>
+    <Container class="w-90">
+      <Row className="m-3">
+        <Col />
+        <Col xs={8}>
+          <SearchBar searchDB={searchDB} />
+        </Col>
+        <Col />
+      </Row>
+      <Row>{cardsList}</Row>
+    </Container>
   );
 }
