@@ -20,6 +20,11 @@ const getUserPlantInfo = (plantId) => {
   `
 }
 
+const searchPlant = () => {
+  return (`
+  SELECT * FROM plants 
+    `)
+}
 
 const addPlantToLibrary = function (plant) {
   const values = [
@@ -74,4 +79,6 @@ module.exports = {
   getUserPlantInfo,
   addPlantToLibrary,
   addPlantToMyGarden,
-};
+  getUserLocation,
+  searchPlant
+}

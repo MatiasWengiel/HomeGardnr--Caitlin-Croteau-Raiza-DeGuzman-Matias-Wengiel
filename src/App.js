@@ -3,6 +3,8 @@ import Banner from "./components/Banner";
 import PlantCard from "./components/PlantCard";
 import WeatherCard from "./components/WeatherCard";
 import Navigation from "./components/Navigation";
+import SearchBar from './components/SearchBar';
+
 import LargeCardVisitor from "./components/LargeCardVisitor";
 import LargeCardUser from "./components/LargeCardUser";
 import PlantForm from "./components/PlantForm";
@@ -13,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Navigation user="Waldo" />
+      <SearchBar />
       {/* <WeatherCard currentProvince="BC" /> */}
       <LargeCardVisitor />
       <LargeCardUser />
