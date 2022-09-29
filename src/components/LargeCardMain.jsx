@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import "./LargeCardMain.scss";
 
 
@@ -78,6 +79,10 @@ export default function LargeCardMain(props) {
             <div className="lcv-data">
               <h6>Time to Maturity:</h6>
               <p>{plantData.how_long_until_mature}</p>
+            </div>
+
+            <div className="lcu-buttons">
+              <Button variant="primary">Add to My Garden</Button>
             </div>
           </div>
         </Card.Body>
