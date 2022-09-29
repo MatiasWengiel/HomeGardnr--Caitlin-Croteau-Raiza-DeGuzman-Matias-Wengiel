@@ -50,11 +50,9 @@ export default function SearchView() {
   return (
     <Container className="w-90">
       <Row className="m-3">
-        <Col />
-        <Col xs={8}>
+        <Col className="col-8 m-auto">
           <SearchBar searchDB={searchDB} />
         </Col>
-        <Col />
       </Row>
       <Row>
         <Modal centered>
