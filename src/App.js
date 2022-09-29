@@ -4,6 +4,8 @@ import PlantCard from "./components/PlantCard";
 import WeatherCard from "./components/WeatherCard";
 import Navigation from "./components/Navigation";
 import LargeCardMain from "./components/LargeCardMain";
+import SearchBar from './components/SearchBar';
+
 import LargeCardUser from "./components/LargeCardUser";
 import PlantForm from "./components/PlantForm";
 import { useState, useEffect } from "react";
@@ -13,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Navigation user="Waldo" />
+      <SearchBar />
       {/* <WeatherCard currentProvince="BC" /> */}
       <LargeCardMain />
       <LargeCardUser />

@@ -1,7 +1,8 @@
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
-const { getPlantInfo,  addPlantToLibrary, addPlantToMyGarden } = require('../../db/query_functions.js')
+const { searchPlant } = require('../../db/query_functions')
+const { getPlantInfo, addPlantToLibrary, addPlantToMyGarden } = require('../../db/query_functions.js')
 
 
 module.exports = (db) => {
@@ -23,7 +24,7 @@ module.exports = (db) => {
         //need to update hardcoded values
         const userId = 1;
         const [queryString, values] = addPlantToMyGarden(newPlantId, userId);
-        return db.query(queryString, values) 
+        return db.query(queryString, values)
       })
       .then((data) => {
         //response from server
@@ -35,10 +36,10 @@ module.exports = (db) => {
       });
   });
 
-  //read
-  router.get("/", (req, res) => {
-    res.send("This would be the plants page");
-  });
+  //GET request to return the full plant table info
+  router.get('/', (req, res) => {
+    db.query(searchPlant()).then(data => res.json(data.rows))
+  })
 
   // GET request for an individual plant, selected by visitor
   router.get('/:id', (req, res) => {
@@ -47,7 +48,7 @@ module.exports = (db) => {
       res.json(data.rows);
     })
   });
-  
+
   return router;
 };
 

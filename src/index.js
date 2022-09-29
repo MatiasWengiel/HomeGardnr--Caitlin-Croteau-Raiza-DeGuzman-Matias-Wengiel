@@ -13,6 +13,7 @@ import PlantCard from "./components/PlantCard";
 import LargeCardMain from "./components/LargeCardMain";
 import LargeCardUser from "./components/LargeCardUser";
 import UserGarden from "./components/UserGarden";
+import SearchView from "./routes/SearchView";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/plants",
         element: <PlantLibrary />,
+      },
+      {
+        path: "/plants/search/",
+        element: <SearchView />
       },
       {
         path: "/plants/:id",

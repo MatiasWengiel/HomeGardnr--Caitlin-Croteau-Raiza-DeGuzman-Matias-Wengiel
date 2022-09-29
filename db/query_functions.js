@@ -27,6 +27,11 @@ const deleteUserPlant = (plantId) => {
   `;
 }
 
+const searchPlant = () => {
+  return (`
+  SELECT * FROM plants 
+    `)
+}
 
 const addPlantToLibrary = function (plant) {
   const values = [
@@ -82,4 +87,6 @@ module.exports = {
   deleteUserPlant,
   addPlantToLibrary,
   addPlantToMyGarden,
-};
+  getUserLocation,
+  searchPlant
+}
