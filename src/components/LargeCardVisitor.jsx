@@ -66,6 +66,11 @@ export default function LargeCardVisitor(props) {
             </div>
 
             <div className="lcv-data">
+              <h6>Planting Depth:</h6>
+              <p>{data.how_deep_to_plant}</p>
+            </div>
+
+            <div className="lcv-data">
               <h6>Time to Maturity:</h6>
               <p>{data.how_long_until_mature}</p>
             </div>
