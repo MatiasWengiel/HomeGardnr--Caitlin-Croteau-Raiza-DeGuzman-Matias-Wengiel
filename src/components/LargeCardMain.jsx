@@ -7,7 +7,7 @@ import "./LargeCardMain.scss";
 
 export default function LargeCardMain(props) {
 
-  const [data, setPlantData] = useState({});
+  const [plantData, setPlantData] = useState({});
 
   useEffect(() => {
     axios
@@ -25,54 +25,54 @@ export default function LargeCardMain(props) {
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title>{data.generic_name}</Card.Title>
+            <Card.Title>{plantData.generic_name}</Card.Title>
             <Card.Img
               width={400}
               height={400}
               alt={"cucumber"}
-              src={data.large_plant_card_photo_url}
+              src={plantData.large_plant_card_photo_url}
             />
           </div>
           <div className="lcv-info">
-            <Card.Title>{data.specific_name}</Card.Title>
+            <Card.Title>{plantData.specific_name}</Card.Title>
             <div className="lcv-data">
               <h6>When To Plant:</h6>
-              <p>{data.when_to_plant}</p>
+              <p>{plantData.when_to_plant}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Water Needs (per week):</h6>
-              <p>{data.water_needs}</p>
+              <p>{plantData.water_needs}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Sunlight Needs:</h6>
-              <p>{data.sunlight_needs}</p>
+              <p>{plantData.sunlight_needs}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Highest Temp Tolerance (Celsius):</h6>
-              <p>{data.highest_temp_tolerance}</p>
+              <p>{plantData.highest_temp_tolerance}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Lowest Temp Tolerance (Celsius):</h6>
-              <p>{data.lowest_temp_tolerance}</p>
+              <p>{plantData.lowest_temp_tolerance}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Planting Distance:</h6>
-              <p>{data.how_far_apart_to_plant}</p>
+              <p>{plantData.how_far_apart_to_plant}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Planting Depth:</h6>
-              <p>{data.how_deep_to_plant}</p>
+              <p>{plantData.how_deep_to_plant}</p>
             </div>
 
             <div className="lcv-data">
               <h6>Time to Maturity:</h6>
-              <p>{data.how_long_until_mature}</p>
+              <p>{plantData.how_long_until_mature}</p>
             </div>
           </div>
         </Card.Body>
