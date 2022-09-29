@@ -54,7 +54,7 @@ export default function SearchView() {
           <SearchBar searchDB={searchDB} />
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Modal centered>
           <Modal.Header closeButton>
             <Modal.Title>This is the title</Modal.Title>
@@ -64,8 +64,8 @@ export default function SearchView() {
             <Button onClick={() => setModalShow(false)}>Close</Button>
           </Modal.Footer>
         </Modal>
-      </Row>
-      <Row>{cardsList}</Row>
+      </Row> */}
+      <Row className="justify-content-center">{cardsList}</Row>
     </Container>
   );
 }
