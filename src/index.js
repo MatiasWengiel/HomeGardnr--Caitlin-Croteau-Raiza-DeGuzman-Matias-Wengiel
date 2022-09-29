@@ -11,6 +11,7 @@ import Root from "./routes/Root";
 import PlantLibrary from "./components/PlantLibrary";
 import PlantCard from "./components/PlantCard";
 import LargeCardUser from "./components/LargeCardUser";
+import UserGarden from "./components/UserGarden";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/user_plants/:id",
         element: <LargeCardUser />
+      },
+      {
+        path: "/user_plants",
+        element: <UserGarden />
       }
     ],
   },
