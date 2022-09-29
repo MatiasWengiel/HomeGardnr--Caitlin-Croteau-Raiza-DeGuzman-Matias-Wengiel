@@ -55,11 +55,9 @@ export default function LargeCardUser(props) {
   useEffect(() => {
     axios
       .get(`/api/user_plants/${id}`)
-      // How to set the id so it's dynamic?
       .then((response) => {
         console.log(response.data[0]);
         setPlantData(response.data[0]);
-        // return axios.get(`/api/plants`);
       })
       .catch((error) => console.log(error));
   }, []);
