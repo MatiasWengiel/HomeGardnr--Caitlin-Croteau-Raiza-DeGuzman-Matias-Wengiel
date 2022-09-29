@@ -135,6 +135,11 @@ export default function LargeCardUser(props) {
                   </div>
 
                   <div className="lcu-data">
+                    <h6>Planting Depth:</h6>
+                    <p>{plantData.how_deep_to_plant}</p>
+                  </div>
+
+                  <div className="lcu-data">
                     <h6>Planting Distance:</h6>
                     <p>{plantData.how_far_apart_to_plant}</p>
                   </div>
@@ -149,7 +154,9 @@ export default function LargeCardUser(props) {
 
             <div className="lcu-buttons">
               <Button variant="primary">Water Plant</Button>
-              <Button variant="danger" onClick={() => deleteUserPlant(id)}>Delete</Button>
+              <Button variant="danger" onClick={() => deleteUserPlant(id)}>
+                Delete
+              </Button>
             </div>
           </div>
         </Card.Body>
