@@ -20,6 +20,7 @@ const getUserPlantInfo = (plantId) => {
   `;
 }
 
+// Delete a plant from user's garden (user_plants)
 const deleteUserPlant = (plantId) => {
   return `
     DELETE FROM user_plants WHERE id = ${plantId}
