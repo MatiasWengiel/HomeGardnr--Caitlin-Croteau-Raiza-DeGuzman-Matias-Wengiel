@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Card from "react-bootstrap/Card";
@@ -6,12 +7,12 @@ import "./LargeCardMain.scss";
 
 
 export default function LargeCardMain(props) {
-
   const [plantData, setPlantData] = useState({});
+  const { id } = useParams();
 
   useEffect(() => {
     axios
-      .get("/api/plants/2")
+      .get(`/api/plants/${id}`)
       .then((response) => {
         console.log(response.data[0])
         setPlantData(response.data[0]);
