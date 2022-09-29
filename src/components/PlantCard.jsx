@@ -1,4 +1,5 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Image } from "react-bootstrap";
+import WaterIcon from "./WaterIcon";
 
 export default function PlantCard(props) {
   const {
@@ -12,27 +13,30 @@ export default function PlantCard(props) {
   } = {
     ...props,
   };
-  const borderType = (status) => {
-    //Returns the color, or black if no waterStatus passed
+
+  //Icons created by Freepik - Flaticon
+  const dryIcon = require("../icons/dry-soil.png");
+  const wateredIcon = require("../icons/happy-plant.png");
+
+  //Renders the correct icon for water status
+  const renderIcon = (status) => {
     if (status === "watered") {
-      return "#198754"; //The bootstrap green
+      return <WaterIcon src={wateredIcon} borderColor="green" />;
     }
-    if (status === "should water") {
-      return "gold";
+    if (status === "needs water") {
+      return <WaterIcon src={dryIcon} borderColor="red" />;
     }
-    if (status === "urgent water") {
-      return "red";
-    }
-    return "gray";
   };
+
   return (
     <Card
       style={{
         width: "15rem",
-        borderColor: borderType(waterStatus),
       }}
       className="m-2 p-2 text-center"
     >
+      {/* If there is a waterStatus, render the corresponding icon */}
+      {waterStatus && renderIcon(waterStatus)}
       <Card.Img variant="top" src={picture} alt={altText} />
       <Card.Body className="p-0">
         <Card.Title className="m-0 text-center">{plant}</Card.Title>
@@ -42,10 +46,7 @@ export default function PlantCard(props) {
         <Card.Text className="m-0">
           {nextWatering && `next watering: ${nextWatering}`}
         </Card.Text>
-        <Button
-          style={{ backgroundColor: borderType(waterStatus), border: "none" }}
-          onClick={handleClick}
-        >
+        <Button style={{ border: "none" }} onClick={handleClick}>
           View Plant
         </Button>
       </Card.Body>
