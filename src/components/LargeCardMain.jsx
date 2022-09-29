@@ -22,7 +22,7 @@ export default function LargeCardMain(props) {
   }, []);
 
   return (
-    <Container className="lcv-container">
+    <Container className="lcm-container">
       <p>This is the MAIN LIBRARY Plant Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
@@ -37,51 +37,51 @@ export default function LargeCardMain(props) {
               src={plantData.large_plant_card_photo_url}
             />
           </div>
-          <div className="lcv-info">
+          <div className="lcm-info">
             <Card.Title className="text-center">
               {plantData.specific_name}
             </Card.Title>
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>When To Plant:</h6>
               <p>{plantData.when_to_plant}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Water Needs (per week):</h6>
               <p>{plantData.water_needs}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Sunlight Needs:</h6>
               <p>{plantData.sunlight_needs}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Highest Temp Tolerance (Celsius):</h6>
               <p>{plantData.highest_temp_tolerance}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Lowest Temp Tolerance (Celsius):</h6>
               <p>{plantData.lowest_temp_tolerance}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Planting Distance:</h6>
               <p>{plantData.how_far_apart_to_plant}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Planting Depth:</h6>
               <p>{plantData.how_deep_to_plant}</p>
             </div>
 
-            <div className="lcv-data">
+            <div className="lcm-data">
               <h6>Time to Maturity:</h6>
               <p>{plantData.how_long_until_mature}</p>
             </div>
 
-            <div className="lcu-buttons">
+            <div>
               <Button variant="primary">Add to My Garden</Button>
             </div>
           </div>
