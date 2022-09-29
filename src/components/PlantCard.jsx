@@ -23,7 +23,7 @@ export default function PlantCard(props) {
         width: "15rem",
         borderColor: borderType(waterStatus),
       }}
-      className="p-2 text-center"
+      className="m-2 p-2 text-center"
     >
       <Card.Img variant="top" src={picture} alt={altText} />
       <Card.Body className="p-0">
