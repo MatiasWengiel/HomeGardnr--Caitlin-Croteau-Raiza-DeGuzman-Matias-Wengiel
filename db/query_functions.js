@@ -11,7 +11,7 @@ const getPlantInfo = (plantId) => {
   `;
 };
 
-// Retrieve all info about an individual plant IN the user's plant library (user_plants)
+// Retrieve info about a plant in a user's garden (user_plants)
 const getUserPlantInfo = (plantId) => {
   return `
     SELECT * FROM user_plants
