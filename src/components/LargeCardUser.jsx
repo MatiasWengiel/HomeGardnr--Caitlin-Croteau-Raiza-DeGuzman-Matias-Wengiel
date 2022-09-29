@@ -115,7 +115,7 @@ export default function LargeCardUser(props) {
                   </div>
 
                   <div className="lcu-data">
-                    <h6>Water Needs:</h6>
+                    <h6>Water Needs (per week):</h6>
                     <p>{plantData.water_needs}</p>
                   </div>
 
@@ -125,12 +125,12 @@ export default function LargeCardUser(props) {
                   </div>
 
                   <div className="lcu-data">
-                    <h6>Highest Temp Tolerance:</h6>
+                    <h6>Highest Temp Tolerance (Celsius):</h6>
                     <p>{plantData.highest_temp_tolerance}</p>
                   </div>
 
                   <div className="lcu-data">
-                    <h6>Lowest Temp Tolerance:</h6>
+                    <h6>Lowest Temp Tolerance (Celsius):</h6>
                     <p>{plantData.lowest_temp_tolerance}</p>
                   </div>
 
