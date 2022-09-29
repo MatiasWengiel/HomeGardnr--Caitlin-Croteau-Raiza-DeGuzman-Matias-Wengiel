@@ -14,9 +14,10 @@ module.exports = (db) => {
     });
   });
 
-  router.post("/:id/delete", (req, res) => {
+  router.delete("/:id", (req, res) => {
     db.query(deleteUserPlant(req.params.id)).then(() => {
-      res.send("Plant deleted from user's library!");
+      res.send();
+      // Do I need to send anything here?
     })
     .catch((error) => {
       console.log(error);
