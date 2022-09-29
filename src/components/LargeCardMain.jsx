@@ -81,7 +81,7 @@ export default function LargeCardMain(props) {
               <p>{plantData.how_long_until_mature}</p>
             </div>
 
-            <div>
+            <div className="lcm-buttons">
               <Button variant="primary">Add to My Garden</Button>
             </div>
           </div>
