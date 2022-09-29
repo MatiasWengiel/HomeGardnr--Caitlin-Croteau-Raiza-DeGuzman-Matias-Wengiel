@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
+import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Card from "react-bootstrap/Card";
-import axios from "axios";
 import "./LargeCardVisitor.scss";
 
 
@@ -12,11 +12,9 @@ export default function LargeCardVisitor(props) {
   useEffect(() => {
     axios
       .get("/api/plants/2")
-      // How to set the id so it's dynamic?
       .then((response) => {
         console.log(response.data[0])
         setPlantData(response.data[0]);
-        // return axios.get(`/api/plants`);
       })
       .catch((error) => console.log(error));
   }, []);
