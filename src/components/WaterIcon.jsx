@@ -11,7 +11,7 @@ export default function WaterIcon(props) {
         position: "absolute",
         marginTop: "0.5rem",
         marginLeft: "0.5rem",
-        backgroundColor: "white", //Should we change the background rather than the border color?
+        backgroundColor: "white",
         border: "2px solid",
         borderColor: borderColor,
       }}
