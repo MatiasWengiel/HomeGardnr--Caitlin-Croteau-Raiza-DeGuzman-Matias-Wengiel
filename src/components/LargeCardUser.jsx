@@ -1,15 +1,17 @@
 import { React, useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
 import "./LargeCardUser.scss";
 
-import Accordion from "react-bootstrap/Accordion";
 
 export default function LargeCardUser(props) {
-
-  const [data, setPlantData] = useState({});
+  const [plantData, setPlantData] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   // Place this function in separate file to keep code here minimal
   const formatDate = (inputDate) => {
@@ -53,15 +55,22 @@ export default function LargeCardUser(props) {
 
   useEffect(() => {
     axios
-      .get("/api/user_plants/1")
-      // How to set the id so it's dynamic?
+      .get(`/api/user_plants/${id}`)
       .then((response) => {
         console.log(response.data[0]);
         setPlantData(response.data[0]);
-        // return axios.get(`/api/plants`);
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const deleteUserPlant = (id) => {
+    axios.delete(`/api/user_plants/${id}`).then(() => {
+      navigate("/user_plants");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+  }
 
   return (
     <Container className="lcu-container">
@@ -69,70 +78,79 @@ export default function LargeCardUser(props) {
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title>{data.generic_name}</Card.Title>
+            <Card.Title className="text-center">
+              {plantData.generic_name}
+            </Card.Title>
             <Card.Img
               width={400}
               height={400}
               alt={"cucumber"}
-              src={data.large_plant_card_photo_url}
+              src={plantData.large_plant_card_photo_url}
             />
           </div>
           <div className="lcu-info">
-            <Card.Title>{data.specific_name}</Card.Title>
+            <Card.Title className="text-center">
+              {plantData.specific_name}
+            </Card.Title>
 
             <div className="lcu-data">
               <h6>Planted Date:</h6>
               {/* <p>{new Date(data.planted_date).toDateString()}</p> */}
-              <p>{formatDate(data.planted_date)}</p>
+              <p>{formatDate(plantData.planted_date)}</p>
             </div>
 
             <div className="lcu-data">
               <h6>Last Watered:</h6>
-              <p>{formatDate(data.last_watered_at)}</p>
+              <p>{formatDate(plantData.last_watered_at)}</p>
             </div>
 
             <div className="lcu-data">
               <h6>When to Water Next:</h6>
-              <p>{formatDate(data.when_to_water_next)}</p>
+              <p>{formatDate(plantData.when_to_water_next)}</p>
             </div>
 
             <Accordion>
               <Accordion.Item eventKey="0">
-                <Accordion.Header>More Plant Details</Accordion.Header>
+                <Accordion.Header>Plant Details</Accordion.Header>
                 <Accordion.Body>
                   <div className="lcu-data">
                     <h6>When To Plant:</h6>
-                    <p>{data.when_to_plant}</p>
+                    <p>{plantData.when_to_plant}</p>
                   </div>
 
                   <div className="lcu-data">
-                    <h6>Water Needs:</h6>
-                    <p>{data.water_needs}</p>
+                    <h6>Water Needs (per week):</h6>
+                    <p>{plantData.water_needs}</p>
                   </div>
 
                   <div className="lcu-data">
                     <h6>Sunlight Needs:</h6>
-                    <p>{data.sunlight_needs}</p>
+                    <p>{plantData.sunlight_needs}</p>
                   </div>
 
                   <div className="lcu-data">
-                    <h6>Highest Temp Tolerance:</h6>
-                    <p>{data.highest_temp_tolerance}</p>
+                    <h6>Highest Temp Tolerance (Celsius):</h6>
+                    <p>{plantData.highest_temp_tolerance}</p>
                   </div>
 
                   <div className="lcu-data">
-                    <h6>Lowest Temp Tolerance:</h6>
-                    <p>{data.lowest_temp_tolerance}</p>
+                    <h6>Lowest Temp Tolerance (Celsius):</h6>
+                    <p>{plantData.lowest_temp_tolerance}</p>
+                  </div>
+
+                  <div className="lcu-data">
+                    <h6>Planting Depth:</h6>
+                    <p>{plantData.how_deep_to_plant}</p>
                   </div>
 
                   <div className="lcu-data">
                     <h6>Planting Distance:</h6>
-                    <p>{data.how_far_apart_to_plant}</p>
+                    <p>{plantData.how_far_apart_to_plant}</p>
                   </div>
 
                   <div className="lcu-data">
                     <h6>Time to Maturity:</h6>
-                    <p>{data.how_long_until_mature}</p>
+                    <p>{plantData.how_long_until_mature}</p>
                   </div>
                 </Accordion.Body>
               </Accordion.Item>
@@ -140,7 +158,9 @@ export default function LargeCardUser(props) {
 
             <div className="lcu-buttons">
               <Button variant="primary">Water Plant</Button>
-              <Button variant="danger">Delete</Button>
+              <Button variant="danger" onClick={() => deleteUserPlant(id)}>
+                Delete
+              </Button>
             </div>
           </div>
         </Card.Body>
