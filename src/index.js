@@ -10,6 +10,9 @@ import WeatherCard from "./components/WeatherCard";
 import Root from "./routes/Root";
 import PlantLibrary from "./components/PlantLibrary";
 import PlantCard from "./components/PlantCard";
+import LargeCardMain from "./components/LargeCardMain";
+import LargeCardUser from "./components/LargeCardUser";
+import UserGarden from "./components/UserGarden";
 import SearchView from "./routes/SearchView";
 
 const router = createBrowserRouter([
@@ -18,10 +21,6 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "/weather",
-        element: <WeatherCard />,
-      },
       {
         path: "/plants",
         element: <PlantLibrary />,
@@ -32,8 +31,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/plants/:id",
-        element: <PlantCard />,
+        element: <LargeCardMain />,
       },
+      {
+        path: "/user_plants",
+        element: <UserGarden />,
+      },
+      {
+        path: "/user_plants/:id",
+        element: <LargeCardUser />,
+      },
+      {
+        path: "/weather",
+        element: <WeatherCard />,
+      }
     ],
   },
 ]);

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getUserPlantInfo } = require("../../db/query_functions.js");
+const { getUserPlantInfo, deleteUserPlant } = require("../../db/query_functions.js");
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
@@ -11,6 +11,16 @@ module.exports = (db) => {
     db.query(getUserPlantInfo(req.params.id)).then((data) => {
       console.log(data);
       res.json(data.rows);
+    });
+  });
+
+  router.delete("/:id", (req, res) => {
+    db.query(deleteUserPlant(req.params.id)).then(() => {
+      res.send();
+      // Do I need to send anything here?
+    })
+    .catch((error) => {
+      console.log(error);
     });
   });
 

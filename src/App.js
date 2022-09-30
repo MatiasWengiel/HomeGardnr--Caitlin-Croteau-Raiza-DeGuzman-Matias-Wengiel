@@ -3,9 +3,9 @@ import Banner from "./components/Banner";
 import PlantCard from "./components/PlantCard";
 import WeatherCard from "./components/WeatherCard";
 import Navigation from "./components/Navigation";
+import LargeCardMain from "./components/LargeCardMain";
 import SearchBar from './components/SearchBar';
 
-import LargeCardVisitor from "./components/LargeCardVisitor";
 import LargeCardUser from "./components/LargeCardUser";
 import PlantForm from "./components/PlantForm";
 import { useState, useEffect } from "react";
@@ -17,7 +17,7 @@ function App() {
       <Navigation user="Waldo" />
       <SearchBar />
       {/* <WeatherCard currentProvince="BC" /> */}
-      <LargeCardVisitor />
+      <LargeCardMain />
       <LargeCardUser />
       <h2>Here is the form to add new plants!</h2>
       <PlantForm />

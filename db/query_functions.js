@@ -4,20 +4,27 @@ const getUserLocation = (userId) => {
   `;
 };
 
-// Retrieve all info about an individual plant
+// Get all info about a plant from the main library (plants)
 const getPlantInfo = (plantId) => {
   return `
     SELECT * FROM plants WHERE id = ${plantId}
   `;
 };
 
-// Retrieve all info about an individual plant IN the user's plant library (user_plants)
+// Get info about a plant in a user's garden (user_plants)
 const getUserPlantInfo = (plantId) => {
   return `
     SELECT * FROM user_plants
     JOIN plants ON plant_id = plants.id
     WHERE plant_id = ${plantId}
-  `
+  `;
+}
+
+// Delete a plant from user's garden (user_plants)
+const deleteUserPlant = (plantId) => {
+  return `
+    DELETE FROM user_plants WHERE id = ${plantId}
+  `;
 }
 
 const searchPlant = () => {
@@ -77,6 +84,7 @@ module.exports = {
   getUserLocation,
   getPlantInfo,
   getUserPlantInfo,
+  deleteUserPlant,
   addPlantToLibrary,
   addPlantToMyGarden,
   getUserLocation,
