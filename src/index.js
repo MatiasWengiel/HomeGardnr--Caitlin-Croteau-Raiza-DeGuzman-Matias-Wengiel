@@ -1,19 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import WeatherProvider from './providers/WeatherProvider';
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import WeatherCard from "./components/WeatherCard";
 import Root from "./routes/Root";
-import PlantLibrary from "./components/PlantLibrary";
-import PlantCard from "./components/PlantCard";
 import LargeCardMain from "./components/LargeCardMain";
 import LargeCardUser from "./components/LargeCardUser";
 import UserGarden from "./components/UserGarden";
-import SearchView from "./routes/SearchView";
+import PlantLibrary from "./routes/PlantLibrary";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/plants/",
-        element: <SearchView />
+        element: <PlantLibrary />
       },
       {
         path: "/plants/:id",
