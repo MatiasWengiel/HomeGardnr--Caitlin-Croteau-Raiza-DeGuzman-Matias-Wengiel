@@ -10,7 +10,6 @@ import axios from "axios";
 export default function PlantForm(props) {
   const [validated, setValidated] = useState(false);
   const [plantInfo, setPlantInfo] = useState({
-    genericName: "",
     specificName: "",
     season: "",
     maturity: "",
@@ -57,7 +56,6 @@ export default function PlantForm(props) {
       .then(() => {
         //resets form
         setPlantInfo({
-          genericName: "",
           specificName: "",
           season: "",
           maturity: "",
@@ -86,7 +84,7 @@ export default function PlantForm(props) {
     >
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-4 mt- ">
-          <Form.Group as={Col} controlId="formGenericName">
+          {/* <Form.Group as={Col} controlId="formGenericName">
             <Form.Label>Generic Name</Form.Label>
             <Form.Control
               required
@@ -99,14 +97,14 @@ export default function PlantForm(props) {
             <Form.Control.Feedback type="invalid">
               Please enter a name.
             </Form.Control.Feedback>
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group as={Col} controlId="formSpecificName">
-            <Form.Label>Specific Name</Form.Label>
+            <Form.Label>Plant Name</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="Specific Name"
+              placeholder="Plant Name"
               name="specificName"
               defaultValue={plantInfo.specificName}
               onChange={handleChange}

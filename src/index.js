@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import WeatherProvider from './providers/WeatherProvider';
+import WeatherProvider from "./providers/WeatherProvider";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import ErrorPage from "./error-page";
 import WeatherCard from "./components/WeatherCard";
@@ -14,6 +14,7 @@ import LargeCardMain from "./components/LargeCardMain";
 import LargeCardUser from "./components/LargeCardUser";
 import UserGarden from "./components/UserGarden";
 import SearchView from "./routes/SearchView";
+import PlantForm from "./components/PlantForm";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/plants/search/",
-        element: <SearchView />
+        element: <SearchView />,
       },
       {
         path: "/plants/:id",
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
       {
         path: "/weather",
         element: <WeatherCard />,
-      }
+      },
+      {
+        path: "/add",
+        element: <PlantForm />,
+      },
     ],
   },
 ]);
@@ -55,7 +60,7 @@ root.render(
     <WeatherProvider>
       <RouterProvider router={router} />
     </WeatherProvider>
-  </React.StrictMode >
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
