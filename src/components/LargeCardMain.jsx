@@ -1,29 +1,26 @@
 import { React, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "./LargeCardMain.scss";
 
-
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
-  const { id } = useParams();
+  const id = props.id;
 
   useEffect(() => {
     axios
       .get(`/api/plants/${id}`)
       .then((response) => {
-        console.log(response.data[0])
+        console.log(response.data[0]);
         setPlantData(response.data[0]);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [id]);
 
   return (
     <Container className="lcm-container">
-      <p>This is the MAIN LIBRARY Plant Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
@@ -33,7 +30,7 @@ export default function LargeCardMain(props) {
             <Card.Img
               width={400}
               height={400}
-              alt={"cucumber"}
+              // alt={"cucumber"} We need to figure out how we'll handle alts - might be a stretch goal
               src={plantData.large_plant_card_photo_url}
             />
           </div>
