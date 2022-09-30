@@ -57,6 +57,11 @@ export default function SearchView() {
         <Col />
       </Row>
       <Row>
+        <Button className="col-2" variant="success">
+          Add New Plant
+        </Button>
+      </Row>
+      <Row>
         <Modal centered>
           <Modal.Header closeButton>
             <Modal.Title>This is the title</Modal.Title>
