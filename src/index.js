@@ -23,11 +23,7 @@ const router = createBrowserRouter([
         element: <WeatherCard />,
       },
       {
-        path: "/plants",
-        element: <PlantLibrary />,
-      },
-      {
-        path: "/plants/search/",
+        path: "/plants/",
         element: <SearchView />
       },
       {
