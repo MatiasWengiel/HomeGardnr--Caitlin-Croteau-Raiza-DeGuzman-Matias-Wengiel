@@ -1,15 +1,16 @@
 import SearchBar from "../components/SearchBar";
-import { Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
 import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import PlantModal from "../components/PlantModal";
 
 export default function SearchView() {
   const [plantInfo, setPlantInfo] = useState([]);
   const [selectedPlants, setSelectedPlants] = useState([]);
-  const [modalShow, setModalShow] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [plantId, setPlantId] = useState();
 
   useEffect(() => {
     axios.get(`/api/plants`).then((response) => {
@@ -33,8 +34,6 @@ export default function SearchView() {
       )
     );
   };
-  const navigate = useNavigate();
-  const goToPlantCard = (id) => navigate(`/plants/${id}`);
 
   const generateCards = () => {
     if (selectedPlants[0]) {
@@ -43,12 +42,14 @@ export default function SearchView() {
           key={plant.id}
           plant={plant.generic_name}
           picture={plant.large_plant_card_photo_url}
-          handleClick={() => goToPlantCard(plant.id)}
+          handleClick={() => {
+            setShowModal(true);
+            setPlantId(plant.id);
+          }}
         />
       ));
     }
   };
-
   const cardsList = plantInfo !== "" ? generateCards() : null;
 
   return (
@@ -61,9 +62,15 @@ export default function SearchView() {
         <Col />
       </Row>
       <Row>
+        {/* Button currently does nothing */}
         <Button className="col-2" variant="success">
           Add New Plant
         </Button>
+        <PlantModal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          id={plantId}
+        />
       </Row>
       <Row></Row>
       <Row>{cardsList}</Row>
