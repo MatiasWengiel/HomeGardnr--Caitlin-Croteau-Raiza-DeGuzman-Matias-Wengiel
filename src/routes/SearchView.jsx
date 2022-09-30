@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchView() {
   const [plantInfo, setPlantInfo] = useState([]);
@@ -32,6 +33,9 @@ export default function SearchView() {
       )
     );
   };
+  const navigate = useNavigate();
+  const goToPlantCard = (id) => navigate(`/plants/${id}`);
+
   const generateCards = () => {
     if (selectedPlants[0]) {
       return selectedPlants.map((plant) => (
@@ -39,7 +43,7 @@ export default function SearchView() {
           key={plant.id}
           plant={plant.generic_name}
           picture={plant.large_plant_card_photo_url}
-          handleClick={() => setModalShow(true)}
+          handleClick={() => goToPlantCard(plant.id)}
         />
       ));
     }
@@ -61,17 +65,7 @@ export default function SearchView() {
           Add New Plant
         </Button>
       </Row>
-      <Row>
-        <Modal centered>
-          <Modal.Header closeButton>
-            <Modal.Title>This is the title</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>This is the body</Modal.Body>
-          <Modal.Footer>
-            <Button onClick={() => setModalShow(false)}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      </Row>
+      <Row></Row>
       <Row>{cardsList}</Row>
     </Container>
   );
