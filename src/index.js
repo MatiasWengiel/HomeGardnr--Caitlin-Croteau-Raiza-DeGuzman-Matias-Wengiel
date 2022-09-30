@@ -22,19 +22,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-<<<<<<< HEAD
-        path: "/weather",
-        element: <WeatherCard />,
-      },
-      {
         path: "/plants/",
-=======
-        path: "/plants",
-        element: <PlantLibrary />,
-      },
-      {
-        path: "/plants/search/",
->>>>>>> 9131fbe98da6d14e6cce256ad877f89ac9f535af
         element: <SearchView />
       },
       {
