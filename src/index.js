@@ -39,10 +39,6 @@ const router = createBrowserRouter([
         path: "/weather",
         element: <WeatherCard />,
       },
-      {
-        path: "/add",
-        element: <PlantForm />,
-      },
     ],
   },
 ]);
