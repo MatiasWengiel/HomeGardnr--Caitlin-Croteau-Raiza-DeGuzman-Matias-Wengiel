@@ -80,10 +80,13 @@ export default function PlantForm(props) {
   return (
     <Container
       className="p-3 ms-auto square border border-2 rounded text-start"
-      style={{ width: "1000px" }}
+      // className="d-flex flex-row mb-3 justify-content-around border border-2 rounded"
+      sm={12}
     >
+      <h1>Add a new plant!</h1>
+      Fill out this form to add a plant to the main plant library as well as to your own personal garden.
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Row className="mb-4 mt- ">
+        <Row className="mb-4 mt-4">
           {/* <Form.Group as={Col} controlId="formGenericName">
             <Form.Label>Generic Name</Form.Label>
             <Form.Control
@@ -222,7 +225,7 @@ export default function PlantForm(props) {
               defaultValue={plantInfo.sunlight}
               onChange={handleChange}
             >
-              <option value="">Select your plant's light requirments</option>
+              <option value="">Plant's light requirments</option>
               <option value="Direct Sun">Direct Sun</option>
               <option value="Indirect Sun">Indirect Sun</option>
               <option value="Shade">Shade</option>
@@ -242,7 +245,7 @@ export default function PlantForm(props) {
               onChange={handleChange}
             >
               <option value="">
-                Select how many days per week you want to water:
+                Days per week:
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
