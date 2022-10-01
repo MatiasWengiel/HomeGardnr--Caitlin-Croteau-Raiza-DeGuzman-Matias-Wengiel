@@ -48,7 +48,6 @@ export default function LargeCardMain(props) {
             <Card.Img
               width={400}
               height={400}
-              // alt={"cucumber"} We need to figure out how we'll handle alts - might be a stretch goal
               src={plantData.large_plant_card_photo_url}
             />
           </div>
