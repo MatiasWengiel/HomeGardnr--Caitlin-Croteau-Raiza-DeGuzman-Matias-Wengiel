@@ -29,8 +29,8 @@ export default function PlantForm(props) {
     // console.log("in handleChange");
     // console.log({ ...plantInfo, [event.target.name]: event.target.value });
     //set values to be stored in db as all lower case
-    const lowerCaseValue = event.target.value.toLowerCase();
-    setPlantInfo({ ...plantInfo, [event.target.name]: lowerCaseValue });
+    // const lowerCaseValue = event.target.value.toLowerCase();
+    setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -46,12 +46,12 @@ export default function PlantForm(props) {
     //rediret or...?
     //using mockPlantObject for testing
     //replace with plantInfo in order to use state
-
+    console.log("plant info pre axios", plantInfo);
     return axios
-      .post("/api/plants", mockPlantObject)
+      .post("/api/plants", plantInfo)
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
+        // console.log("response in axios", response);
+        // console.log("reponse data in axios", response.data);
       })
       .then(() => {
         //resets form
@@ -80,28 +80,13 @@ export default function PlantForm(props) {
   return (
     <Container
       className="p-3 ms-auto square border border-2 rounded text-start"
-      // className="d-flex flex-row mb-3 justify-content-around border border-2 rounded"
       sm={12}
     >
       <h1>Add a new plant!</h1>
-      Fill out this form to add a plant to the main plant library as well as to your own personal garden.
+      Fill out this form to add a plant to the main plant library as well as to
+      your own personal garden.
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-4 mt-4">
-          {/* <Form.Group as={Col} controlId="formGenericName">
-            <Form.Label>Generic Name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Generic Name"
-              name="genericName"
-              defaultValue={plantInfo.genericName}
-              onChange={handleChange}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please enter a name.
-            </Form.Control.Feedback>
-          </Form.Group> */}
-
           <Form.Group as={Col} controlId="formSpecificName">
             <Form.Label>Plant Name</Form.Label>
             <Form.Control
@@ -244,9 +229,7 @@ export default function PlantForm(props) {
               defaultValue={plantInfo.water}
               onChange={handleChange}
             >
-              <option value="">
-                Days per week:
-              </option>
+              <option value="">Days per week:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -318,17 +301,17 @@ export default function PlantForm(props) {
 //this - uncontrolled components?
 //why does the console log disappear even why the reset is gone?
 
-const mockPlantObject = {
-  genericName: "tomato",
-  specificName: "cherry",
-  season: "spring",
-  maturity: "2 years",
-  spacing: "10cm apart",
-  depth: "10 cm deep",
-  maxTemp: 40,
-  minTemp: 2,
-  sunlight: "Direct Sun",
-  water: 6,
-  description: "This plant is so cute!",
-  imageURL: "http://www.this-is-a-url",
-};
+// const mockPlantObject = {
+//   genericName: "tomato",
+//   specificName: "cherry",
+//   season: "spring",
+//   maturity: "2 years",
+//   spacing: "10cm apart",
+//   depth: "10 cm deep",
+//   maxTemp: 40,
+//   minTemp: 2,
+//   sunlight: "Direct Sun",
+//   water: 6,
+//   description: "This plant is so cute!",
+//   imageURL: "http://www.this-is-a-url",
+// };
