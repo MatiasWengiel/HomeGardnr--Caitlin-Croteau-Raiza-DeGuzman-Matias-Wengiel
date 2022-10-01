@@ -21,7 +21,6 @@ module.exports = (db) => {
 
   router.get("/:id", (req, res) => {
     db.query(getUserPlantInfo(req.params.id)).then((data) => {
-      console.log(data);
       res.json(data.rows);
     });
   });
@@ -29,7 +28,6 @@ module.exports = (db) => {
   router.delete("/:id", (req, res) => {
     db.query(deleteUserPlant(req.params.id)).then(() => {
       res.send();
-      // Do I need to send anything here?
     })
     .catch((error) => {
       console.log(error);
