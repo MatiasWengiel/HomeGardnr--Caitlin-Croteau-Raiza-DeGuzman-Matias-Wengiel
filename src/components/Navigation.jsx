@@ -14,7 +14,7 @@ export default function Navigation(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav flex-grow-1 justify-content-evenly" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {/* adds padding of 0.5rem to right side of nav text */}
+            {/* adds padding of 0.5rem to right side of navbar.text */}
             <Navbar.Text className="pe-2">Hello, {user}!</Navbar.Text>
             <Nav.Link href="/plants">Plant Library</Nav.Link>
             <Nav.Link href="/my_garden">My Garden</Nav.Link>
