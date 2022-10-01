@@ -5,7 +5,6 @@ DROP TABLE IF EXISTS plants CASCADE;
 CREATE TABLE plants (
 
   id SERIAL PRIMARY KEY NOT NULL,
-  generic_name VARCHAR(255) NOT NULL,
   specific_name VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   large_plant_card_photo_url VARCHAR(255) NOT NULL,
