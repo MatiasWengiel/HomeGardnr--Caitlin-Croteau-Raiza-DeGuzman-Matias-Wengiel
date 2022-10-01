@@ -11,6 +11,7 @@ import LargeCardMain from "./components/LargeCardMain";
 import LargeCardUser from "./components/LargeCardUser";
 import UserGarden from "./components/UserGarden";
 import PlantLibrary from "./routes/PlantLibrary";
+import PlantForm from "./components/PlantForm";
 
 const router = createBrowserRouter([
   {
