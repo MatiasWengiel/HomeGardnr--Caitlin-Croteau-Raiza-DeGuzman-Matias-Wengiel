@@ -15,7 +15,6 @@ export default function LargeCardMain(props) {
     axios
       .get(`/api/plants/${id}`)
       .then((response) => {
-        console.log(response.data[0]);
         setPlantData(response.data[0]);
       })
       .catch((error) => console.log(error));
