@@ -11,15 +11,15 @@ export default function Navigation(props) {
     <Navbar bg="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand href="/">Home Gardnr</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav flex-grow-1 justify-content-evenly" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-          <Nav.Link href="/plants">Plant Library</Nav.Link>
-            <Nav.Link href="/my_garden">My Garden +</Nav.Link>
+            {/* adds padding of 0.5rem to right side of nav text */}
+            <Navbar.Text className="pe-2">Hello, {user}!</Navbar.Text>
+            <Nav.Link href="/plants">Plant Library</Nav.Link>
+            <Nav.Link href="/my_garden">My Garden</Nav.Link>
             <Nav.Link href="/weather">Weather Info</Nav.Link>
-            <Nav.Link href="#link" disabled>
-              Hello, {user}!
-            </Nav.Link>
+
             <Nav.Link href="/">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
