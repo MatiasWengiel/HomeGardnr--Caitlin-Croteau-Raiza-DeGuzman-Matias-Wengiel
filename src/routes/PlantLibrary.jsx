@@ -21,7 +21,7 @@ export default function PlantLibrary() {
     });
   }, []);
 
-  const searchDB = (event) => {
+  const searchPlant = (event) => {
     event.preventDefault();
     //Case insensitive search for plants that have the typed letter(s) in their generic or specific name
     setSelectedPlants(
@@ -59,7 +59,7 @@ export default function PlantLibrary() {
       <Row className="m-3">
         <Col />
         <Col xs={8}>
-          <SearchBar searchDB={searchDB} />
+          <SearchBar searchPlant={searchPlant} />
         </Col>
         <Col />
       </Row>
