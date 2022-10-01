@@ -8,7 +8,7 @@ export default function Navigation(props) {
   const user = props.user;
 
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
+    <Navbar expand="lg" fixed="top">
       <Container>
         <Navbar.Brand href="/">Home Gardnr</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav flex-grow-1 justify-content-evenly" />
@@ -27,6 +27,8 @@ export default function Navigation(props) {
     </Navbar>
   );
 }
+
+///  bg="light"
 //questions
 //my plants button/add plants+ (how to do this?)
 //navtext vs disabled - do we want the hello waldo to also be a link?
