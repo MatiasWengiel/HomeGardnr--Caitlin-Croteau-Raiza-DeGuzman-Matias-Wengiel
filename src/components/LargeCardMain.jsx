@@ -22,9 +22,7 @@ export default function LargeCardMain(props) {
   }, [id]);
 
 
-  // Create data holding user id and plant id. Insert as a parameter in axios.post request
   const addPlantToGarden = () => {
-
     const info = {
       userId: 1,
       plantId: id
