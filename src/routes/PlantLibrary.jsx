@@ -5,11 +5,13 @@ import { useState } from "react";
 import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
+import FormModal from "../components/FormModal";
 
 export default function SearchView() {
   const [plantInfo, setPlantInfo] = useState([]);
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
   const [plantId, setPlantId] = useState();
 
   useEffect(() => {
@@ -52,6 +54,10 @@ export default function SearchView() {
   };
   const cardsList = plantInfo !== "" ? generateCards() : null;
 
+  const handleClick = () => {
+    setShowFormModal(true);
+  };
+
   return (
     <Container className="w-90">
       <Row className="m-3">
@@ -63,13 +69,22 @@ export default function SearchView() {
       </Row>
       <Row>
         {/* Button currently does nothing */}
-        <Button className="col-2" variant="success">
+        <Button
+          className="col-2"
+          variant="success"
+          type="submit"
+          onClick={handleClick}
+        >
           Add New Plant
         </Button>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
           id={plantId}
+        />
+        <FormModal
+          show={showFormModal}
+          onHide={() => setShowFormModal(false)}
         />
       </Row>
       <Row></Row>
