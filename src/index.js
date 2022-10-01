@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import WeatherProvider from "./providers/WeatherProvider";
+import UserProvider from "./providers/UserProvider"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import WeatherCard from "./components/WeatherCard";
@@ -46,9 +47,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <WeatherProvider>
-      <RouterProvider router={router} />
-    </WeatherProvider>
+    <UserProvider>
+      <WeatherProvider>
+        <RouterProvider router={router} />
+      </WeatherProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 
