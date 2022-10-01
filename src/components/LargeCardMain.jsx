@@ -28,7 +28,6 @@ export default function LargeCardMain(props) {
     }
 
     axios.post("/api/my_garden/submit", info).then((response) => {
-      console.log(response.data);
       navigate("/my_garden");
     })
     .catch((error) => {
