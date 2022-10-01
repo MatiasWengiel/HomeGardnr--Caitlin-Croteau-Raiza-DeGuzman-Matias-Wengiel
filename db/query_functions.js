@@ -84,6 +84,11 @@ const addPlantToMyGarden = function (plantId, userId) {
   return [queryString, values];
 };
 
+const getMyGardenPlants = (userID) => {
+  return `SELECT * FROM user_plants
+    JOIN plants ON plant_id = plants.id
+    WHERE user_id = ${userID}`
+}
 module.exports = {
   getUserLocation,
   getUserName,
@@ -94,4 +99,5 @@ module.exports = {
   addPlantToMyGarden,
   getUserLocation,
   searchPlant,
+  getMyGardenPlants,
 };
