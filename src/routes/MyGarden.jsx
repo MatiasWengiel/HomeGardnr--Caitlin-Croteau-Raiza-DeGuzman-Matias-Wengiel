@@ -4,11 +4,15 @@ import axios from "axios";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
+import UserPlantModal from "../components/UserPlantModal";
+import LargeCardUser from "../components/LargeCardUser";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
-  const [gardenInfo, setGardenInfo] = useState();
-  const [selectedPlants, setSelectedPlants] = useState();
+  const [gardenInfo, setGardenInfo] = useState([]);
+  const [selectedPlants, setSelectedPlants] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [plantId, setPlantId] = useState();
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
@@ -30,7 +34,7 @@ export default function MyGarden() {
   };
 
   const generateCards = () => {
-    if (selectedPlants[0]) {
+    if (gardenInfo[0]) {
       return selectedPlants.map((plant) => (
         <PlantCard
           key={plant.id}
@@ -38,15 +42,16 @@ export default function MyGarden() {
           picture={plant.large_plant_card_photo_url}
           lastWatered={plant.last_watered_at}
           nextWatering={plant.water_needs}
-          // handleClick={() => {
-          //   setShowModal(true);
-          //   setPlantId(plant.id);
-          // }}
+          handleClick={() => {
+            setShowModal(true);
+            setPlantId(plant.id);
+          }}
         />
       ));
     }
+    console.log(plantId);
   };
-  const cardsList = gardenInfo !== "" ? generateCards() : null;
+  const cardsList = selectedPlants !== "" ? generateCards() : null;
 
   return (
     <Container className="w-90">
@@ -64,11 +69,11 @@ export default function MyGarden() {
         >
           Add New Plant
         </Button>
-        {/* <PlantModal
+        <UserPlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
           id={plantId}
-        /> */}
+        />
       </Row>
       <Row></Row>
       <Row>{cardsList}</Row>
