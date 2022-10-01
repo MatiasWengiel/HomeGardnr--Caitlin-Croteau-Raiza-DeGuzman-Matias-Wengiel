@@ -60,7 +60,7 @@ const addPlantToLibrary = function (plant) {
     how_far_apart_to_plant,
     how_deep_to_plant,
     how_long_until_mature)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *;`;
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *;`;
 
   return [queryString, values];
 };
