@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -7,6 +8,7 @@ import "./LargeCardMain.scss";
 
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
+  const navigate = useNavigate();
   const id = props.id;
 
   useEffect(() => {
@@ -18,6 +20,24 @@ export default function LargeCardMain(props) {
       })
       .catch((error) => console.log(error));
   }, [id]);
+
+
+  // Create data holding user id and plant id. Insert as a parameter in axios.post request
+  const addPlantToGarden = () => {
+
+    const info = {
+      userId: 1,
+      plantId: id
+    }
+
+    axios.post("/api/user_plants/submit", info).then((response) => {
+      console.log(response.data);
+      navigate("/user_plants");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+  }
 
   return (
     <Container className="lcm-container">
@@ -79,7 +99,7 @@ export default function LargeCardMain(props) {
             </div>
 
             <div className="lcm-buttons">
-              <Button variant="primary">Add to My Garden</Button>
+              <Button variant="primary" onClick={() => addPlantToGarden()}>Add to My Garden</Button>
             </div>
           </div>
         </Card.Body>
