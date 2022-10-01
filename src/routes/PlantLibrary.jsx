@@ -62,7 +62,6 @@ export default function PlantLibrary() {
         </Col>
       </Row>
       <Row>
-        {/* Button currently does nothing */}
         <Button
           className="col-2"
           variant="success"
