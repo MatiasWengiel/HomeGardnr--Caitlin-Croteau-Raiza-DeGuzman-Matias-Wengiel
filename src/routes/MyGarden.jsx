@@ -8,7 +8,6 @@ export default function MyGarden() {
   useEffect(() => {
     axios
       .get(`/api/my_garden/all/${userID}`)
-      .then((response) => setGardenInfo(response))
-      .then(console.log(gardenInfo));
+      .then((response) => setGardenInfo(response));
   }, []);
 }
