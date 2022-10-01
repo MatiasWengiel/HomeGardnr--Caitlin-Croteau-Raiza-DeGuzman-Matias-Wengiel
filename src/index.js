@@ -10,9 +10,9 @@ import WeatherCard from "./components/WeatherCard";
 import Root from "./routes/Root";
 import LargeCardMain from "./components/LargeCardMain";
 import LargeCardUser from "./components/LargeCardUser";
-import UserGarden from "./components/UserGarden";
 import PlantLibrary from "./routes/PlantLibrary";
 import PlantForm from "./components/PlantForm";
+import MyGarden from "./routes/MyGarden";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/my_garden",
-        element: <UserGarden />,
+        element: <MyGarden />,
       },
       {
         path: "/my_garden/:id",
