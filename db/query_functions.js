@@ -18,24 +18,23 @@ const getUserPlantInfo = (plantId) => {
     JOIN plants ON plant_id = plants.id
     WHERE plant_id = ${plantId}
   `;
-}
+};
 
 // Delete a plant from user's garden (user_plants)
 const deleteUserPlant = (plantId) => {
   return `
     DELETE FROM user_plants WHERE id = ${plantId}
   `;
-}
+};
 
 const searchPlant = () => {
-  return (`
+  return `
   SELECT * FROM plants 
-    `)
-}
+    `;
+};
 
 const addPlantToLibrary = function (plant) {
   const values = [
-    plant.genericName,
     plant.specificName,
     plant.description,
     plant.imageURL,
@@ -50,8 +49,7 @@ const addPlantToLibrary = function (plant) {
   ];
 
   const queryString = `
-  INSERT INTO plants (generic_name,
-    specific_name,
+  INSERT INTO plants (specific_name,
     description,
     large_plant_card_photo_url,
     when_to_plant,
@@ -88,5 +86,5 @@ module.exports = {
   addPlantToLibrary,
   addPlantToMyGarden,
   getUserLocation,
-  searchPlant
-}
+  searchPlant,
+};
