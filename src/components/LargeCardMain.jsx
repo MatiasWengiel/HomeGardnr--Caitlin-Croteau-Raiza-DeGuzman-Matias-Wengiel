@@ -20,29 +20,27 @@ export default function LargeCardMain(props) {
       .catch((error) => console.log(error));
   }, [id]);
 
-
   const addPlantToGarden = () => {
     const info = {
       userId: 1,
-      plantId: id
-    }
+      plantId: id,
+    };
 
-    axios.post("/api/my_garden/submit", info).then((response) => {
-      navigate("/my_garden");
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-  }
+    axios
+      .post("/api/my_garden/submit", info)
+      .then((response) => {
+        navigate("/my_garden");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <Container className="lcm-container">
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title className="text-center">
-              {plantData.generic_name}
-            </Card.Title>
             <Card.Img
               width={400}
               height={400}
@@ -94,7 +92,9 @@ export default function LargeCardMain(props) {
             </div>
 
             <div className="lcm-buttons">
-              <Button variant="primary" onClick={() => addPlantToGarden()}>Add to My Garden</Button>
+              <Button variant="primary" onClick={() => addPlantToGarden()}>
+                Add to My Garden
+              </Button>
             </div>
           </div>
         </Card.Body>
