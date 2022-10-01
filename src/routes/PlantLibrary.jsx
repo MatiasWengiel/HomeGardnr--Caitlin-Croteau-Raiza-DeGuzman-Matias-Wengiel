@@ -56,12 +56,10 @@ export default function PlantLibrary() {
 
   return (
     <Container className="w-90">
-      <Row className="m-3">
-        <Col />
+      <Row className="m-3 justify-content-center">
         <Col xs={8}>
           <SearchBar searchPlant={searchPlant} />
         </Col>
-        <Col />
       </Row>
       <Row>
         {/* Button currently does nothing */}
