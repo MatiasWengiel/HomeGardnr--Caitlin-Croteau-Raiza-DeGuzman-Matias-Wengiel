@@ -84,7 +84,6 @@ export default function LargeCardUser(props) {
             <Card.Img
               width={400}
               height={400}
-              alt={"cucumber"}
               src={plantData.large_plant_card_photo_url}
             />
           </div>
