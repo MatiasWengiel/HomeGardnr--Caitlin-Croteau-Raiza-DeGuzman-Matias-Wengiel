@@ -8,9 +8,6 @@ module.exports = (db) => {
   });
 
   // Add plant to user's garden (from plant library)
-
-  // Data passed through payload will be in 'request' object. To access it, console log req.body.
-
   router.post("/submit", (req, res) => {
     let newPlantId = req.body.plantId;
     const userId = 1;
@@ -18,7 +15,6 @@ module.exports = (db) => {
     const [queryString, values] = addPlantToMyGarden(newPlantId, userId);
 
     db.query(queryString, values).then((data) => {
-      console.log(req.body);
       res.send();
     });
   });
