@@ -28,11 +28,11 @@ const router = createBrowserRouter([
         element: <LargeCardMain />,
       },
       {
-        path: "/user_plants",
+        path: "/my_garden",
         element: <UserGarden />,
       },
       {
-        path: "/user_plants/:id",
+        path: "/my_garden/:id",
         element: <LargeCardUser />,
       },
       {

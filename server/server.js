@@ -36,12 +36,12 @@ db.connect();
 //Set up router and routes
 const usersRoutes = require("./routes/users");
 const plantsRoutes = require("./routes/plants");
-const userPlantRoutes = require("./routes/user_plants");
+const userPlantRoutes = require("./routes/my_garden");
 const locationWeather = require("./routes/location_weather");
 
 app.use("/api/users", usersRoutes(db));
 app.use("/api/plants", plantsRoutes(db));
-app.use("/api/user_plants", userPlantRoutes(db));
+app.use("/api/my_garden", userPlantRoutes(db));
 app.use("/api/location", locationWeather(db));
 
 app.listen(PORT, () => {

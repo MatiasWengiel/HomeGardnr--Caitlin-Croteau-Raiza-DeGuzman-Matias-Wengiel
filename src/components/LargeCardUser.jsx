@@ -55,7 +55,7 @@ export default function LargeCardUser(props) {
 
   useEffect(() => {
     axios
-      .get(`/api/user_plants/${id}`)
+      .get(`/api/my_garden/${id}`)
       .then((response) => {
         console.log(response.data[0]);
         setPlantData(response.data[0]);
@@ -64,8 +64,8 @@ export default function LargeCardUser(props) {
   }, []);
 
   const deleteUserPlant = (id) => {
-    axios.delete(`/api/user_plants/${id}`).then(() => {
-      navigate("/user_plants");
+    axios.delete(`/api/my_garden/${id}`).then(() => {
+      navigate("/my_garden");
     })
     .catch((error) => {
       console.log(error.message);
@@ -84,7 +84,6 @@ export default function LargeCardUser(props) {
             <Card.Img
               width={400}
               height={400}
-              alt={"cucumber"}
               src={plantData.large_plant_card_photo_url}
             />
           </div>
