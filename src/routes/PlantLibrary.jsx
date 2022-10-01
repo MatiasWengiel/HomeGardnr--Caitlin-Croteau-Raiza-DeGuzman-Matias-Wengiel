@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
 import FormModal from "../components/FormModal";
 
-export default function SearchView() {
+export default function PlantLibrary() {
   const [plantInfo, setPlantInfo] = useState([]);
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
