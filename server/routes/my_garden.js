@@ -4,7 +4,7 @@ const { getUserPlantInfo, deleteUserPlant, addPlantToMyGarden } = require("../..
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
-    res.send("This would be the user_plants page");
+    res.send("This would be the my_garden page");
   });
 
   // Add plant to user's garden (from plant library)
