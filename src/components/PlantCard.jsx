@@ -39,7 +39,7 @@ export default function PlantCard(props) {
       {waterStatus && renderIcon(waterStatus)}
       <Card.Img variant="top" src={picture} alt={altText} />
       <Card.Body className="p-0">
-        <Card.Title className="m-0 text-center">{plant}</Card.Title>
+        <Card.Title className="text-center">{plant}</Card.Title>
         <Card.Text className="m-0">
           {lastWatered && `last watered: ${lastWatered}`}
         </Card.Text>

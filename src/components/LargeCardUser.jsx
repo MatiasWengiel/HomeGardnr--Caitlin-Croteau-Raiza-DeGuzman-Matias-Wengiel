@@ -7,7 +7,6 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import "./LargeCardUser.scss";
 
-
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
   const { id } = useParams();
@@ -15,7 +14,6 @@ export default function LargeCardUser(props) {
 
   // Place this function in separate file to keep code here minimal
   const formatDate = (inputDate) => {
-
     const months = [
       "January",
       "February",
@@ -44,18 +42,18 @@ export default function LargeCardUser(props) {
     const dateObj = new Date(inputDate);
     // Wed, May 11, 2022
 
-    let formattedDate = ""
+    let formattedDate = "";
     formattedDate += days[dateObj.getDay()] + ", ";
     formattedDate += months[dateObj.getMonth()] + " ";
     formattedDate += dateObj.getDate() + ", ";
     formattedDate += dateObj.getFullYear();
     return formattedDate;
     // return new Date(inputDate).toDateString().split(" ").join(", ");
-  }
+  };
 
   useEffect(() => {
     axios
-      .get(`/api/user_plants/${id}`)
+      .get(`/api/my_garden/${id}`)
       .then((response) => {
         console.log(response.data[0]);
         setPlantData(response.data[0]);
@@ -64,13 +62,15 @@ export default function LargeCardUser(props) {
   }, []);
 
   const deleteUserPlant = (id) => {
-    axios.delete(`/api/user_plants/${id}`).then(() => {
-      navigate("/user_plants");
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-  }
+    axios
+      .delete(`/api/my_garden/${id}`)
+      .then(() => {
+        navigate("/my_garden");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <Container className="lcu-container">
@@ -78,13 +78,9 @@ export default function LargeCardUser(props) {
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
-            <Card.Title className="text-center">
-              {plantData.generic_name}
-            </Card.Title>
             <Card.Img
               width={400}
               height={400}
-              alt={"cucumber"}
               src={plantData.large_plant_card_photo_url}
             />
           </div>
