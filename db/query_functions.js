@@ -4,6 +4,12 @@ const getUserLocation = (userId) => {
   `;
 };
 
+const getUserName = (userID) => {
+  return `
+  SELECT first_name, last_name FROM users WHERE id = ${userID}
+  `;
+}
+
 // Get all info about a plant from the main library (plants)
 const getPlantInfo = (plantId) => {
   return `
@@ -80,6 +86,7 @@ const addPlantToMyGarden = function (plantId, userId) {
 
 module.exports = {
   getUserLocation,
+  getUserName,
   getPlantInfo,
   getUserPlantInfo,
   deleteUserPlant,
