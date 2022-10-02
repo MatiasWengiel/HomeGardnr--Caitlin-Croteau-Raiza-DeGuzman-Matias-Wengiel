@@ -85,7 +85,7 @@ const addPlantToMyGarden = function (plantId, userId) {
 };
 
 const getMyGardenPlants = (userID) => {
-  return `SELECT * FROM user_plants
+  return `SELECT user_plants.id AS key_id, large_plant_card_photo_url, specific_name, planted_date, last_watered_at, water_needs, when_to_plant, sunlight_needs, highest_temp_tolerance, lowest_temp_tolerance, how_deep_to_plant, how_far_apart_to_plant, how_long_until_mature FROM user_plants
     JOIN plants ON plant_id = plants.id
     WHERE user_id = ${userID}`
 }
