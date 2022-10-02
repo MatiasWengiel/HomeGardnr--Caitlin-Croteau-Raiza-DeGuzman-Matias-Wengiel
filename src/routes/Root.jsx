@@ -5,8 +5,8 @@ import { Outlet } from "react-router-dom";
 export default function Root() {
   return (
     <>
-      <Navigation  user="Waldo" />
-      <Header user="Waldo" />
+      <Navigation user="Waldo" />
+      <Header />
       <div id="detail">
         <Outlet />
       </div>
