@@ -102,7 +102,7 @@ export default function LargeCardUser(props) {
 
             <div className="lcu-data">
               <h6>When to Water Next:</h6>
-              <p>{formatDate(plantData.when_to_water_next)}</p>
+              <p>{formatDate(plantData.water_needs)}</p>
             </div>
 
             <Accordion>
