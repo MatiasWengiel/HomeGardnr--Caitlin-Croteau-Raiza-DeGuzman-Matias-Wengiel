@@ -36,7 +36,7 @@ export default function PlantLibrary() {
   const generateCards = () => {
     if (selectedPlants[0]) {
       //Sorts the plants alphabetically for display
-      const sortedPlants = selectedPlants.sort((a, b) => {
+      selectedPlants.sort((a, b) => {
         let lowerCaseA = a.specific_name.toLowerCase();
         let lowerCaseB = b.specific_name.toLowerCase();
 
@@ -46,7 +46,7 @@ export default function PlantLibrary() {
       });
 
       //Creates an array of PlantCards with the corresponding information
-      return sortedPlants.map((plant) => (
+      return selectedPlants.map((plant) => (
         <PlantCard
           key={plant.id}
           plant={plant.specific_name}
