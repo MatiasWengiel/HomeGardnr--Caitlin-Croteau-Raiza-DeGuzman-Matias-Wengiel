@@ -74,6 +74,7 @@ export default function PlantLibrary() {
           show={showModal}
           onHide={() => setShowModal(false)}
           id={plantId}
+          modalMode="main"
         />
         <FormModal
           show={showFormModal}

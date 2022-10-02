@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
-import UserPlantModal from "../components/UserPlantModal";
+import PlantModal from "../components/PlantModal";
 import LargeCardUser from "../components/LargeCardUser";
 
 export default function MyGarden() {
@@ -69,10 +69,11 @@ export default function MyGarden() {
         >
           Add New Plant
         </Button>
-        <UserPlantModal
+        <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
           id={plantId}
+          modalMode="user"
         />
       </Row>
       <Row></Row>
