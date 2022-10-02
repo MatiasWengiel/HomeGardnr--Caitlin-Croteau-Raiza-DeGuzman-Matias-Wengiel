@@ -16,7 +16,6 @@ export default function MyGarden() {
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      console.log(response.data);
       setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
@@ -45,7 +44,7 @@ export default function MyGarden() {
         if (lowerCaseA > lowerCaseB) return 1;
         return 0;
       });
-      console.log("PLANTS ARE HERE ", selectedPlants[0].key_id);
+
       //Creates an array of PlantCards with the corresponding information
       return selectedPlants.map((plant) => (
         <PlantCard
