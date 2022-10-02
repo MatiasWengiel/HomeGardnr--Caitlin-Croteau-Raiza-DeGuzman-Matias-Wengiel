@@ -5,7 +5,6 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
-import LargeCardUser from "../components/LargeCardUser";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
