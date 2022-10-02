@@ -75,7 +75,6 @@ export default function LargeCardUser(props) {
 
   return (
     <Container className="lcu-container">
-      <p>This is the User Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
