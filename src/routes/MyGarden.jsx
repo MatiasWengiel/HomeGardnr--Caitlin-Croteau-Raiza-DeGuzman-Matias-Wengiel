@@ -16,6 +16,7 @@ export default function MyGarden() {
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
+      console.log(response.data);
       setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
@@ -36,7 +37,7 @@ export default function MyGarden() {
   const generateCards = () => {
     if (gardenInfo[0]) {
       //Sorts the plants alphabetically for display
-      const sortedPlants = selectedPlants.sort((a, b) => {
+      selectedPlants.sort((a, b) => {
         let lowerCaseA = a.specific_name.toLowerCase();
         let lowerCaseB = b.specific_name.toLowerCase();
 
@@ -44,18 +45,18 @@ export default function MyGarden() {
         if (lowerCaseA > lowerCaseB) return 1;
         return 0;
       });
-
+      console.log("PLANTS ARE HERE ", selectedPlants[0].key_id);
       //Creates an array of PlantCards with the corresponding information
       return selectedPlants.map((plant) => (
         <PlantCard
-          key={plant.id}
+          key={plant.key_id}
           plant={plant.specific_name}
           picture={plant.large_plant_card_photo_url}
           lastWatered={plant.last_watered_at}
           nextWatering={plant.water_needs}
           handleClick={() => {
             setShowModal(true);
-            setPlantId(plant.id);
+            setPlantId(plant.key_id);
           }}
         />
       ));
