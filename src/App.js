@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles.App.scss";
 import Banner from "./components/Banner";
 import PlantCard from "./components/PlantCard";
 import WeatherCard from "./components/WeatherCard";

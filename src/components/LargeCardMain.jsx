@@ -4,7 +4,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import "./LargeCardMain.scss";
+import "../styles/LargeCardMain.scss";
 
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
