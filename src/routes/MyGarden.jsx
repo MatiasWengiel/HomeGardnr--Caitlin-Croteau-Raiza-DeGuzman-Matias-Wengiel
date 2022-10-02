@@ -5,6 +5,7 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
+import { Link } from "react-router-dom";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
@@ -34,6 +35,17 @@ export default function MyGarden() {
 
   const generateCards = () => {
     if (gardenInfo[0]) {
+      //Sorts the plants alphabetically for display
+      const sortedPlants = selectedPlants.sort((a, b) => {
+        let lowerCaseA = a.specific_name.toLowerCase();
+        let lowerCaseB = b.specific_name.toLowerCase();
+
+        if (lowerCaseA < lowerCaseB) return -1;
+        if (lowerCaseA > lowerCaseB) return 1;
+        return 0;
+      });
+
+      //Creates an array of PlantCards with the corresponding information
       return selectedPlants.map((plant) => (
         <PlantCard
           key={plant.id}
@@ -48,7 +60,6 @@ export default function MyGarden() {
         />
       ));
     }
-    console.log(plantId);
   };
   const cardsList = selectedPlants !== "" ? generateCards() : null;
 
@@ -61,12 +72,21 @@ export default function MyGarden() {
       </Row>
       <Row>
         <Button
-          className="col-2"
+          className="col-3"
           variant="success"
           type="submit"
           // onClick={handleClick}
         >
-          Add New Plant
+          <Link
+            to="/plants"
+            style={{
+              color: "inherit",
+              backgroundColor: "inherit",
+              textDecoration: "inherit",
+            }}
+          >
+            Add New Plant To Your Garden
+          </Link>
         </Button>
         <PlantModal
           show={showModal}
@@ -75,7 +95,6 @@ export default function MyGarden() {
           modalMode="user"
         />
       </Row>
-      <Row></Row>
       <Row>{cardsList}</Row>
     </Container>
   );
