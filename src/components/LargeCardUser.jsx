@@ -55,11 +55,10 @@ export default function LargeCardUser(props) {
     axios
       .get(`/api/my_garden/${id}`)
       .then((response) => {
-        console.log(response.data[0]);
         setPlantData(response.data[0]);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [id]);
 
   const deleteUserPlant = (id) => {
     axios
