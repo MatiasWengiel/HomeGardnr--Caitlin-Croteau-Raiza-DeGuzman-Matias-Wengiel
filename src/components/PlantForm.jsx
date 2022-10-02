@@ -272,10 +272,14 @@ export default function PlantForm(props) {
             onChange={handleChange}
           />
         </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Container className="d-flex justify-content-between">
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <Button variant="danger" onClick={props.onHide}>
+            Cancel
+          </Button>
+        </Container>
       </Form>
     </Container>
   );
