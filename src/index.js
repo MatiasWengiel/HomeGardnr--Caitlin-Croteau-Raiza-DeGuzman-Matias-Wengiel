@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./styles/Index.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 import WeatherProvider from "./providers/WeatherProvider";
 import UserProvider from "./providers/UserProvider"

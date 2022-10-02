@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
-import "./LargeCardUser.scss";
+import "../styles/LargeCardUser.scss";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});

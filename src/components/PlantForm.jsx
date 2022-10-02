@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "./PlantForm.scss";
+import "../styles/PlantForm.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
