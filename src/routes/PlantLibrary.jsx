@@ -81,7 +81,6 @@ export default function PlantLibrary() {
           onHide={() => setShowFormModal(false)}
         />
       </Row>
-      <Row></Row>
       <Row>{cardsList}</Row>
     </Container>
   );
