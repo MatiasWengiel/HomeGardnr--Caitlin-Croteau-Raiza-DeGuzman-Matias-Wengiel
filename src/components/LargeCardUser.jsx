@@ -10,8 +10,7 @@ import "./LargeCardUser.scss";
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
   const id = props.id;
-  console.log("IN LARGE CARD THE PLANT ID IS ", props.id);
-  // const id = 1;
+
   const navigate = useNavigate();
 
   // Place this function in separate file to keep code here minimal
