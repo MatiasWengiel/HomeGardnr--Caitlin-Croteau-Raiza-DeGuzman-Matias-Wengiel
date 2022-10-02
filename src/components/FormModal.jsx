@@ -12,13 +12,8 @@ export default function FormModal(props) {
       size="xl"
     >
       <Modal.Body>
-        <PlantForm />
+        <PlantForm onHide={props.onHide} />
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={props.onHide}>
-          Close
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }
