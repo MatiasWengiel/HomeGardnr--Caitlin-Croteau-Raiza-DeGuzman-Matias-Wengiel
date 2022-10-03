@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -9,7 +9,8 @@ import "../styles/LargeCardUser.scss";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
-  const { id } = useParams();
+  const id = props.id;
+
   const navigate = useNavigate();
 
   // Place this function in separate file to keep code here minimal
@@ -74,7 +75,6 @@ export default function LargeCardUser(props) {
 
   return (
     <Container className="lcu-container">
-      <p>This is the User Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div>
@@ -102,7 +102,7 @@ export default function LargeCardUser(props) {
 
             <div className="lcu-data">
               <h6>When to Water Next:</h6>
-              <p>{formatDate(plantData.when_to_water_next)}</p>
+              <p>{formatDate(plantData.water_needs)}</p>
             </div>
 
             <Accordion>

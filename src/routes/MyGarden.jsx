@@ -1,22 +1,22 @@
-import SearchBar from "../components/SearchBar";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { useEffect, useContext, useState } from "react";
+import { userContext } from "../providers/UserProvider";
 import axios from "axios";
-import { useState } from "react";
+import { Button, Container, Row, Col } from "react-bootstrap";
+import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
-import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
-import FormModal from "../components/FormModal";
+import { Link } from "react-router-dom";
 
-export default function PlantLibrary() {
-  const [plantInfo, setPlantInfo] = useState([]);
+export default function MyGarden() {
+  const { userID } = useContext(userContext);
+  const [gardenInfo, setGardenInfo] = useState([]);
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [showFormModal, setShowFormModal] = useState(false);
   const [plantId, setPlantId] = useState();
 
   useEffect(() => {
-    axios.get(`/api/plants`).then((response) => {
-      setPlantInfo(response.data);
+    axios.get(`/api/my_garden/all/${userID}`).then((response) => {
+      setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
   }, []);
@@ -25,7 +25,7 @@ export default function PlantLibrary() {
     event.preventDefault();
     //Case insensitive search for plants that have the typed letter(s) in their generic or specific name
     setSelectedPlants(
-      plantInfo.filter((plant) =>
+      gardenInfo.filter((plant) =>
         plant.specific_name
           .toLowerCase()
           .includes(event.target.value.toLowerCase())
@@ -34,7 +34,7 @@ export default function PlantLibrary() {
   };
 
   const generateCards = () => {
-    if (selectedPlants[0]) {
+    if (gardenInfo[0]) {
       //Sorts the plants alphabetically for display
       selectedPlants.sort((a, b) => {
         let lowerCaseA = a.specific_name.toLowerCase();
@@ -48,22 +48,20 @@ export default function PlantLibrary() {
       //Creates an array of PlantCards with the corresponding information
       return selectedPlants.map((plant) => (
         <PlantCard
-          key={plant.id}
+          key={plant.key_id}
           plant={plant.specific_name}
           picture={plant.large_plant_card_photo_url}
+          lastWatered={plant.last_watered_at}
+          nextWatering={plant.water_needs}
           handleClick={() => {
             setShowModal(true);
-            setPlantId(plant.id);
+            setPlantId(plant.key_id);
           }}
         />
       ));
     }
   };
-  const cardsList = plantInfo !== "" ? generateCards() : null;
-
-  const handleClick = () => {
-    setShowFormModal(true);
-  };
+  const cardsList = selectedPlants !== "" ? generateCards() : null;
 
   return (
     <Container className="w-90">
@@ -74,22 +72,27 @@ export default function PlantLibrary() {
       </Row>
       <Row>
         <Button
-          className="col-2"
+          className="col-3"
           variant="success"
           type="submit"
-          onClick={handleClick}
+          // onClick={handleClick}
         >
-          Add New Plant
+          <Link
+            to="/plants"
+            style={{
+              color: "inherit",
+              backgroundColor: "inherit",
+              textDecoration: "inherit",
+            }}
+          >
+            Add New Plant To Your Garden
+          </Link>
         </Button>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
           id={plantId}
-          modalMode="main"
-        />
-        <FormModal
-          show={showFormModal}
-          onHide={() => setShowFormModal(false)}
+          modalMode="user"
         />
       </Row>
       <Row>{cardsList}</Row>

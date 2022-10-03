@@ -8,7 +8,7 @@ export default function SearchBar(props) {
           <Form.Control
             type="text"
             placeholder="Search for your next plant here!"
-            onChange={props.searchDB}
+            onChange={props.searchPlant}
           />
         </Form.Group>
       </Form>
