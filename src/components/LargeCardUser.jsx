@@ -89,21 +89,27 @@ export default function LargeCardUser(props) {
               {plantData.specific_name}
             </Card.Title>
 
-            <div className="lcu-data">
-              <h6>Planted Date:</h6>
-              {/* <p>{new Date(data.planted_date).toDateString()}</p> */}
-              <p>{formatDate(plantData.planted_date)}</p>
-            </div>
+            <Row className="pb-3">
+              <Col className="fw-bold">Planted Date: </Col>
+              {/* <p>{new Date(plantData.planted_date).toDateString()}</p> */}
+              <Col className="text-end">
+                {formatDate(plantData.planted_date)}
+              </Col>
+            </Row>
 
-            <div className="lcu-data">
-              <h6>Last Watered:</h6>
-              <p>{formatDate(plantData.last_watered_at)}</p>
-            </div>
+            <Row className="pb-3">
+              <Col className="fw-bold">Last Watered: </Col>
+              <Col className="text-end">
+                {formatDate(plantData.last_watered_at)}
+              </Col>
+            </Row>
 
-            <div className="lcu-data">
-              <h6>When to Water Next:</h6>
-              <p>{}</p>
-            </div>
+            <Row className="pb-3">
+              <Col className="fw-bold">When to Water Next: </Col>
+              <Col className="text-end">
+                {}
+              </Col>
+            </Row>
 
             <Accordion>
               <Accordion.Item eventKey="0">
