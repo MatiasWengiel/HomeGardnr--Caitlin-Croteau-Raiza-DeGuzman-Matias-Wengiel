@@ -75,11 +75,10 @@ const addPlantToLibrary = function (plant) {
 //need to update hardcoded values
 const addPlantToMyGarden = function (plantId, userId) {
   const today = "2022-09-27";
-  const tomorrow = "2022-09-28";
-  const values = [today, today, tomorrow, plantId, userId];
+  const values = [today, today, plantId, userId];
 
   const queryString = `
-  INSERT INTO user_plants (planted_date, last_watered_at, when_to_water_next, plant_id, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
+  INSERT INTO user_plants (planted_date, last_watered_at, plant_id, user_id) VALUES ($1, $2, $3, $4) RETURNING *;`;
 
   return [queryString, values];
 };
