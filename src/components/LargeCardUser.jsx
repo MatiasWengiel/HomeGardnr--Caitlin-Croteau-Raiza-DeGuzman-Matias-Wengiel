@@ -9,7 +9,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardUser.scss";
 
-
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
   const id = props.id;
@@ -75,7 +74,6 @@ export default function LargeCardUser(props) {
 
   return (
     <Container>
-      <p>This is the User Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div className="lcu-photo">
@@ -107,9 +105,7 @@ export default function LargeCardUser(props) {
 
             <Row className="pb-3">
               <Col className="fw-bold">When to Water Next: </Col>
-              <Col className="text-end">
-                {}
-              </Col>
+              <Col className="text-end">{}</Col>
             </Row>
 
             <Accordion>
