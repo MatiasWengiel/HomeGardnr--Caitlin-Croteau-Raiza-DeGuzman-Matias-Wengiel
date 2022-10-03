@@ -74,7 +74,7 @@ const addPlantToLibrary = function (plant) {
 //add new query for update my garden.
 //need to update hardcoded values
 const addPlantToMyGarden = function (plantId, userId) {
-  const today = "2022-09-27";
+  const today = Date();
   const values = [today, today, plantId, userId];
 
   const queryString = `
