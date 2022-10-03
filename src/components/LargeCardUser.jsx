@@ -43,7 +43,6 @@ export default function LargeCardUser(props) {
     ];
 
     const dateObj = new Date(inputDate);
-    // Wed, May 11, 2022
 
     let formattedDate = "";
     formattedDate += days[dateObj.getDay()] + ", ";
@@ -51,7 +50,6 @@ export default function LargeCardUser(props) {
     formattedDate += dateObj.getDate() + ", ";
     formattedDate += dateObj.getFullYear();
     return formattedDate;
-    // return new Date(inputDate).toDateString().split(" ").join(", ");
   };
 
   useEffect(() => {
