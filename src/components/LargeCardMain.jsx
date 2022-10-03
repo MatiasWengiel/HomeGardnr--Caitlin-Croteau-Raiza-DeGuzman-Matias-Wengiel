@@ -40,7 +40,7 @@ export default function LargeCardMain(props) {
   };
 
   return (
-    <Container className="lcm-container">
+    <Container>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div className="lcm-photo">
