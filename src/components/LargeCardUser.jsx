@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -12,7 +12,8 @@ import "../styles/LargeCardUser.scss";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
-  const { id } = useParams();
+  const id = props.id;
+
   const navigate = useNavigate();
 
   // Place this function in separate file to keep code here minimal

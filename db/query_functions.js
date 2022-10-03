@@ -4,6 +4,12 @@ const getUserLocation = (userId) => {
   `;
 };
 
+const getUserName = (userID) => {
+  return `
+  SELECT first_name, last_name FROM users WHERE id = ${userID}
+  `;
+}
+
 // Get all info about a plant from the main library (plants)
 const getPlantInfo = (plantId) => {
   return `
@@ -77,8 +83,14 @@ const addPlantToMyGarden = function (plantId, userId) {
   return [queryString, values];
 };
 
+const getMyGardenPlants = (userID) => {
+  return `SELECT user_plants.id AS key_id, large_plant_card_photo_url, specific_name, planted_date, last_watered_at, water_needs, when_to_plant, sunlight_needs, highest_temp_tolerance, lowest_temp_tolerance, how_deep_to_plant, how_far_apart_to_plant, how_long_until_mature FROM user_plants
+    JOIN plants ON plant_id = plants.id
+    WHERE user_id = ${userID}`
+}
 module.exports = {
   getUserLocation,
+  getUserName,
   getPlantInfo,
   getUserPlantInfo,
   deleteUserPlant,
@@ -86,4 +98,5 @@ module.exports = {
   addPlantToMyGarden,
   getUserLocation,
   searchPlant,
+  getMyGardenPlants,
 };

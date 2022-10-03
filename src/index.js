@@ -4,14 +4,16 @@ import "./styles/Index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 import WeatherProvider from "./providers/WeatherProvider";
+import UserProvider from "./providers/UserProvider"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import WeatherCard from "./components/WeatherCard";
 import Root from "./routes/Root";
 import LargeCardMain from "./components/LargeCardMain";
 import LargeCardUser from "./components/LargeCardUser";
-import UserGarden from "./components/UserGarden";
 import PlantLibrary from "./routes/PlantLibrary";
+import PlantForm from "./components/PlantForm";
+import MyGarden from "./routes/MyGarden";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/my_garden",
-        element: <UserGarden />,
+        element: <MyGarden />,
       },
       {
         path: "/my_garden/:id",
@@ -46,9 +48,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <WeatherProvider>
-      <RouterProvider router={router} />
-    </WeatherProvider>
+    <UserProvider>
+      <WeatherProvider>
+        <RouterProvider router={router} />
+      </WeatherProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 
