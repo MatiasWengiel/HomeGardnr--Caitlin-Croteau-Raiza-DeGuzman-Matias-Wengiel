@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardMain.scss";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
