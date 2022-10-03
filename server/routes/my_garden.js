@@ -1,5 +1,4 @@
 const express = require("express");
-const { useContext } = require("react");
 const router = express.Router();
 const { getUserPlantInfo, deleteUserPlant, addPlantToMyGarden, getMyGardenPlants } = require("../../db/query_functions.js");
 
