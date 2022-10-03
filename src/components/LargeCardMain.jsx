@@ -8,7 +8,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardMain.scss";
 
-
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ export default function LargeCardMain(props) {
     };
 
     axios
-      .post("/api/my_garden/submit", info)
+      .post("/api/my_garden", info)
       .then((response) => {
         navigate("/my_garden");
       })

@@ -11,7 +11,7 @@ module.exports = (db) => {
   });
 
   // Add plant to user's garden (from plant library)
-  router.post("/submit", (req, res) => {
+  router.post("/", (req, res) => {
     let newPlantId = req.body.plantId;
     const userId = 1;
 
