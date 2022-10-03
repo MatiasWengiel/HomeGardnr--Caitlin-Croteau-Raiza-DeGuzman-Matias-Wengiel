@@ -77,7 +77,7 @@ export default function LargeCardUser(props) {
       <p>This is the User Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
-          <div>
+          <div className="lcu-photo">
             <Card.Img
               width={400}
               height={400}
