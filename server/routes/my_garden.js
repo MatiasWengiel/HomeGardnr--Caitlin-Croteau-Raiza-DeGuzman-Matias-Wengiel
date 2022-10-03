@@ -17,7 +17,7 @@ module.exports = (db) => {
     const [queryString, values] = addPlantToMyGarden(newPlantId, userId);
 
     db.query(queryString, values).then((data) => {
-      res.send();
+      res.status(204);
     });
   });
 
@@ -29,7 +29,7 @@ module.exports = (db) => {
 
   router.delete("/:id", (req, res) => {
     db.query(deleteUserPlant(req.params.id)).then(() => {
-      res.send(200);
+      res.status(204);
     })
       .catch((error) => {
         console.log(error);
