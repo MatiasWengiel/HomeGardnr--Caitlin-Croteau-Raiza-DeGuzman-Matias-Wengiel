@@ -1,7 +1,7 @@
 import SearchBar from "../components/SearchBar";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useState, reload } from "react";
+import { useState } from "react";
 import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
@@ -70,7 +70,7 @@ export default function PlantLibrary() {
     setPlantInfo({ ...plantInfo, newPlant });
     console.log("plant info in library after update)", plantInfo);
     setSelectedPlants({ ...selectedPlants, newPlant });
-    console.log("selected plants in library after update)", selectedPlants);
+    // console.log("selected plants in library after update)", selectedPlants);
   }
 
   return (

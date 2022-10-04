@@ -58,9 +58,10 @@ export default function PlantForm(props) {
         //hides modal
         props.updateLibrary(plantInfo);
         console.log("plantInfo after post in plant form", plantInfo);
-        onHide();
+        
       })
       .then(() => {
+        onHide();
         //resets form
         setPlantInfo({
           specificName: "",
