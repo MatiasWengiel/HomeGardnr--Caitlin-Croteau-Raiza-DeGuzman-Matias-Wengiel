@@ -15,43 +15,6 @@ export default function LargeCardUser(props) {
 
   const navigate = useNavigate();
 
-  // Place this function in separate file to keep code here minimal
-  const formatDate = (inputDate) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    const dateObj = new Date(inputDate);
-
-    let formattedDate = "";
-    formattedDate += days[dateObj.getDay()] + ", ";
-    formattedDate += months[dateObj.getMonth()] + " ";
-    formattedDate += dateObj.getDate() + ", ";
-    formattedDate += dateObj.getFullYear();
-    return formattedDate;
-  };
-
   const calculateNextWaterDate = (lastWatered, waterNeeds) => {
     const lastWateredDate = new Date(lastWatered);
     //Calculates water interval by dividing 7 (days) over number of waterings needed per week (waterNeeds)
