@@ -14,7 +14,9 @@ export default function MyModal(props) {
     >
       <Modal.Body>
         {props.modalMode === "main" && <LargeCardMain id={props.id} />}
-        {props.modalMode === "user" && <LargeCardUser id={props.id} />}
+        {props.modalMode === "user" && (
+          <LargeCardUser id={props.id} onHide={props.onHide} />
+        )}
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.onHide}>

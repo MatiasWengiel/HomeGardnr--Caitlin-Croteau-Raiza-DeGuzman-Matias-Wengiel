@@ -14,13 +14,6 @@ export default function MyGarden() {
   const [showModal, setShowModal] = useState(false);
   const [plantId, setPlantId] = useState();
 
-  useEffect(() => {
-    axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      setGardenInfo(response.data);
-      setSelectedPlants(response.data);
-    });
-  }, []);
-
   const searchPlant = (event) => {
     event.preventDefault();
     //Case insensitive search for plants that have the typed letter(s) in their generic or specific name
@@ -62,6 +55,13 @@ export default function MyGarden() {
     }
   };
   const cardsList = selectedPlants !== "" ? generateCards() : null;
+
+  useEffect(() => {
+    axios.get(`/api/my_garden/all/${userID}`).then((response) => {
+      setGardenInfo(response.data);
+      setSelectedPlants(response.data);
+    });
+  }, [cardsList]);
 
   return (
     <Container className="w-90">

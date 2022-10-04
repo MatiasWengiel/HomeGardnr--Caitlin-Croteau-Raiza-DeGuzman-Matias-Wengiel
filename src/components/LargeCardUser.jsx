@@ -13,8 +13,6 @@ export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
   const id = props.id;
 
-  const navigate = useNavigate();
-
   const calculateNextWaterDate = (lastWatered, waterNeeds) => {
     const lastWateredDate = new Date(lastWatered);
     //Calculates water interval by dividing 7 (days) over number of waterings needed per week (waterNeeds)
@@ -59,14 +57,13 @@ export default function LargeCardUser(props) {
   }, [id]);
 
   const deleteUserPlant = (id) => {
-    axios
-      .delete(`/api/my_garden/${id}`)
-      .then(() => {
-        navigate("/my_garden");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    axios.delete(`/api/my_garden/${id}`).catch((error) => {
+      console.log(error.message);
+    });
+  };
+  const handleDelete = (id) => {
+    deleteUserPlant(id);
+    props.onHide();
   };
 
   return (
@@ -164,7 +161,7 @@ export default function LargeCardUser(props) {
 
             <div className="lcu-buttons">
               <Button variant="primary">Water Plant</Button>
-              <Button variant="danger" onClick={() => deleteUserPlant(id)}>
+              <Button variant="danger" onClick={() => handleDelete(id)}>
                 Delete
               </Button>
             </div>
