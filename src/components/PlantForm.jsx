@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 
 export default function PlantForm(props) {
+  const { onHide } = props;
   const [validated, setValidated] = useState(false);
   const [plantInfo, setPlantInfo] = useState({
     specificName: "",
@@ -52,6 +53,12 @@ export default function PlantForm(props) {
       .then((response) => {
         // console.log("response in axios", response);
         // console.log("reponse data in axios", response.data);
+      })
+      .then(() => {
+        //hides modal
+        props.updateLibrary(plantInfo);
+        console.log("plantInfo after post in plant form", plantInfo);
+        onHide();
       })
       .then(() => {
         //resets form
@@ -276,7 +283,7 @@ export default function PlantForm(props) {
           <Button variant="primary" type="submit">
             Submit
           </Button>
-          <Button variant="danger" onClick={props.onHide}>
+          <Button variant="danger" onClick={onHide}>
             Cancel
           </Button>
         </Container>

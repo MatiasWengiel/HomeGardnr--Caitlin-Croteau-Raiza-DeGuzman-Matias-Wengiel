@@ -1,7 +1,7 @@
 import SearchBar from "../components/SearchBar";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useState } from "react";
+import { useState, reload } from "react";
 import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
@@ -65,6 +65,14 @@ export default function PlantLibrary() {
     setShowFormModal(true);
   };
 
+  function updateLibrary(newPlant) {
+    console.log("newPlant in update library", newPlant);
+    setPlantInfo({ ...plantInfo, newPlant });
+    console.log("plant info in library after update)", plantInfo);
+    setSelectedPlants({ ...selectedPlants, newPlant });
+    console.log("selected plants in library after update)", selectedPlants);
+  }
+
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">
@@ -90,6 +98,7 @@ export default function PlantLibrary() {
         <FormModal
           show={showFormModal}
           onHide={() => setShowFormModal(false)}
+          updateLibrary={updateLibrary}
         />
       </Row>
       <Row>{cardsList}</Row>
