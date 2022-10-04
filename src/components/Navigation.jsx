@@ -15,14 +15,15 @@ export default function Navigation(props) {
 
   const changeNavbar = () => {
     console.log(window.scrollY);
-    if (window.scrollY >= 250) {
+    if (window.scrollY >= 5) {
       setNavbar(true);
       setNavText(true);
       setNavBrand(true);
     } else {
       setNavbar(false);
       setNavText(false);
-      setNavBrand(false);
+      //update this to false if we want 2 brand images
+      setNavBrand(true);
     }
   };
   //will need to do for logo too
@@ -31,15 +32,29 @@ export default function Navigation(props) {
     window.addEventListener("scroll", changeNavbar);
   });
 
+  const navTextStyle = (navText) => {
+    return navText ? { color: "black" } : { color: "white" };
+  };
+
+  // const navBarColor = () => {
+  //   if (navbar) {
+  //     return { "color: success" };
+  //   } else {
+  //     return { color: white };
+  //   }
+  // };
+
   return (
     <Navbar
       className="custom-navbar"
       expand="lg"
       fixed="top"
       bg={navbar ? "success" : ""}
+      // style={navBarColor}
     >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand className="nav-text" href="/">
+          GARDNR
           <Image src={navBrand ? brand1 : brand2} alt="Gardnr" width="50px" />
           {/* <img
               src={brand}
@@ -53,34 +68,17 @@ export default function Navigation(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             {/* adds padding of 0.5rem to right side of navbar.text */}
-            <Navbar.Text
-              style={navText ? { color: "black" } : { color: "white" }}
-              className="pe-2"
-            >
-              Hello, {user}!
-            </Navbar.Text>
-            <Nav.Link
-              style={navText ? { color: "black" } : { color: "white" }}
-              href="/plants"
-            >
+            <Navbar.Text className="nav-text pe-2">Hello, {user}!</Navbar.Text>
+            <Nav.Link className="nav-text" href="/plants">
               Plant Library
             </Nav.Link>
-            <Nav.Link
-              style={navText ? { color: "black" } : { color: "white" }}
-              href="/my_garden"
-            >
+            <Nav.Link className="nav-text" href="/my_garden">
               My Garden
             </Nav.Link>
-            <Nav.Link
-              style={navText ? { color: "black" } : { color: "white" }}
-              href="/weather"
-            >
+            <Nav.Link className="nav-text" href="/weather">
               Weather Info
             </Nav.Link>
-            <Nav.Link
-              style={navText ? { color: "black" } : { color: "white" }}
-              href="/"
-            >
+            <Nav.Link className="nav-text" href="/">
               Logout
             </Nav.Link>
           </Nav>
