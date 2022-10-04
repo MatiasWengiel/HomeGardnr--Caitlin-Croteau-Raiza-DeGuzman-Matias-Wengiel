@@ -58,10 +58,11 @@ export default function MyGarden() {
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
+      console.log(response.data);
       setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
-  }, [cardsList]);
+  }, []);
 
   return (
     <Container className="w-90">
