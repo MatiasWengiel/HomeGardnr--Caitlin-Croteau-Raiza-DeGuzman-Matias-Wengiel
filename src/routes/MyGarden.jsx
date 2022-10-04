@@ -85,6 +85,10 @@ export default function MyGarden() {
     });
   }, []);
 
+  const handleWaterAllPlants = () => {
+    axios.put("/api/my_garden/waterAll");
+  };
+
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">
@@ -93,12 +97,7 @@ export default function MyGarden() {
         </Col>
       </Row>
       <Row>
-        <Button
-          className="col-3"
-          variant="success"
-          type="submit"
-          // onClick={handleClick}
-        >
+        <Button className="col-3" variant="success">
           <Link
             to="/plants"
             style={{
@@ -109,6 +108,15 @@ export default function MyGarden() {
           >
             Add New Plant To Your Garden
           </Link>
+        </Button>
+        <Button
+          className="col-3"
+          variant="success"
+          onClick={() => {
+            handleWaterAllPlants();
+          }}
+        >
+          Water All Plants
         </Button>
         <PlantModal
           show={showModal}
