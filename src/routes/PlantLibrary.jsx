@@ -16,6 +16,7 @@ export default function PlantLibrary() {
 
   useEffect(() => {
     axios.get(`/api/plants`).then((response) => {
+      console.log("data", response.data);
       setPlantInfo(response.data);
       setSelectedPlants(response.data);
     });
@@ -65,6 +66,14 @@ export default function PlantLibrary() {
     setShowFormModal(true);
   };
 
+  function updateLibrary(newPlant) {
+    console.log("newPlant in update library", newPlant);
+    setPlantInfo([...plantInfo, newPlant]);
+    console.log("plant info in library after update)", plantInfo);
+    setSelectedPlants([...selectedPlants, newPlant]);
+    // console.log("selected plants in library after update)", selectedPlants);
+  }
+
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">
@@ -90,6 +99,7 @@ export default function PlantLibrary() {
         <FormModal
           show={showFormModal}
           onHide={() => setShowFormModal(false)}
+          updateLibrary={updateLibrary}
         />
       </Row>
       <Row>{cardsList}</Row>

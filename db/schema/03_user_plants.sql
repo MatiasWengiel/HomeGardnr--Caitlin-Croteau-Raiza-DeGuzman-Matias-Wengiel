@@ -9,5 +9,4 @@ CREATE TABLE user_plants (
   last_watered_at DATE NOT NULL,
   plant_id INTEGER REFERENCES plants(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-
 );
