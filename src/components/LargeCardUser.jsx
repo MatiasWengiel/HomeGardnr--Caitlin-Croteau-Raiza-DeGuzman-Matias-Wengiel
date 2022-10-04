@@ -62,6 +62,9 @@ export default function LargeCardUser(props) {
     props.onHide();
   };
 
+  const handleWaterPlant = (id) => {
+    axios.put(`/api/my_garden/${id}`);
+  };
   return (
     <Container>
       <Card>
@@ -156,7 +159,9 @@ export default function LargeCardUser(props) {
             </Accordion>
 
             <div className="lcu-buttons">
-              <Button variant="primary">Water Plant</Button>
+              <Button variant="primary" onClick={() => handleWaterPlant(id)}>
+                Water Plant
+              </Button>
               <Button variant="danger" onClick={() => handleDelete(id)}>
                 Delete
               </Button>
