@@ -74,11 +74,10 @@ const addPlantToLibrary = function (plant) {
 //add new query for update my garden.
 //need to update hardcoded values
 const addPlantToMyGarden = function (plantId, userId) {
-  const today = "2022-09-27";
-  const values = [today, today, plantId, userId];
+  const values = [plantId, userId];
 
   const queryString = `
-  INSERT INTO user_plants (planted_date, last_watered_at, plant_id, user_id) VALUES ($1, $2, $3, $4) RETURNING *;`;
+  INSERT INTO user_plants (planted_date, last_watered_at, plant_id, user_id) VALUES (CURRENT_DATE, CURRENT_DATE, $1, $2) RETURNING *;`;
 
   return [queryString, values];
 };
@@ -87,6 +86,17 @@ const getMyGardenPlants = (userID) => {
   return `SELECT user_plants.id AS key_id, large_plant_card_photo_url, specific_name, planted_date, last_watered_at, water_needs, when_to_plant, sunlight_needs, highest_temp_tolerance, lowest_temp_tolerance, how_deep_to_plant, how_far_apart_to_plant, how_long_until_mature FROM user_plants
     JOIN plants ON plant_id = plants.id
     WHERE user_id = ${userID}`
+}
+
+const waterSinglePlant = (plantID) => {
+  return `UPDATE user_plants 
+  SET last_watered_at = CURRENT_DATE
+  where id = ${plantID}`
+}
+
+const waterAllPlants = () => {
+  return `UPDATE user_plants
+  SET last_watered_at = CURRENT_DATE`
 }
 module.exports = {
   getUserLocation,
@@ -99,4 +109,6 @@ module.exports = {
   getUserLocation,
   searchPlant,
   getMyGardenPlants,
+  waterSinglePlant,
+  waterAllPlants
 };
