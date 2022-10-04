@@ -18,13 +18,9 @@ export default function LargeCardUser(props) {
       .get(`/api/my_garden/${id}`)
       .then((response) => {
         const responseObj = response.data[0];
-        const nextWater = calculateNextWaterDate(
-          responseObj.last_watered_at,
-          responseObj.water_needs
-        );
-        const nextWaterFormatted = dateFormatter(new Date(nextWater));
-
-        const plantedDate = new Date(responseObj.planted_date);
+        //Using the full date, since having the year available is relevant for perennials
+        const plantedDate = new Date(responseObj.planted_date).toDateString();
+        const nextWaterFormatted = dateFormatter(props.nextWatering);
         const lastWateredDate = dateFormatter(
           new Date(responseObj.last_watered_at)
         );
@@ -35,7 +31,7 @@ export default function LargeCardUser(props) {
           large_plant_card_photo_url: responseObj.large_plant_card_photo_url,
           last_watered_at: lastWateredDate,
           water_needs: responseObj.water_needs,
-          planted_date: plantedDate.toDateString(),
+          planted_date: plantedDate,
           lowest_temp_tolerance: responseObj.lowest_temp_tolerance,
           highest_temp_tolerance: responseObj.highest_temp_tolerance,
           how_deep_to_plant: responseObj.how_deep_to_plant,
@@ -44,6 +40,7 @@ export default function LargeCardUser(props) {
           sunlight_needs: responseObj.sunlight_needs,
           when_to_plant: responseObj.when_to_plant,
           nextWaterFormatted,
+          waterStatus: props.waterStatus,
         });
       })
       .catch((error) => console.log(error));

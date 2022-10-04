@@ -15,7 +15,12 @@ export default function MyModal(props) {
       <Modal.Body>
         {props.modalMode === "main" && <LargeCardMain id={props.id} />}
         {props.modalMode === "user" && (
-          <LargeCardUser id={props.id} onHide={props.onHide} />
+          <LargeCardUser
+            id={props.id}
+            waterStatus={props.waterStatus}
+            nextWatering={props.nextWatering}
+            onHide={props.onHide}
+          />
         )}
       </Modal.Body>
       <Modal.Footer>
