@@ -52,11 +52,27 @@ export default function LargeCardUser(props) {
     return formattedDate;
   };
 
+  const calculateNextWaterDate = (lastWatered, waterNeeds) => {
+    let lastWateredDate = new Date(lastWatered);
+    const waterInterval = Math.floor(7 / waterNeeds);
+    //Takes the last watered date and creates a new date that is the last watered plus the water interval
+    const waterDate = new Date(
+      lastWateredDate.setDate(lastWateredDate.getDate() + waterInterval)
+    ).toDateString();
+    return waterDate;
+  };
   useEffect(() => {
     axios
       .get(`/api/my_garden/${id}`)
       .then((response) => {
-        setPlantData(response.data[0]);
+        const responseObj = response.data[0];
+        const nextWater = calculateNextWaterDate(
+          responseObj.last_watered_at,
+          responseObj.water_needs
+        );
+        const responseWithNetxWater = { ...responseObj, nextWater };
+        setPlantData(responseWithNetxWater);
+        return response.data[0];
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -105,7 +121,7 @@ export default function LargeCardUser(props) {
 
             <Row className="pb-3">
               <Col className="fw-bold">When to Water Next: </Col>
-              <Col className="text-end">{}</Col>
+              <Col className="text-end">{plantData.nextWater}</Col>
             </Row>
 
             <Accordion>
