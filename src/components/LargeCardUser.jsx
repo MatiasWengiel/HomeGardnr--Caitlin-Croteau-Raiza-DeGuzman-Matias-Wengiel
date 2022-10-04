@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -8,74 +7,61 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardUser.scss";
-
+import { dateFormatter } from "../helpers/dateHelpers";
+import { renderIcon } from "../helpers/cardHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
-  const id = props.id;
-
-  const navigate = useNavigate();
-
-  // Place this function in separate file to keep code here minimal
-  const formatDate = (inputDate) => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    const dateObj = new Date(inputDate);
-
-    let formattedDate = "";
-    formattedDate += days[dateObj.getDay()] + ", ";
-    formattedDate += months[dateObj.getMonth()] + " ";
-    formattedDate += dateObj.getDate() + ", ";
-    formattedDate += dateObj.getFullYear();
-    return formattedDate;
-  };
+  const { id, nextWatering, waterStatus } = { ...props.plantCardProps };
 
   useEffect(() => {
     axios
       .get(`/api/my_garden/${id}`)
       .then((response) => {
-        setPlantData(response.data[0]);
+        const responseObj = response.data[0];
+        //Using the full date, since having the year available is relevant for perennials
+        const plantedDate = new Date(responseObj.planted_date).toDateString();
+        const nextWaterFormatted = dateFormatter(nextWatering);
+        const lastWateredDate = dateFormatter(
+          new Date(responseObj.last_watered_at)
+        );
+
+        setPlantData({
+          plant_id: responseObj.plant_id,
+          specific_name: responseObj.specific_name,
+          large_plant_card_photo_url: responseObj.large_plant_card_photo_url,
+          last_watered_at: lastWateredDate,
+          water_needs: responseObj.water_needs,
+          planted_date: plantedDate,
+          lowest_temp_tolerance: responseObj.lowest_temp_tolerance,
+          highest_temp_tolerance: responseObj.highest_temp_tolerance,
+          how_deep_to_plant: responseObj.how_deep_to_plant,
+          how_far_apart_to_plant: responseObj.how_far_apart_to_plant,
+          how_long_until_mature: responseObj.how_long_until_mature,
+          sunlight_needs: responseObj.sunlight_needs,
+          when_to_plant: responseObj.when_to_plant,
+          nextWaterFormatted,
+          waterStatus: waterStatus,
+        });
       })
       .catch((error) => console.log(error));
   }, [id]);
 
   const deleteUserPlant = (id) => {
-    axios
-      .delete(`/api/my_garden/${id}`)
-      .then(() => {
-        navigate("/my_garden");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    axios.delete(`/api/my_garden/${id}`).catch((error) => {
+      console.log(error.message);
+    });
+  };
+  const handleDelete = (id) => {
+    deleteUserPlant(id);
+    props.onHide();
   };
 
+  const handleWaterPlant = (id) => {
+    axios.put(`/api/my_garden/${id}`);
+  };
   return (
     <Container>
-      <p>This is the User Card</p>
       <Card>
         <Card.Body className="d-flex flex-row mb-3 justify-content-around">
           <div className="lcu-photo">
@@ -93,22 +79,19 @@ export default function LargeCardUser(props) {
             <Row className="pb-3">
               <Col className="fw-bold">Planted Date: </Col>
               {/* <p>{new Date(plantData.planted_date).toDateString()}</p> */}
-              <Col className="text-end">
-                {formatDate(plantData.planted_date)}
-              </Col>
+              <Col className="text-end">{plantData.planted_date}</Col>
             </Row>
 
             <Row className="pb-3">
               <Col className="fw-bold">Last Watered: </Col>
-              <Col className="text-end">
-                {formatDate(plantData.last_watered_at)}
-              </Col>
+              <Col className="text-end">{plantData.last_watered_at}</Col>
             </Row>
 
             <Row className="pb-3">
               <Col className="fw-bold">When to Water Next: </Col>
               <Col className="text-end">
-                {}
+                {renderIcon(waterStatus, "large card")}
+                {plantData.nextWaterFormatted}
               </Col>
             </Row>
 
@@ -174,8 +157,10 @@ export default function LargeCardUser(props) {
             </Accordion>
 
             <div className="lcu-buttons">
-              <Button variant="primary">Water Plant</Button>
-              <Button variant="danger" onClick={() => deleteUserPlant(id)}>
+              <Button variant="primary" onClick={() => handleWaterPlant(id)}>
+                Water Plant
+              </Button>
+              <Button variant="danger" onClick={() => handleDelete(id)}>
                 Delete
               </Button>
             </div>

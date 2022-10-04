@@ -1,7 +1,6 @@
 const express = require("express");
-const { useContext } = require("react");
 const router = express.Router();
-const { getUserPlantInfo, deleteUserPlant, addPlantToMyGarden, getMyGardenPlants } = require("../../db/query_functions.js");
+const { getUserPlantInfo, deleteUserPlant, addPlantToMyGarden, getMyGardenPlants, waterSinglePlant, waterAllPlants } = require("../../db/query_functions.js");
 
 
 module.exports = (db) => {
@@ -11,14 +10,14 @@ module.exports = (db) => {
   });
 
   // Add plant to user's garden (from plant library)
-  router.post("/submit", (req, res) => {
+  router.post("/", (req, res) => {
     let newPlantId = req.body.plantId;
     const userId = 1;
 
     const [queryString, values] = addPlantToMyGarden(newPlantId, userId);
 
     db.query(queryString, values).then((data) => {
-      res.send();
+      res.status(201);
     });
   });
 
@@ -30,12 +29,18 @@ module.exports = (db) => {
 
   router.delete("/:id", (req, res) => {
     db.query(deleteUserPlant(req.params.id)).then(() => {
-      res.send(200);
+      res.status(201);
     })
       .catch((error) => {
         console.log(error);
       });
   });
+  router.put("/waterAll", (req, res) => {
+    db.query(waterAllPlants()).then(res.status(201)).catch(error => console.log(error.message))
+  })
+  router.put("/:id", (req, res) => {
+    db.query(waterSinglePlant(req.params.id)).then(res.status(201)).catch(error => console.log(error.message))
+  })
 
   return router;
 };

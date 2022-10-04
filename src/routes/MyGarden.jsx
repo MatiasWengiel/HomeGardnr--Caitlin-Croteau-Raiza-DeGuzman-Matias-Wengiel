@@ -6,20 +6,15 @@ import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
+import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
   const [gardenInfo, setGardenInfo] = useState([]);
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [plantId, setPlantId] = useState();
-
-  useEffect(() => {
-    axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      setGardenInfo(response.data);
-      setSelectedPlants(response.data);
-    });
-  }, []);
+  const [plantCardProps, setPlantCardProps] = useState();
+  const [filterPlants, setFilterPlants] = useState("needs water");
 
   const searchPlant = (event) => {
     event.preventDefault();
@@ -33,7 +28,13 @@ export default function MyGarden() {
     );
   };
 
+  const filterPlantsThatNeedWater = () =>
+    setSelectedPlants(
+      gardenInfo.filter((plant) => plant.waterStatus === "needs water")
+    );
+
   const generateCards = () => {
+    //Ensures there is data in gardenInfo
     if (gardenInfo[0]) {
       //Sorts the plants alphabetically for display
       selectedPlants.sort((a, b) => {
@@ -51,11 +52,16 @@ export default function MyGarden() {
           key={plant.key_id}
           plant={plant.specific_name}
           picture={plant.large_plant_card_photo_url}
-          lastWatered={plant.last_watered_at}
-          nextWatering={plant.water_needs}
+          lastWatered={plant.lastWateredFormatted}
+          nextWatering={plant.nextWaterFormatted}
+          waterStatus={plant.waterStatus}
           handleClick={() => {
             setShowModal(true);
-            setPlantId(plant.key_id);
+            setPlantCardProps({
+              id: plant.key_id,
+              waterStatus: plant.waterStatus,
+              nextWatering: plant.nextWatering,
+            });
           }}
         />
       ));
@@ -63,6 +69,43 @@ export default function MyGarden() {
   };
   const cardsList = selectedPlants !== "" ? generateCards() : null;
 
+  useEffect(() => {
+    axios.get(`/api/my_garden/all/${userID}`).then((response) => {
+      response.data.map((plant) => {
+        //Add the calculated next water date to each plant in the response
+        plant.nextWatering = calculateNextWaterDate(
+          plant.last_watered_at,
+          plant.water_needs
+        );
+        //Add a formatted version of last_watered_at to each plant for displaying
+        plant.lastWateredFormatted = dateFormatter(
+          new Date(plant.last_watered_at)
+        );
+        plant.nextWaterFormatted = dateFormatter(new Date(plant.nextWatering));
+
+        plant.waterStatus =
+          new Date(plant.nextWatering) <= new Date()
+            ? "needs water"
+            : "watered";
+      });
+      setGardenInfo(response.data);
+      setSelectedPlants(response.data);
+    });
+  }, []);
+
+  const handleWaterAllPlants = () => {
+    axios.put("/api/my_garden/waterAll");
+  };
+
+  const handleFilterPlants = () => {
+    if (filterPlants === "needs water") {
+      filterPlantsThatNeedWater();
+      setFilterPlants("all plants");
+    } else {
+      setSelectedPlants(gardenInfo);
+      setFilterPlants("needs water");
+    }
+  };
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">
@@ -71,12 +114,7 @@ export default function MyGarden() {
         </Col>
       </Row>
       <Row>
-        <Button
-          className="col-3"
-          variant="success"
-          type="submit"
-          // onClick={handleClick}
-        >
+        <Button className="col-3" variant="success">
           <Link
             to="/plants"
             style={{
@@ -88,10 +126,29 @@ export default function MyGarden() {
             Add New Plant To Your Garden
           </Link>
         </Button>
+        <Button
+          className="col-3 offset-1"
+          variant="primary"
+          onClick={() => {
+            handleWaterAllPlants();
+          }}
+        >
+          Water All Plants
+        </Button>
+        <Button
+          className="col-3 offset-1"
+          variant={filterPlants === "needs water" ? "warning" : "success"}
+          onClick={() => {
+            handleFilterPlants();
+          }}
+        >
+          {filterPlants === "needs water" && "View Plants That Need Water"}
+          {filterPlants === "all plants" && "View All Plants"}
+        </Button>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
-          id={plantId}
+          plantCardProps={plantCardProps}
           modalMode="user"
         />
       </Row>
