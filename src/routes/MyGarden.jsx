@@ -17,6 +17,7 @@ export default function MyGarden() {
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [plantId, setPlantId] = useState();
+  const [filterPlants, setFilterPlants] = useState("need water");
 
   const searchPlant = (event) => {
     event.preventDefault();
@@ -29,6 +30,11 @@ export default function MyGarden() {
       )
     );
   };
+
+  const filterPlantsThatNeedWater = () =>
+    setSelectedPlants(
+      gardenInfo.filter((plant) => plant.waterStatus === "needs water")
+    );
 
   const generateCards = () => {
     if (gardenInfo[0]) {
@@ -89,6 +95,15 @@ export default function MyGarden() {
     axios.put("/api/my_garden/waterAll");
   };
 
+  const handleFilterPlants = () => {
+    if (filterPlants === "needs water") {
+      filterPlantsThatNeedWater();
+      setFilterPlants("all plants");
+    } else {
+      setSelectedPlants(gardenInfo);
+      setFilterPlants("needs water");
+    }
+  };
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">
@@ -110,13 +125,23 @@ export default function MyGarden() {
           </Link>
         </Button>
         <Button
-          className="col-3"
-          variant="success"
+          className="col-3 offset-1"
+          variant="primary"
           onClick={() => {
             handleWaterAllPlants();
           }}
         >
           Water All Plants
+        </Button>
+        <Button
+          className="col-3 offset-1"
+          variant={filterPlants === "needs water" ? "warning" : "success"}
+          onClick={() => {
+            handleFilterPlants();
+          }}
+        >
+          {filterPlants === "needs water" && "View Plants That Need Water"}
+          {filterPlants === "all plants" && "View All Plants"}
         </Button>
         <PlantModal
           show={showModal}
