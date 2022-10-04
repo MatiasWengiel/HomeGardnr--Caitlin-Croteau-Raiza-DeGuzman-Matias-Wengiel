@@ -1,5 +1,5 @@
 import { Card, Button, Image } from "react-bootstrap";
-import WaterIcon from "./WaterIcon";
+import { renderIcon } from "../helpers/cardHelpers";
 
 export default function PlantCard(props) {
   const {
@@ -14,20 +14,6 @@ export default function PlantCard(props) {
     ...props,
   };
 
-  //Icons created by Freepik - Flaticon
-  const dryIcon = require("../icons/dry-soil.png");
-  const wateredIcon = require("../icons/happy-plant.png");
-
-  //Renders the correct icon for water status
-  const renderIcon = (status) => {
-    if (status === "watered") {
-      return <WaterIcon src={wateredIcon} borderColor="green" />;
-    }
-    if (status === "needs water") {
-      return <WaterIcon src={dryIcon} borderColor="red" />;
-    }
-  };
-
   return (
     <Card
       style={{
@@ -35,8 +21,8 @@ export default function PlantCard(props) {
       }}
       className="m-2 p-2 text-center"
     >
-      {/* If there is a waterStatus, render the corresponding icon */}
-      {waterStatus && renderIcon(waterStatus)}
+      {/* If there is a waterStatus, render the corresponding icon in the small card size */}
+      {waterStatus && renderIcon(waterStatus, "small card")}
       <Card.Img variant="top" src={picture} alt={altText} />
       <Card.Body className="p-0">
         <Card.Title className="text-center">{plant}</Card.Title>
