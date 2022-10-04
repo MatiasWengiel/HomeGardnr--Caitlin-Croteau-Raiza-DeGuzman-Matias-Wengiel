@@ -53,7 +53,8 @@ export default function LargeCardUser(props) {
   };
 
   const calculateNextWaterDate = (lastWatered, waterNeeds) => {
-    let lastWateredDate = new Date(lastWatered);
+    const lastWateredDate = new Date(lastWatered);
+    //Calculates water interval by dividing 7 (days) over number of waterings needed per week (waterNeeds)
     const waterInterval = Math.floor(7 / waterNeeds);
     //Takes the last watered date and creates a new date that is the last watered plus the water interval
     const waterDate = new Date(
@@ -70,9 +71,29 @@ export default function LargeCardUser(props) {
           responseObj.last_watered_at,
           responseObj.water_needs
         );
-        const responseWithNetxWater = { ...responseObj, nextWater };
-        setPlantData(responseWithNetxWater);
-        return response.data[0];
+
+        const plantedDate = new Date(responseObj.planted_date);
+        const lastWateredDate = new Date(responseObj.last_watered_at);
+
+        setPlantData({
+          plant_id: responseObj.plant_id,
+          specific_name: responseObj.specific_name,
+          description: responseObj.description,
+          large_plant_card_photo_url: responseObj.large_plant_card_photo_url,
+          last_watered_at: lastWateredDate.toDateString(),
+          water_needs: responseObj.water_needs,
+          planted_date: plantedDate.toDateString(),
+          lowest_temp_tolerance: responseObj.lowest_temp_tolerance,
+          highest_temp_tolerance: responseObj.highest_temp_tolerance,
+          how_deep_to_plant: responseObj.how_deep_to_plant,
+          how_far_apart_to_plant: responseObj.how_far_apart_to_plant,
+          how_long_until_mature: responseObj.how_long_until_mature,
+          id: responseObj.id,
+          sunlight_needs: responseObj.sunlight_needs,
+          user_id: responseObj.user_id,
+          when_to_plant: responseObj.when_to_plant,
+          nextWater,
+        });
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -107,16 +128,12 @@ export default function LargeCardUser(props) {
             <Row className="pb-3">
               <Col className="fw-bold">Planted Date: </Col>
               {/* <p>{new Date(plantData.planted_date).toDateString()}</p> */}
-              <Col className="text-end">
-                {formatDate(plantData.planted_date)}
-              </Col>
+              <Col className="text-end">{plantData.planted_date}</Col>
             </Row>
 
             <Row className="pb-3">
               <Col className="fw-bold">Last Watered: </Col>
-              <Col className="text-end">
-                {formatDate(plantData.last_watered_at)}
-              </Col>
+              <Col className="text-end">{plantData.last_watered_at}</Col>
             </Row>
 
             <Row className="pb-3">
