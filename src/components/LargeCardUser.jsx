@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -8,21 +7,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardUser.scss";
+import {
+  calculateNextWaterDate,
+  dateFormatter,
+} from "./helpers/myGardenHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
   const id = props.id;
 
-  const calculateNextWaterDate = (lastWatered, waterNeeds) => {
-    const lastWateredDate = new Date(lastWatered);
-    //Calculates water interval by dividing 7 (days) over number of waterings needed per week (waterNeeds)
-    const waterInterval = Math.floor(7 / waterNeeds);
-    //Takes the last watered date and creates a new date that is the last watered plus the water interval
-    const waterDate = new Date(
-      lastWateredDate.setDate(lastWateredDate.getDate() + waterInterval)
-    ).toDateString();
-    return waterDate;
-  };
   useEffect(() => {
     axios
       .get(`/api/my_garden/${id}`)
@@ -32,15 +25,18 @@ export default function LargeCardUser(props) {
           responseObj.last_watered_at,
           responseObj.water_needs
         );
+        const nextWaterFormatted = dateFormatter(new Date(nextWater));
 
         const plantedDate = new Date(responseObj.planted_date);
-        const lastWateredDate = new Date(responseObj.last_watered_at);
+        const lastWateredDate = dateFormatter(
+          new Date(responseObj.last_watered_at)
+        );
 
         setPlantData({
           plant_id: responseObj.plant_id,
           specific_name: responseObj.specific_name,
           large_plant_card_photo_url: responseObj.large_plant_card_photo_url,
-          last_watered_at: lastWateredDate.toDateString(),
+          last_watered_at: lastWateredDate,
           water_needs: responseObj.water_needs,
           planted_date: plantedDate.toDateString(),
           lowest_temp_tolerance: responseObj.lowest_temp_tolerance,
@@ -50,7 +46,7 @@ export default function LargeCardUser(props) {
           how_long_until_mature: responseObj.how_long_until_mature,
           sunlight_needs: responseObj.sunlight_needs,
           when_to_plant: responseObj.when_to_plant,
-          nextWater,
+          nextWaterFormatted,
         });
       })
       .catch((error) => console.log(error));
@@ -95,7 +91,7 @@ export default function LargeCardUser(props) {
 
             <Row className="pb-3">
               <Col className="fw-bold">When to Water Next: </Col>
-              <Col className="text-end">{plantData.nextWater}</Col>
+              <Col className="text-end">{plantData.nextWaterFormatted}</Col>
             </Row>
 
             <Accordion>
