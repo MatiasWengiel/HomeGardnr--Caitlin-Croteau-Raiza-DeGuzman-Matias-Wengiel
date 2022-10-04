@@ -7,7 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardUser.scss";
-import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
+import { dateFormatter } from "../helpers/dateHelpers";
+import { renderIcon } from "../helpers/cardHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
@@ -88,7 +89,10 @@ export default function LargeCardUser(props) {
 
             <Row className="pb-3">
               <Col className="fw-bold">When to Water Next: </Col>
-              <Col className="text-end">{plantData.nextWaterFormatted}</Col>
+              <Col className="text-end">
+                {renderIcon(waterStatus, "large card")}
+                {plantData.nextWaterFormatted}
+              </Col>
             </Row>
 
             <Accordion>
