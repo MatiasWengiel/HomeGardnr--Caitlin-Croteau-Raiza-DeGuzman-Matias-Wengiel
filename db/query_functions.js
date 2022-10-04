@@ -87,6 +87,17 @@ const getMyGardenPlants = (userID) => {
     JOIN plants ON plant_id = plants.id
     WHERE user_id = ${userID}`
 }
+
+const waterSinglePlant = (plantID) => {
+  return `UPDATE user_plants 
+  SET last_watered_at = CURRENT_DATE
+  where id = ${plantID}`
+}
+
+const waterAllPlants = () => {
+  return `UPDATE user_plants
+  SET last_watered_at = CURRENT_DATE`
+}
 module.exports = {
   getUserLocation,
   getUserName,
@@ -98,4 +109,6 @@ module.exports = {
   getUserLocation,
   searchPlant,
   getMyGardenPlants,
+  waterSinglePlant,
+  waterAllPlants
 };

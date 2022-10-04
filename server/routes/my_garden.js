@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getUserPlantInfo, deleteUserPlant, addPlantToMyGarden, getMyGardenPlants } = require("../../db/query_functions.js");
+const { getUserPlantInfo, deleteUserPlant, addPlantToMyGarden, getMyGardenPlants, waterSinglePlant, waterAllPlants } = require("../../db/query_functions.js");
 
 
 module.exports = (db) => {
@@ -35,6 +35,12 @@ module.exports = (db) => {
         console.log(error);
       });
   });
+  router.put("/waterAll", (req, res) => {
+    db.query(waterAllPlants()).then(res.status(201)).catch(error => console.log(error.message))
+  })
+  router.put("/:id", (req, res) => {
+    db.query(waterSinglePlant(req.params.id)).then(res.status(201)).catch(error => console.log(error.message))
+  })
 
   return router;
 };
