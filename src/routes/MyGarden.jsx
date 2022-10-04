@@ -6,6 +6,10 @@ import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
+import {
+  calculateNextWaterDate,
+  dateFormatter,
+} from "../components/helpers/myGardenHelpers";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
@@ -44,8 +48,9 @@ export default function MyGarden() {
           key={plant.key_id}
           plant={plant.specific_name}
           picture={plant.large_plant_card_photo_url}
-          lastWatered={plant.last_watered_at}
-          nextWatering={plant.water_needs}
+          lastWatered={plant.lastWateredFormatted}
+          nextWatering={plant.nextWaterFormatted}
+          waterStatus={plant.waterStatus}
           handleClick={() => {
             setShowModal(true);
             setPlantId(plant.key_id);
@@ -58,7 +63,23 @@ export default function MyGarden() {
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      console.log(response.data);
+      response.data.map((plant) => {
+        //Add the calculated next water date to each plant in the response
+        plant.nextWatering = calculateNextWaterDate(
+          plant.last_watered_at,
+          plant.water_needs
+        );
+        //Add a formatted version of last_watered_at to each plant for displaying
+        plant.lastWateredFormatted = dateFormatter(
+          new Date(plant.last_watered_at)
+        );
+        plant.nextWaterFormatted = dateFormatter(new Date(plant.nextWatering));
+
+        plant.waterStatus =
+          new Date(plant.nextWatering) <= new Date()
+            ? "needs water"
+            : "watered";
+      });
       setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
