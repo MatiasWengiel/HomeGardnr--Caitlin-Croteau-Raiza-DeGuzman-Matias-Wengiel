@@ -13,9 +13,7 @@ export default function MyGarden() {
   const [gardenInfo, setGardenInfo] = useState([]);
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [plantId, setPlantId] = useState();
-  const [waterStatus, setWaterStatus] = useState();
-  const [nextWatering, setNextWatering] = useState();
+  const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
 
   const searchPlant = (event) => {
@@ -59,9 +57,14 @@ export default function MyGarden() {
           waterStatus={plant.waterStatus}
           handleClick={() => {
             setShowModal(true);
-            setPlantId(plant.key_id);
-            setWaterStatus(plant.waterStatus);
-            setNextWatering(plant.nextWatering);
+            setPlantCardProps({
+              id: plant.key_id,
+              waterStatus: plant.waterStatus,
+              nextWatering: plant.nextWatering,
+            });
+            // setPlantId(plant.key_id);
+            // setWaterStatus(plant.waterStatus);
+            // setNextWatering(plant.nextWatering);
           }}
         />
       ));
@@ -148,9 +151,7 @@ export default function MyGarden() {
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
-          id={plantId}
-          waterStatus={waterStatus}
-          nextWatering={nextWatering}
+          plantCardProps={plantCardProps}
           modalMode="user"
         />
       </Row>

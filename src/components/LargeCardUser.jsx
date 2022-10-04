@@ -11,7 +11,7 @@ import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
-  const id = props.id;
+  const { id, nextWatering, waterStatus } = { ...props.plantCardProps };
 
   useEffect(() => {
     axios
@@ -20,7 +20,7 @@ export default function LargeCardUser(props) {
         const responseObj = response.data[0];
         //Using the full date, since having the year available is relevant for perennials
         const plantedDate = new Date(responseObj.planted_date).toDateString();
-        const nextWaterFormatted = dateFormatter(props.nextWatering);
+        const nextWaterFormatted = dateFormatter(nextWatering);
         const lastWateredDate = dateFormatter(
           new Date(responseObj.last_watered_at)
         );
@@ -40,7 +40,7 @@ export default function LargeCardUser(props) {
           sunlight_needs: responseObj.sunlight_needs,
           when_to_plant: responseObj.when_to_plant,
           nextWaterFormatted,
-          waterStatus: props.waterStatus,
+          waterStatus: waterStatus,
         });
       })
       .catch((error) => console.log(error));
