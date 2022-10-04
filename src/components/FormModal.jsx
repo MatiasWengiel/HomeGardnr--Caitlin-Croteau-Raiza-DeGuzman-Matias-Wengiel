@@ -12,7 +12,7 @@ export default function FormModal(props) {
       size="xl"
     >
       <Modal.Body>
-        <PlantForm onHide={props.onHide} />
+        <PlantForm onHide={props.onHide} updateLibrary={props.updateLibrary}/>
       </Modal.Body>
     </Modal>
   );
