@@ -78,7 +78,6 @@ export default function LargeCardUser(props) {
         setPlantData({
           plant_id: responseObj.plant_id,
           specific_name: responseObj.specific_name,
-          description: responseObj.description,
           large_plant_card_photo_url: responseObj.large_plant_card_photo_url,
           last_watered_at: lastWateredDate.toDateString(),
           water_needs: responseObj.water_needs,
@@ -88,9 +87,7 @@ export default function LargeCardUser(props) {
           how_deep_to_plant: responseObj.how_deep_to_plant,
           how_far_apart_to_plant: responseObj.how_far_apart_to_plant,
           how_long_until_mature: responseObj.how_long_until_mature,
-          id: responseObj.id,
           sunlight_needs: responseObj.sunlight_needs,
-          user_id: responseObj.user_id,
           when_to_plant: responseObj.when_to_plant,
           nextWater,
         });
