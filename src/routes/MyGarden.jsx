@@ -62,9 +62,6 @@ export default function MyGarden() {
               waterStatus: plant.waterStatus,
               nextWatering: plant.nextWatering,
             });
-            // setPlantId(plant.key_id);
-            // setWaterStatus(plant.waterStatus);
-            // setNextWatering(plant.nextWatering);
           }}
         />
       ));

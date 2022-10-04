@@ -1,5 +1,4 @@
 import { Image } from "react-bootstrap";
-import { useState } from "react";
 
 export default function WaterIcon(props) {
   const { src, borderColor, cardSize } = { ...props };
