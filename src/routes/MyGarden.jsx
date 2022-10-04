@@ -6,10 +6,7 @@ import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
-import {
-  calculateNextWaterDate,
-  dateFormatter,
-} from "../components/helpers/myGardenHelpers";
+import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
@@ -17,7 +14,7 @@ export default function MyGarden() {
   const [selectedPlants, setSelectedPlants] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [plantId, setPlantId] = useState();
-  const [filterPlants, setFilterPlants] = useState("need water");
+  const [filterPlants, setFilterPlants] = useState("needs water");
 
   const searchPlant = (event) => {
     event.preventDefault();
@@ -37,6 +34,7 @@ export default function MyGarden() {
     );
 
   const generateCards = () => {
+    //Ensures there is data in gardenInfo
     if (gardenInfo[0]) {
       //Sorts the plants alphabetically for display
       selectedPlants.sort((a, b) => {

@@ -7,10 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardUser.scss";
-import {
-  calculateNextWaterDate,
-  dateFormatter,
-} from "./helpers/myGardenHelpers";
+import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
