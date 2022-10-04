@@ -13,7 +13,7 @@ export default function Header(props) {
   return (
     //remove padding
     <Container fluid className="p-0">
-      <Image src={headerTiny} alt="garden" fluid />
+      <Image src={headerMed} alt="garden" fluid />
     </Container>
   );
 }
