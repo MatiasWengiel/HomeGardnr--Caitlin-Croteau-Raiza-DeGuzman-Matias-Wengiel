@@ -46,6 +46,23 @@ export default function MyGarden() {
         return 0;
       });
 
+      //Updates the STATE of a plant that was watered in the LargeCardUser (LargeCardUser handles updating the database)
+      const waterSinglePlant = (id) => {
+        const plantsArray = [...selectedPlants];
+        plantsArray.forEach((plant) => {
+          const nextWateringCalc = calculateNextWaterDate(
+            new Date(),
+            plant.water_needs
+          );
+          if (plant.key_id === id) {
+            plant.lastWateredFormatted = dateFormatter(new Date());
+            plant.waterStatus = "watered";
+            plant.nextWaterFormatted = dateFormatter(nextWateringCalc);
+            console.log(plant);
+          }
+        });
+        setSelectedPlants(plantsArray);
+      };
       //Creates an array of PlantCards with the corresponding information
       return selectedPlants.map((plant) => (
         <PlantCard
@@ -61,6 +78,7 @@ export default function MyGarden() {
               id: plant.key_id,
               waterStatus: plant.waterStatus,
               nextWatering: plant.nextWatering,
+              updateMyGarden: () => waterSinglePlant(plant.key_id),
             });
           }}
         />
@@ -125,6 +143,7 @@ export default function MyGarden() {
       setFilterPlants("needs water");
     }
   };
+
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">

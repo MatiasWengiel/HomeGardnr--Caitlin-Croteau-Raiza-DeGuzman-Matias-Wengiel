@@ -12,7 +12,9 @@ import { renderIcon } from "../helpers/cardHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
-  const { id, nextWatering, waterStatus } = { ...props.plantCardProps };
+  const { id, nextWatering, waterStatus, updateMyGarden } = {
+    ...props.plantCardProps,
+  };
 
   useEffect(() => {
     axios
@@ -70,6 +72,7 @@ export default function LargeCardUser(props) {
       waterStatus,
       nextWaterFormatted,
     }));
+    updateMyGarden();
   };
   return (
     <Container>
