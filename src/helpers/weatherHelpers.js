@@ -1,8 +1,18 @@
 
 export const checkWeatherWarnings = (localHigh, localLow, localPrecipitation) => {
 
+  const weatherMsgs = [];
+
+  const high = "It's hot today."
+  const low = "It's freezing today."
+  const rain = "It's RAINING A LOT."
+
+  const highTempThreshold = 30;
+  const lowTempThreshold = 0;
+  const rainThreshold = 13;
+
     // For when Weather API values are null, reached max API calls.
-    const dailyHighTemp = 20;
+    const dailyHighTemp = 35;
     const dailyLowTemp = 5;
     const dailyRain = 5;
     // Check conditional if localhigh met or exceeded, then display msg
@@ -21,9 +31,22 @@ export const checkWeatherWarnings = (localHigh, localLow, localPrecipitation) =>
     // }
 
     // This checks all three conditions. Broad message to display? Not specific on which weather condition met.
-    if (dailyHighTemp >= 25 || dailyLowTemp <= 7 || dailyRain <= 7) {
-      return "Weather condition thresholds exceeded. "
+    // if (dailyHighTemp >= highTempThreshold || dailyLowTemp <= lowTempThreshold || dailyRain <= rainThreshold) {
+    //   return "Weather condition thresholds exceeded."
+    // }
+    // return null;
+
+    if (dailyHighTemp >= highTempThreshold) {
+      weatherMsgs.push(high);
+    }
+
+    if (dailyLowTemp <= lowTempThreshold) {
+      weatherMsgs.push(low);
+    }
+
+    if (dailyRain <= rainThreshold) {
+      weatherMsgs.push(rain);
     }
     
-    return null;
+    return weatherMsgs;
   };
