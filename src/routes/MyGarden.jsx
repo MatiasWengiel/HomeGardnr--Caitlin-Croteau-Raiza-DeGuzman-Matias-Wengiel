@@ -27,7 +27,12 @@ export default function MyGarden() {
     localPrecipitation,
   } = useContext(weatherContext);
   
-  const [weatherWarningMsg, setWeatherWarningMsg] = useState(checkWeatherWarnings());
+  // const [weatherWarningMsg, setWeatherWarningMsg] = useState(checkWeatherWarnings());
+
+  const weatherWarningMsg = checkWeatherWarnings();
+
+  // If using array to display weather warning msgs:
+    // const weatherWarningMsgs = checkWeatherWarnings();
 
   console.log("This is the current city: ", currentCity);
 
@@ -124,7 +129,7 @@ export default function MyGarden() {
   };
   return (
     <Container className="w-90">
-      {weatherWarningMsg && <Banner weatherWarning={weatherWarningMsg}/>}
+      {weatherWarningMsg.length > 0 && <Banner weatherWarning={weatherWarningMsg}/>}
       <Row className="m-3 justify-content-center">
         <Col xs={8}>
           <SearchBar searchPlant={searchPlant} />
