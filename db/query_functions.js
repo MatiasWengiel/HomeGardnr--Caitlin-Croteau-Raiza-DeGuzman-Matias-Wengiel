@@ -94,10 +94,13 @@ const waterSinglePlant = (plantID) => {
   where id = ${plantID}`
 }
 
-const waterAllPlants = (userID) => {
+const waterAllPlants = (idArray) => {
+  const idList = idArray
+  const searchString = idList.join(" OR id =  ")
   return `UPDATE user_plants
   SET last_watered_at = CURRENT_DATE
-  WHERE user_id = ${userID}`
+  WHERE id = ${searchString}
+`
 }
 module.exports = {
   getUserLocation,
