@@ -34,8 +34,6 @@ export default function MyGarden() {
   // If using array to display weather warning msgs:
     // const weatherWarningMsgs = checkWeatherWarnings();
 
-  console.log("This is the current city: ", currentCity);
-
 
   const searchPlant = (event) => {
     event.preventDefault();
