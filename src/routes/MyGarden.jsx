@@ -22,35 +22,6 @@ export default function MyGarden() {
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
 
-  const generateCards = () => {
-    //Ensures there is data in gardenInfo
-    if (gardenInfo[0]) {
-      //Sort plants alphabetically for display
-      const sortedPlants = sortPlants(selectedPlants);
-      //Creates an array of PlantCards with the corresponding information
-      return sortedPlants.map((plant) => (
-        <PlantCard
-          key={plant.key_id}
-          plant={plant.specific_name}
-          picture={plant.large_plant_card_photo_url}
-          lastWatered={plant.lastWateredFormatted}
-          nextWatering={plant.nextWaterFormatted}
-          waterStatus={plant.waterStatus}
-          handleClick={() => {
-            setShowModal(true);
-            setPlantCardProps({
-              id: plant.key_id,
-              waterStatus: plant.waterStatus,
-              nextWatering: plant.nextWaterFormatted,
-              updateMyGarden: () => waterSinglePlant(plant.key_id, gardenInfo),
-            });
-          }}
-        />
-      ));
-    }
-  };
-  const cardsList = selectedPlants !== "" ? generateCards() : null;
-
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
       response.data.forEach((plant) => {
@@ -75,6 +46,38 @@ export default function MyGarden() {
     });
   }, [userID]);
 
+  //Generates an array of PlantCards based on the selectedPlants
+  const generateCards = () => {
+    //Ensures there is data in gardenInfo
+    if (selectedPlants[0]) {
+      //Sort plants alphabetically for display
+      const sortedPlants = sortPlants(selectedPlants);
+      //Creates an array of PlantCards with the corresponding information
+      return sortedPlants.map((plant) => (
+        <PlantCard
+          key={plant.key_id}
+          plant={plant.specific_name}
+          picture={plant.large_plant_card_photo_url}
+          lastWatered={plant.lastWateredFormatted}
+          nextWatering={plant.nextWaterFormatted}
+          waterStatus={plant.waterStatus}
+          handleClick={() => {
+            setShowModal(true);
+            setPlantCardProps({
+              id: plant.key_id,
+              waterStatus: plant.waterStatus,
+              nextWatering: plant.nextWaterFormatted,
+              updateMyGarden: () => waterSinglePlant(plant.key_id, gardenInfo),
+            });
+          }}
+        />
+      ));
+    }
+  };
+  //Generates the cardsList for rendering on the page
+  const cardsList = selectedPlants !== "" ? generateCards() : null;
+
+  //Functions for page functionality below //
   const searchPlant = (event) => {
     event.preventDefault();
     const searchTerm = event.target.value.toLowerCase();
