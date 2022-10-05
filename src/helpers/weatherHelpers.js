@@ -1,5 +1,5 @@
 
-export const checkWeatherWarnings = (localHigh, localLow, localPrecipitation) => {
+export const checkForWeatherWarnings = (localHigh, localLow, localPrecipitation) => {
   // Thresholds for temperature (highest, lowest) and rain level
   const highTempThreshold = 30;
   const lowTempThreshold = 0;
@@ -13,9 +13,8 @@ export const checkWeatherWarnings = (localHigh, localLow, localPrecipitation) =>
   const dailyLowTemp = -1;
   const dailyRain = 20;
 
-  
-  /* Approach #1: Will only check one condition at a time. If first or second met, the other conditions don't run. Conditions mutually exclusive. Do we want to set it up this way? */
 
+  /* Approach #1: Will only check one condition at a time. If first or second met, the other conditions don't run. Conditions mutually exclusive. Do we want to set it up this way? */
   /*
   if (dailyHighTemp >= highTempThreshold) {
     return `TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as ${dailyHighTemp} C expected.`;;
@@ -43,12 +42,15 @@ export const checkWeatherWarnings = (localHigh, localLow, localPrecipitation) =>
 
   // ===================================================
 
-  /* Approach #3: Possibly one of temperature conditions AND rain are met. So, display more than one warning message corresponding to weather condition that was met. */
+  /* Approach #3: Possibly one of temperature conditions AND rain are met. So, display more than one warning message corresponding to weather conditions that were met. */
 
+  // Push warning msgs into array if any of three conditions met.
   const weatherMsgs = [];
 
   const highHeat = `TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as ${dailyHighTemp} C expected.`;
+
   const extremeCold = `TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as ${dailyLowTemp} C.`;
+
   const pouringRain = `HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as ${dailyRain} mm.`;
 
   if (dailyHighTemp >= highTempThreshold) {
