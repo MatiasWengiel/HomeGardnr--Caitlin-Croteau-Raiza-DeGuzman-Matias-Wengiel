@@ -94,9 +94,10 @@ const waterSinglePlant = (plantID) => {
   where id = ${plantID}`
 }
 
-const waterAllPlants = () => {
+const waterAllPlants = (userID) => {
   return `UPDATE user_plants
-  SET last_watered_at = CURRENT_DATE`
+  SET last_watered_at = CURRENT_DATE
+  WHERE user_id = ${userID}`
 }
 module.exports = {
   getUserLocation,

@@ -94,7 +94,13 @@ export default function MyGarden() {
   }, []);
 
   const handleWaterAllPlants = () => {
-    axios.put("/api/my_garden/waterAll");
+    axios.put(`/api/my_garden/waterAll/${userID}`);
+    // setSelectedPlants(
+    //   selectedPlants.map((plant) => {
+    //     plant.lastWateredFormatted = dateFormatter(new Date());
+    //     plant.waterStatus = "watered";
+    //   })
+    // );
   };
 
   const handleFilterPlants = () => {
