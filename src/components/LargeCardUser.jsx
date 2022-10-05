@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "../styles/LargeCardUser.scss";
-import { dateFormatter } from "../helpers/dateHelpers";
+import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 import { renderIcon } from "../helpers/cardHelpers";
 
 export default function LargeCardUser(props) {
@@ -45,7 +45,7 @@ export default function LargeCardUser(props) {
         });
       })
       .catch((error) => console.log(error));
-  }, [id]);
+  }, [id, nextWatering, waterStatus]);
 
   const deleteUserPlant = (id) => {
     axios.delete(`/api/my_garden/${id}`).catch((error) => {
@@ -59,6 +59,17 @@ export default function LargeCardUser(props) {
 
   const handleWaterPlant = (id) => {
     axios.put(`/api/my_garden/${id}`);
+    const today = new Date();
+    const nextWatering = calculateNextWaterDate(today, plantData.water_needs);
+    const nextWaterFormatted = dateFormatter(nextWatering);
+    const waterStatus = "watered";
+    setPlantData((prev) => ({
+      ...prev,
+      last_watered_at: today.toDateString(),
+      lastWaterFormatted: dateFormatter(today),
+      waterStatus,
+      nextWaterFormatted,
+    }));
   };
   return (
     <Container>
@@ -78,7 +89,6 @@ export default function LargeCardUser(props) {
 
             <Row className="pb-3">
               <Col className="fw-bold">Planted Date: </Col>
-              {/* <p>{new Date(plantData.planted_date).toDateString()}</p> */}
               <Col className="text-end">{plantData.planted_date}</Col>
             </Row>
 
@@ -90,7 +100,7 @@ export default function LargeCardUser(props) {
             <Row className="pb-3">
               <Col className="fw-bold">When to Water Next: </Col>
               <Col className="text-end">
-                {renderIcon(waterStatus, "large card")}
+                {renderIcon(plantData.waterStatus, "large card")}
                 {plantData.nextWaterFormatted}
               </Col>
             </Row>
