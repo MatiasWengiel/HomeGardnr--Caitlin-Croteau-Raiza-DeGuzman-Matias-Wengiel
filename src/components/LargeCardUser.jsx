@@ -23,7 +23,6 @@ export default function LargeCardUser(props) {
         const responseObj = response.data[0];
         //Using the full date, since having the year available is relevant for perennials
         const plantedDate = new Date(responseObj.planted_date).toDateString();
-        const nextWaterFormatted = dateFormatter(nextWatering);
         const lastWateredDate = dateFormatter(
           new Date(responseObj.last_watered_at)
         );
@@ -42,7 +41,7 @@ export default function LargeCardUser(props) {
           how_long_until_mature: responseObj.how_long_until_mature,
           sunlight_needs: responseObj.sunlight_needs,
           when_to_plant: responseObj.when_to_plant,
-          nextWaterFormatted,
+          nextWatering,
           waterStatus: waterStatus,
         });
       })
@@ -62,15 +61,18 @@ export default function LargeCardUser(props) {
   const handleWaterPlant = (id) => {
     axios.put(`/api/my_garden/${id}`);
     const today = new Date();
-    const nextWatering = calculateNextWaterDate(today, plantData.water_needs);
-    const nextWaterFormatted = dateFormatter(nextWatering);
+    const calculateNextWater = calculateNextWaterDate(
+      today,
+      plantData.water_needs
+    );
+
     const waterStatus = "watered";
     setPlantData((prev) => ({
       ...prev,
       last_watered_at: dateFormatter(today),
       lastWaterFormatted: dateFormatter(today),
+      nextWatering: dateFormatter(calculateNextWater),
       waterStatus,
-      nextWaterFormatted,
     }));
     updateMyGarden();
   };
@@ -104,7 +106,7 @@ export default function LargeCardUser(props) {
               <Col className="fw-bold">When to Water Next: </Col>
               <Col className="text-end">
                 {renderIcon(plantData.waterStatus, "large card")}
-                {plantData.nextWaterFormatted}
+                {plantData.nextWatering}
               </Col>
             </Row>
 
