@@ -1,52 +1,63 @@
 
 export const checkWeatherWarnings = (localHigh, localLow, localPrecipitation) => {
+  
+  // Use variables when API calls exceeded for the day:
+  const dailyHighTemp = 35;
+  const dailyLowTemp = 5;
+  const dailyRain = 5;
+
+  // Thresholds for temperature (highest, lowest) and rain level
+  const highTempThreshold = 30;
+  const lowTempThreshold = 0;
+  const rainLevelThreshold = 13;
+
+  /* Approach #1: Will only check one condition at a time. If first or second met, the other conditions don't run. Conditions mutually exclusive. Do we want to set it up this way? */
+
+  /*
+  if (dailyHighTemp >= highTempThreshold) {
+    return "Take action. Extreme heat expected for the day.";
+  }
+  if (dailyLowTemp <= lowTempThreshold) {
+    return "Take action. Extremely cold, plant-killing temperatures expected for the day.";
+  }
+  if (dailyRain >= rainLevelThreshold) {
+    return "Heavy rain expected for today.";
+  }
+
+  return null;
+  
+  */
+// ========================================================================
+
+  /* Approach #2: This checks all three conditions. Broad message to display? Not specific on which weather condition met. */
+
+  /* 
+  if (dailyHighTemp >= highTempThreshold || dailyLowTemp <= lowTempThreshold || dailyRain <= rainLevelThreshold) {
+    return "Take action. Weather condition thresholds exceeded. Check weather forecast for more details."
+  }
+  return null;
+  */
+// ===================================================
+  /* Approach #3: Possibly one of temperature conditions AND rain are met. So, display more than one warning message corresponding to weather condition that was met. */
 
   const weatherMsgs = [];
 
-  const high = "It's hot today."
-  const low = "It's freezing today."
-  const rain = "It's RAINING A LOT."
+  const highHeat = `TAKE ACTION -- Extreme heat expected for the day. Temperatures as high as ${dailyHighTemp} C is expected.`;
+  const extremeCold = `TAKE ACTION -- Freezing temperatures expected for the day.Temperatures could drop as low as ${dailyLowTemp} C.`;
+  const pouringRain = `HEAVY RAIN -- Heavy rainfall expected today, as much as ${dailyRain} mm`;
 
-  const highTempThreshold = 30;
-  const lowTempThreshold = 0;
-  const rainThreshold = 13;
+  if (dailyHighTemp >= highTempThreshold) {
+    weatherMsgs.push(highHeat);
+  }
 
-    // For when Weather API values are null, reached max API calls.
-    const dailyHighTemp = 35;
-    const dailyLowTemp = 5;
-    const dailyRain = 5;
-    // Check conditional if localhigh met or exceeded, then display msg
-    // Check conditional if locallow met or exceeded, then display msg
-    // Check conditional if precipitation level met or exceed, then display msg
+  if (dailyLowTemp <= lowTempThreshold) {
+    weatherMsgs.push(extremeCold);
+  }
 
-    // Will only check on condition at a time. If one is met, the others don't run. Do we want to set it up this way?
-    // if (50 >= 25) {
-    //   return "High temperatures for today.";
-    // }
-    // if (0 <= 5) {
-    //   return "Cold temperatures for today.";
-    // }
-    // if (10 >= 0) {
-    //   return "It's raining cats and dogs today.";
-    // }
+  if (dailyRain >= rainLevelThreshold) {
+    weatherMsgs.push(pouringRain);
+  }
 
-    // This checks all three conditions. Broad message to display? Not specific on which weather condition met.
-    // if (dailyHighTemp >= highTempThreshold || dailyLowTemp <= lowTempThreshold || dailyRain <= rainThreshold) {
-    //   return "Weather condition thresholds exceeded."
-    // }
-    // return null;
-
-    if (dailyHighTemp >= highTempThreshold) {
-      weatherMsgs.push(high);
-    }
-
-    if (dailyLowTemp <= lowTempThreshold) {
-      weatherMsgs.push(low);
-    }
-
-    if (dailyRain <= rainThreshold) {
-      weatherMsgs.push(rain);
-    }
-    
-    return weatherMsgs;
-  };
+  // Returns an empty array if none of conditions above met.
+  return weatherMsgs;
+};
