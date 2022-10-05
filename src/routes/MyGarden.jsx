@@ -27,7 +27,7 @@ export default function MyGarden() {
   } = useContext(weatherContext);
   
 
-  /* Make variable name plural if using array to store warning message. When Weather API working, insert localHigh, localLow, localPrecipitation as arguments for checkWeatherWarnings function. For now using hard-coded data in weatherHelpers. */
+  /* Make variable name plural if using array to store warning message. When Weather API working, insert localHigh, localLow, localPrecipitation as arguments for checkForWeatherWarnings function. For now using hard-coded data in weatherHelpers file. */
   const weatherWarningMsgs = checkForWeatherWarnings();
 
 
