@@ -26,8 +26,6 @@ export default function MyGarden() {
     localPrecipitation,
   } = useContext(weatherContext);
   
-  // const [weatherWarningMsg, setWeatherWarningMsg] = useState(checkWeatherWarnings());
-
   const weatherWarningMsg = checkWeatherWarnings();
 
   // If using array to display weather warning msgs:
