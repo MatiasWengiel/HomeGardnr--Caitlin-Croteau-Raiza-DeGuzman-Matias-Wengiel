@@ -67,7 +67,7 @@ export default function LargeCardUser(props) {
     const waterStatus = "watered";
     setPlantData((prev) => ({
       ...prev,
-      last_watered_at: today.toDateString(),
+      last_watered_at: dateFormatter(today),
       lastWaterFormatted: dateFormatter(today),
       waterStatus,
       nextWaterFormatted,

@@ -58,6 +58,7 @@ export default function MyGarden() {
             plant.lastWateredFormatted = dateFormatter(new Date());
             plant.waterStatus = "watered";
             plant.nextWaterFormatted = dateFormatter(nextWateringCalc);
+            plant.nextWatering = nextWateringCalc;
             console.log(plant);
           }
         });
