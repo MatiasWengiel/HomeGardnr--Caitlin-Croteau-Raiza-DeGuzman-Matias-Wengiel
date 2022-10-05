@@ -10,7 +10,7 @@ import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 
 import Banner from "../components/Banner";
 import { weatherContext } from "../providers/WeatherProvider";
-import { checkWeatherWarnings } from "../helpers/weatherHelpers.js";
+import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
@@ -28,7 +28,7 @@ export default function MyGarden() {
   
 
   /* Make variable name plural if using array to store warning message. When Weather API working, insert localHigh, localLow, localPrecipitation as arguments for checkWeatherWarnings function. For now using hard-coded data in weatherHelpers. */
-  const weatherWarningMsgs = checkWeatherWarnings();
+  const weatherWarningMsgs = checkForWeatherWarnings();
 
 
   const searchPlant = (event) => {
