@@ -21,7 +21,6 @@ export default function MyGarden() {
   const [filterPlants, setFilterPlants] = useState("needs water");
 
   const {
-    currentCity,
     localHigh,
     localLow,
     localPrecipitation,
