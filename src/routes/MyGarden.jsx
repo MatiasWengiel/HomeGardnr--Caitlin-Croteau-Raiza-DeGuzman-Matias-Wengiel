@@ -26,10 +26,11 @@ export default function MyGarden() {
     localPrecipitation,
   } = useContext(weatherContext);
   
-  const weatherWarningMsg = checkWeatherWarnings();
+  // If NOT using array (approach #3 in weatherHelpers), variable name should be singular.
+  // const weatherWarningMsg = checkWeatherWarnings();
 
   // If using array to display weather warning msgs:
-    // const weatherWarningMsgs = checkWeatherWarnings();
+    const weatherWarningMsgs = checkWeatherWarnings();
 
 
   const searchPlant = (event) => {
@@ -124,7 +125,7 @@ export default function MyGarden() {
   };
   return (
     <Container className="w-90">
-      {weatherWarningMsg.length > 0 && <Banner weatherWarning={weatherWarningMsg}/>}
+      {weatherWarningMsgs.length > 0 && <Banner weatherWarning={weatherWarningMsgs}/>}
       <Row className="m-3 justify-content-center">
         <Col xs={8}>
           <SearchBar searchPlant={searchPlant} />
