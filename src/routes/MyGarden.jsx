@@ -71,7 +71,7 @@ export default function MyGarden() {
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      response.data.map((plant) => {
+      response.data.forEach((plant) => {
         //Add the calculated next water date to each plant in the response
         plant.nextWatering = calculateNextWaterDate(
           plant.last_watered_at,
@@ -91,16 +91,29 @@ export default function MyGarden() {
       setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
-  }, []);
+  }, [userID]);
 
   const handleWaterAllPlants = () => {
-    axios.put(`/api/my_garden/waterAll/${userID}`);
-    // setSelectedPlants(
-    //   selectedPlants.map((plant) => {
-    //     plant.lastWateredFormatted = dateFormatter(new Date());
-    //     plant.waterStatus = "watered";
-    //   })
-    // );
+    //Extract the plant_id of the plants that are visible at the time
+    const idArray = selectedPlants.map((plant) => plant.key_id);
+    //Update database, but only the plants that were visible at the time
+    axios.put(`/api/my_garden/waterAll/${idArray}`);
+    //Update state with the corresponding data
+    const today = new Date();
+    const wateredPlants = [...selectedPlants];
+    wateredPlants.forEach(
+      (plant) => (
+        (plant.lastWateredFormatted = dateFormatter(today)),
+        (plant.last_watered_at = today),
+        (plant.waterStatus = "watered"),
+        (plant.nextWatering = calculateNextWaterDate(
+          plant.last_watered_at,
+          plant.water_needs
+        )),
+        (plant.nextWaterFormatted = dateFormatter(plant.nextWatering))
+      )
+    );
+    setSelectedPlants(wateredPlants);
   };
 
   const handleFilterPlants = () => {
