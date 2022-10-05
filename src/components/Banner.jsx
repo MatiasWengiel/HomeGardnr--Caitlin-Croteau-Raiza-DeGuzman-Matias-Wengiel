@@ -14,9 +14,9 @@ export default function Banner(props) {
         </p> */}
 
         <span style={{ fontWeight: "bold" }}>Weather Warning:</span>
-        {weatherWarning.map((msg) => {
+        {weatherWarning.map((msg, index) => {
           return (
-            <p className="m-0">
+            <p className="m-0" key={index}>
              {msg}
             </p>
           );
