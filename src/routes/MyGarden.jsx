@@ -26,11 +26,9 @@ export default function MyGarden() {
     localPrecipitation,
   } = useContext(weatherContext);
   
-  // If NOT using array (approach #3 in weatherHelpers), variable name should be singular.
-  // const weatherWarningMsg = checkWeatherWarnings();
 
-  // If using array to display weather warning msgs:
-    const weatherWarningMsgs = checkWeatherWarnings();
+  /* Make variable name plural if using array to store warning message. When Weather API working, insert localHigh, localLow, localPrecipitation as arguments for checkWeatherWarnings function. For now using hard-coded data in weatherHelpers. */
+  const weatherWarningMsgs = checkWeatherWarnings();
 
 
   const searchPlant = (event) => {
