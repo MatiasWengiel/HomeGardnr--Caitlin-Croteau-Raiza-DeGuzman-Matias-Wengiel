@@ -51,7 +51,7 @@ export const checkForWeatherWarnings = (localHigh, localLow, localPrecipitation)
 
   const extremeCold = `TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as ${dailyLowTemp} C.`;
 
-  const pouringRain = `HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as ${dailyRain} mm.`;
+  const heavyRain = `HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as ${dailyRain} mm.`;
 
   if (dailyHighTemp >= highTempThreshold) {
     weatherMsgs.push(highHeat);
@@ -62,7 +62,7 @@ export const checkForWeatherWarnings = (localHigh, localLow, localPrecipitation)
   }
 
   if (dailyRain >= rainLevelThreshold) {
-    weatherMsgs.push(pouringRain);
+    weatherMsgs.push(heavyRain);
   }
 
   // Returns an empty array if none of conditions above met.
