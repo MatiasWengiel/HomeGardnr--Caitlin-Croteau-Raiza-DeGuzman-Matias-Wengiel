@@ -8,6 +8,10 @@ import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 
+import Banner from "../components/Banner";
+import { weatherContext } from "../providers/WeatherProvider";
+import { checkWeatherWarnings } from "../helpers/weatherHelpers.js";
+
 export default function MyGarden() {
   const { userID } = useContext(userContext);
   const [gardenInfo, setGardenInfo] = useState([]);
@@ -15,6 +19,18 @@ export default function MyGarden() {
   const [showModal, setShowModal] = useState(false);
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
+
+  const {
+    currentCity,
+    localHigh,
+    localLow,
+    localPrecipitation,
+  } = useContext(weatherContext);
+  
+  const [weatherWarningMsg, setWeatherWarningMsg] = useState(checkWeatherWarnings());
+
+  console.log("This is the current city: ", currentCity);
+
 
   const searchPlant = (event) => {
     event.preventDefault();
@@ -108,6 +124,7 @@ export default function MyGarden() {
   };
   return (
     <Container className="w-90">
+      {weatherWarningMsg && <Banner weatherWarning={weatherWarningMsg}/>}
       <Row className="m-3 justify-content-center">
         <Col xs={8}>
           <SearchBar searchPlant={searchPlant} />
