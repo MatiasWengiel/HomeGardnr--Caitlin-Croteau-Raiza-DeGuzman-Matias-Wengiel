@@ -5,12 +5,12 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
-import { Link } from "react-router-dom";
-import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
-
 import Banner from "../components/Banner";
+import { Link } from "react-router-dom";
 import { weatherContext } from "../providers/WeatherProvider";
+import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
+
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
@@ -20,13 +20,8 @@ export default function MyGarden() {
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
 
-  const {
-    localHigh,
-    localLow,
-    localPrecipitation,
-  } = useContext(weatherContext);
+  const { localHigh, localLow, localPrecipitation } = useContext(weatherContext);
   
-
   const weatherWarningMsgs = checkForWeatherWarnings(localHigh, localLow, localPrecipitation);
 
   const searchPlant = (event) => {
