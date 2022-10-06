@@ -13,7 +13,9 @@ export default function MyModal(props) {
       size="xl"
     >
       <Modal.Body>
-        {props.modalMode === "main" && <LargeCardMain id={props.id} />}
+        {props.modalMode === "main" && (
+          <LargeCardMain id={props.id} onHide={props.onHide} />
+        )}
         {props.modalMode === "user" && (
           <LargeCardUser
             plantCardProps={props.plantCardProps}

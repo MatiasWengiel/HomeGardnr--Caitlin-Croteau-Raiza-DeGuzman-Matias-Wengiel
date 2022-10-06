@@ -21,6 +21,7 @@ export default function PlantCard(props) {
       }}
       className="m-2 p-2 text-center"
     >
+      <Card.Title className="text-center">{plant}</Card.Title>
       {/* If there is a waterStatus, render the corresponding icon in the small card size */}
       {waterStatus && renderIcon(waterStatus, "small card")}
       <Card.Img
@@ -30,7 +31,6 @@ export default function PlantCard(props) {
         style={{ height: "150px" }}
       />
       <Card.Body className="p-0">
-        <Card.Title className="text-center">{plant}</Card.Title>
         <Card.Text className="m-0">
           {lastWatered && `last watered: ${lastWatered}`}
         </Card.Text>
