@@ -35,8 +35,9 @@ module.exports = (db) => {
         console.log(error);
       });
   });
-  router.put("/waterAll", (req, res) => {
-    db.query(waterAllPlants()).then(res.status(201)).catch(error => console.log(error.message))
+  router.put("/waterAll/:idArray", (req, res) => {
+    const idArray = req.params.idArray.split(',')
+    db.query(waterAllPlants(idArray)).then(res.status(201)).catch(error => console.log(error.message))
   })
   router.put("/:id", (req, res) => {
     db.query(waterSinglePlant(req.params.id)).then(res.status(201)).catch(error => console.log(error.message))
