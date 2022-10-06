@@ -7,6 +7,12 @@ import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
+import {
+  performSearchPlant,
+  sortPlants,
+  waterSinglePlant,
+  waterAllPlants,
+} from "../helpers/myGardenHelpers";
 
 export default function MyGarden() {
   const { userID } = useContext(userContext);
@@ -16,62 +22,9 @@ export default function MyGarden() {
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
 
-  const searchPlant = (event) => {
-    event.preventDefault();
-    //Case insensitive search for plants that have the typed letter(s) in their generic or specific name
-    setSelectedPlants(
-      gardenInfo.filter((plant) =>
-        plant.specific_name
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase())
-      )
-    );
-  };
-
-  const filterPlantsThatNeedWater = () =>
-    setSelectedPlants(
-      gardenInfo.filter((plant) => plant.waterStatus === "needs water")
-    );
-
-  const generateCards = () => {
-    //Ensures there is data in gardenInfo
-    if (gardenInfo[0]) {
-      //Sorts the plants alphabetically for display
-      selectedPlants.sort((a, b) => {
-        let lowerCaseA = a.specific_name.toLowerCase();
-        let lowerCaseB = b.specific_name.toLowerCase();
-
-        if (lowerCaseA < lowerCaseB) return -1;
-        if (lowerCaseA > lowerCaseB) return 1;
-        return 0;
-      });
-
-      //Creates an array of PlantCards with the corresponding information
-      return selectedPlants.map((plant) => (
-        <PlantCard
-          key={plant.key_id}
-          plant={plant.specific_name}
-          picture={plant.large_plant_card_photo_url}
-          lastWatered={plant.lastWateredFormatted}
-          nextWatering={plant.nextWaterFormatted}
-          waterStatus={plant.waterStatus}
-          handleClick={() => {
-            setShowModal(true);
-            setPlantCardProps({
-              id: plant.key_id,
-              waterStatus: plant.waterStatus,
-              nextWatering: plant.nextWatering,
-            });
-          }}
-        />
-      ));
-    }
-  };
-  const cardsList = selectedPlants !== "" ? generateCards() : null;
-
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      response.data.map((plant) => {
+      response.data.forEach((plant) => {
         //Add the calculated next water date to each plant in the response
         plant.nextWatering = calculateNextWaterDate(
           plant.last_watered_at,
@@ -91,10 +44,58 @@ export default function MyGarden() {
       setGardenInfo(response.data);
       setSelectedPlants(response.data);
     });
-  }, []);
+  }, [userID]);
 
-  const handleWaterAllPlants = () => {
-    axios.put("/api/my_garden/waterAll");
+  //Generates an array of PlantCards based on the selectedPlants
+  const generateCards = () => {
+    //Ensures there is data in gardenInfo
+    if (selectedPlants[0]) {
+      //Sort plants alphabetically for display
+      const sortedPlants = sortPlants(selectedPlants);
+      //Creates an array of PlantCards with the corresponding information
+      return sortedPlants.map((plant) => (
+        <PlantCard
+          key={plant.key_id}
+          plant={plant.specific_name}
+          picture={plant.large_plant_card_photo_url}
+          lastWatered={plant.lastWateredFormatted}
+          nextWatering={plant.nextWaterFormatted}
+          waterStatus={plant.waterStatus}
+          handleClick={() => {
+            setShowModal(true);
+            setPlantCardProps({
+              id: plant.key_id,
+              waterStatus: plant.waterStatus,
+              nextWatering: plant.nextWaterFormatted,
+              updateMyGarden: () => waterSinglePlant(plant.key_id, gardenInfo),
+            });
+          }}
+        />
+      ));
+    }
+  };
+  //Generates the cardsList for rendering on the page
+  const cardsList = selectedPlants !== "" ? generateCards() : null;
+
+  //Functions for page functionality below //
+  const searchPlant = (event) => {
+    event.preventDefault();
+    const searchTerm = event.target.value.toLowerCase();
+    setSelectedPlants(performSearchPlant(searchTerm, gardenInfo));
+  };
+
+  const filterPlantsThatNeedWater = () =>
+    setSelectedPlants(
+      gardenInfo.filter((plant) => plant.waterStatus === "needs water")
+    );
+
+  const handleWaterAllPlants = (plantsList) => {
+    //Extract the plant_id of the plants that are visible at the time
+    const idArray = selectedPlants.map((plant) => plant.key_id);
+    //Update database, but only the plants that were visible at the time
+    axios.put(`/api/my_garden/waterAll/${idArray}`);
+    //Update state with the corresponding data
+    setSelectedPlants(waterAllPlants(plantsList));
   };
 
   const handleFilterPlants = () => {
@@ -106,6 +107,7 @@ export default function MyGarden() {
       setFilterPlants("needs water");
     }
   };
+
   return (
     <Container className="w-90">
       <Row className="m-3 justify-content-center">
@@ -130,7 +132,7 @@ export default function MyGarden() {
           className="col-3 offset-1"
           variant="primary"
           onClick={() => {
-            handleWaterAllPlants();
+            handleWaterAllPlants(selectedPlants);
           }}
         >
           Water All Plants

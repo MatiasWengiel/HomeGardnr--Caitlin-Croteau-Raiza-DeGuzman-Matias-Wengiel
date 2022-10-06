@@ -8,7 +8,7 @@ export default function WaterIcon(props) {
       return {
         width: "3rem",
         position: "absolute",
-        marginTop: "0.5rem",
+        marginTop: "2.5rem",
         marginLeft: "0.5rem",
         backgroundColor: "white",
         border: "2px solid",
@@ -23,5 +23,6 @@ export default function WaterIcon(props) {
       };
     }
   };
+
   return <Image src={src} roundedCircle={true} style={determineStyle()} />;
 }

@@ -10,7 +10,6 @@ import "../styles/LargeCardMain.scss";
 
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
-  const navigate = useNavigate();
   const id = props.id;
 
   useEffect(() => {
@@ -28,14 +27,11 @@ export default function LargeCardMain(props) {
       plantId: id,
     };
 
-    axios
-      .post("/api/my_garden", info)
-      .then((response) => {
-        navigate("/my_garden");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    axios.post("/api/my_garden", info).catch((error) => {
+      console.log(error.message);
+    });
+
+    props.onHide();
   };
 
   return (
