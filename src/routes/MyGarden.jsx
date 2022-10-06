@@ -28,7 +28,7 @@ export default function MyGarden() {
   
 
   /* Make variable name plural if using array to store warning message. When Weather API working, insert localHigh, localLow, localPrecipitation as arguments for checkForWeatherWarnings function. For now using hard-coded data in weatherHelpers file. */
-  const weatherWarningMsgs = checkForWeatherWarnings();
+  const weatherWarningMsgs = checkForWeatherWarnings(localHigh, localLow, localPrecipitation);
 
 
   const searchPlant = (event) => {
@@ -122,53 +122,54 @@ export default function MyGarden() {
     }
   };
   return (
-    <Container className="w-90">
-      {weatherWarningMsgs.length > 0 && <Banner weatherWarning={weatherWarningMsgs}/>}
-      <Row className="m-3 justify-content-center">
-        <Col xs={8}>
-          <SearchBar searchPlant={searchPlant} />
-        </Col>
-      </Row>
-      <Row>
-        <Button className="col-3" variant="success">
-          <Link
-            to="/plants"
-            style={{
-              color: "inherit",
-              backgroundColor: "inherit",
-              textDecoration: "inherit",
+    <> {weatherWarningMsgs.length > 0 && <Banner weatherWarning={weatherWarningMsgs}/>}
+      <Container className="w-90">
+        <Row className="m-3 justify-content-center">
+          <Col xs={8}>
+            <SearchBar searchPlant={searchPlant} />
+          </Col>
+        </Row>
+        <Row>
+          <Button className="col-3" variant="success">
+            <Link
+              to="/plants"
+              style={{
+                color: "inherit",
+                backgroundColor: "inherit",
+                textDecoration: "inherit",
+              }}
+            >
+              Add New Plant To Your Garden
+            </Link>
+          </Button>
+          <Button
+            className="col-3 offset-1"
+            variant="primary"
+            onClick={() => {
+              handleWaterAllPlants();
             }}
           >
-            Add New Plant To Your Garden
-          </Link>
-        </Button>
-        <Button
-          className="col-3 offset-1"
-          variant="primary"
-          onClick={() => {
-            handleWaterAllPlants();
-          }}
-        >
-          Water All Plants
-        </Button>
-        <Button
-          className="col-3 offset-1"
-          variant={filterPlants === "needs water" ? "warning" : "success"}
-          onClick={() => {
-            handleFilterPlants();
-          }}
-        >
-          {filterPlants === "needs water" && "View Plants That Need Water"}
-          {filterPlants === "all plants" && "View All Plants"}
-        </Button>
-        <PlantModal
-          show={showModal}
-          onHide={() => setShowModal(false)}
-          plantCardProps={plantCardProps}
-          modalMode="user"
-        />
-      </Row>
-      <Row>{cardsList}</Row>
-    </Container>
+            Water All Plants
+          </Button>
+          <Button
+            className="col-3 offset-1"
+            variant={filterPlants === "needs water" ? "warning" : "success"}
+            onClick={() => {
+              handleFilterPlants();
+            }}
+          >
+            {filterPlants === "needs water" && "View Plants That Need Water"}
+            {filterPlants === "all plants" && "View All Plants"}
+          </Button>
+          <PlantModal
+            show={showModal}
+            onHide={() => setShowModal(false)}
+            plantCardProps={plantCardProps}
+            modalMode="user"
+          />
+        </Row>
+        <Row>{cardsList}</Row>
+      </Container>
+    </>
   );
 }
