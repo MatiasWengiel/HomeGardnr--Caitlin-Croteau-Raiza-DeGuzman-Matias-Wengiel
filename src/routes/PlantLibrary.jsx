@@ -6,6 +6,7 @@ import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
 import FormModal from "../components/FormModal";
+import "../styles/Buttons.scss";
 
 export default function PlantLibrary() {
   const [plantInfo, setPlantInfo] = useState([]);

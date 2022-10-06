@@ -1,5 +1,6 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { renderIcon } from "../helpers/cardHelpers";
+import "../styles/Buttons.scss";
 
 export default function PlantCard(props) {
   const {
@@ -37,7 +38,11 @@ export default function PlantCard(props) {
         <Card.Text className="m-0">
           {nextWatering && `next watering: ${nextWatering}`}
         </Card.Text>
-        <Button style={{ border: "none" }} onClick={handleClick}>
+        <Button
+          // className="btn-view-plant"
+          // style={{ border: "none" }}
+          onClick={handleClick}
+        >
           View Plant
         </Button>
       </Card.Body>

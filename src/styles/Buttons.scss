@@ -14,14 +14,29 @@
   border: none;
 }
 
-.btn-secondary {
-  // background-color: $button-secondary;
-  // border: none;
-}
+// .btn-secondary {
+//   background-color: $button-secondary;
+//   border: none;
+// }
 
 .btn-success {
-  // background-color: $button-success;
-  border: "none";
+  background-color: $button-success;
+  border: none;
+  &:first-child:hover {
+    background-color: $button-success-hover;
+    border: none;
+  }
+}
+
+.btn-warning {
+  background-color: $button-warning;
+  border: none;
+  color: white;
+  &:first-child:hover {
+    background-color: $button-warning-hover;
+    border: none;
+    color: white;
+  }
 }
 
 // .btn-primary:hover {
