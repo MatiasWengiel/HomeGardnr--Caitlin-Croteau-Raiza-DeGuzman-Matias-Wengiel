@@ -1,0 +1,66 @@
+@import "./variables.scss";
+
+.btn-primary {
+  background-color: $button-primary;
+  border: none;
+  &:first-child:hover {
+    background-color: $button-primary-hover;
+    border: none;
+  }
+}
+
+:not(.btn-check) + .btn:hover {
+  background-color: $button-primary-hover;
+  border: none;
+}
+
+.btn-secondary {
+  // background-color: $button-secondary;
+  // border: none;
+}
+
+.btn-success {
+  // background-color: $button-success;
+  border: "none";
+}
+
+// .btn-primary:hover {
+//   background-color: grey;
+//   border: "none";
+// }
+
+// .btn-view-plant {
+//   background-color: lightseagreen;
+//   border: "none";
+//   &:hover {
+//     background-color: grey;
+//   }
+// }
+
+// .btn-filter-plants {
+//   background-color: lightseagreen;
+//   &:hover {
+//     background-color: grey;
+//   }
+// }
+
+// .btn-add-plant {
+//   background-color: lightseagreen;
+//   &:hover {
+//     background-color: grey;
+//   }
+// }
+
+// .btn-water-plants {
+//   background-color: lightseagreen;
+//   &:hover {
+//     background-color: grey;
+//   }
+// }
+
+// .btn-submit {
+//   background-color: lightseagreen;
+//   &:hover {
+//     background-color: grey;
+//   }
+// }
