@@ -2,7 +2,7 @@ export const checkForWeatherWarnings = (localHigh, localLow, localPrecipitation)
 
   // Thresholds for temperature (highest, lowest) and rain level
   const highTempThreshold = 30;
-  const lowTempThreshold = 0;
+  const lowTempThreshold = -1;
   const rainLevelThreshold = 13;
 
   const weatherMsgs = [];
