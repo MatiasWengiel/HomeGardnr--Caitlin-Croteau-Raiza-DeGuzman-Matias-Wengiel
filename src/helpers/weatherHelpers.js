@@ -5,7 +5,6 @@ export const checkForWeatherWarnings = (localHigh, localLow, localPrecipitation)
   const lowTempThreshold = 0;
   const rainLevelThreshold = 13;
 
-  // Push warning msgs into array if any of three conditions met.
   const weatherMsgs = [];
 
   const highHeat = `TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as ${localHigh} C expected.`;
