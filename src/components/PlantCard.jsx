@@ -19,7 +19,7 @@ export default function PlantCard(props) {
       style={{
         width: "15rem",
       }}
-      className="m-2 p-2 text-center"
+      className="m-4 p-2 text-center"
     >
       <Card.Title className="text-center">{plant}</Card.Title>
       {/* If there is a waterStatus, render the corresponding icon in the small card size */}
