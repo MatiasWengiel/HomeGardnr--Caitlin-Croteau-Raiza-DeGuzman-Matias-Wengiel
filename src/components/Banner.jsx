@@ -7,7 +7,7 @@ export default function Banner(props) {
 
   if (show) {
     return (
-      <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+      <Alert className="text-center" variant="danger" onClose={() => setShow(false)} dismissible>
         <span style={{ fontWeight: "bold" }}>Weather Warning:</span>
         {weatherWarning.map((msg, index) => {
           return (
