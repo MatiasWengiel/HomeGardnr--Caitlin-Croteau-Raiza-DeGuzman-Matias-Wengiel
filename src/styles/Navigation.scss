@@ -1,9 +1,18 @@
 .custom-navbar {
   backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.22);
 }
 
 .nav-text {
   color: black;
   font-weight: 600;
   font-size: larger;
+  &:hover {
+    color: red;
+  }
 }
+
+.nav-link-selected {
+  color: white;
+}
+//do I want to udate hover?
