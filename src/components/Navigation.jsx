@@ -7,7 +7,6 @@ import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
-import PlantLibrary from "../routes/PlantLibrary";
 
 export default function Navigation(props) {
   const user = props.user;
@@ -28,36 +27,26 @@ export default function Navigation(props) {
       setNavBrand(true);
     }
   };
-  //will need to do for logo too
+ 
   useEffect(() => {
     changeNavbar();
     window.addEventListener("scroll", changeNavbar);
   });
 
-  const navTextStyle = (navText) => {
-    return navText ? { color: "black" } : { color: "white" };
-  };
+  const navbarBackground = navbar ? "navbar-scroll" : "custom-navbar";
 
-  // const navBarColor = () => {
-  //   if (navbar) {
-  //     return { "color: success" };
-  //   } else {
-  //     return { color: white };
-  //   }
-  // };
+  //update this if we want two logos
+  const navbarBrand = navBrand ? brand1 : brand2;
+
+  //do we want the text color to change?
+  //have left waldo as a link as we may want it to eventually lead to user settings?
 
   return (
-    <Navbar
-      className="custom-navbar"
-      expand="lg"
-      fixed="top"
-      bg={navbar ? "success" : ""}
-      // style={navBarColor}
-    >
+    <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="nav-text" href="/">
           GARDNR
-          <Image src={navBrand ? brand1 : brand2} alt="Gardnr" width="50px" />
+          <Image src={navbarBrand} alt="Gardnr" width="50px" />
           {/* <img
               src={brand}
               width="50"
@@ -75,19 +64,6 @@ export default function Navigation(props) {
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
             <NavLink href={"/logout"} label={"Logout"} />
-
-            {/* <Nav.Link className="nav-text" href="/plants">
-              Plant Library
-            </Nav.Link>
-            <Nav.Link className="nav-text" href="/my_garden">
-              My Garden
-            </Nav.Link>
-            <Nav.Link className="nav-text" href="/weather">
-              Weather Info
-            </Nav.Link>
-            <Nav.Link className="nav-text" href="/">
-              Logout
-            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -98,13 +74,6 @@ export default function Navigation(props) {
 //https://dev.to/cesareuseche/react-navbar-change-background-color-on-scroll-react-js-gatsby-2a39#:~:text=To%20create%20the%20rendering%20of,the%20changeBackground%20function%2C%20like%20so.
 
 ///  bg="light"
-//questions
-//my plants button/add plants+ (how to do this?)
-//navtext vs disabled - do we want the hello waldo to also be a link?
-//do we want a plant search bar? - stretch?
-//add brand image
-//route names
-
 //source code: https://www.codeply.com/p/zzFC5XoyUm
 //https://getbootstrap.com/docs/5.0/utilities/flex/
 //https://getbootstrap.com/docs/5.0/components/navbar/
