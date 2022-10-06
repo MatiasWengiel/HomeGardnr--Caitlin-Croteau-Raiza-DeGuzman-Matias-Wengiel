@@ -6,6 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
+import NavLink from "./NavLink";
+import PlantLibrary from "../routes/PlantLibrary";
 
 export default function Navigation(props) {
   const user = props.user;
@@ -69,7 +71,12 @@ export default function Navigation(props) {
           <Nav className="ms-auto">
             {/* adds padding of 0.5rem to right side of navbar.text */}
             <Navbar.Text className="nav-text pe-2">Hello, {user}!</Navbar.Text>
-            <Nav.Link className="nav-text" href="/plants">
+            <NavLink href={"/plants"} label={"Plant Library"} />
+            <NavLink href={"/my_garden"} label={"My Garden"} />
+            <NavLink href={"/weather"} label={"Weather Info"} />
+            <NavLink href={"/logout"} label={"Logout"} />
+
+            {/* <Nav.Link className="nav-text" href="/plants">
               Plant Library
             </Nav.Link>
             <Nav.Link className="nav-text" href="/my_garden">
@@ -80,7 +87,7 @@ export default function Navigation(props) {
             </Nav.Link>
             <Nav.Link className="nav-text" href="/">
               Logout
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
