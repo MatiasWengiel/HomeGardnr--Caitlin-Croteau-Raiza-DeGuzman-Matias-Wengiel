@@ -53,7 +53,7 @@ export default function Navigation(props) {
       // style={navBarColor}
     >
       <Container>
-        <Navbar.Brand className="nav-text" href="/">
+        <Navbar.Brand className="nav-text" href="/my_garden">
           GARDNR
           <Image src={navBrand ? brand1 : brand2} alt="Gardnr" width="50px" />
           {/* <img
