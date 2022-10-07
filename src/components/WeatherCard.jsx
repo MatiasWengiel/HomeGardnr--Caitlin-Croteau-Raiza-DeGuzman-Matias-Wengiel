@@ -11,13 +11,8 @@ export default function WeatherCard(props) {
 
   const { currentCity, localHigh, localLow, localPrecipitation, forecastLink } = useContext(weatherContext);
 
-  const weatherWarningMsgs = checkForWeatherWarnings(localHigh,localLow,localPrecipitation);
-
   return (
     <>
-      {weatherWarningMsgs.length > 0 && (
-        <Banner weatherWarning={weatherWarningMsgs} />
-      )}
       <Container className="weather-container">
         <Alert variant="secondary">
           Today's Weather Information for{" "}
