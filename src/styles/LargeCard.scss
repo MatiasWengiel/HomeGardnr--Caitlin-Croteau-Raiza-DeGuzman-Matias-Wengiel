@@ -1,0 +1,19 @@
+@import "./Variables.scss";
+
+.lcm-photo {
+  padding-top: 3%;
+}
+
+.lcm-info {
+  width: 40%;
+}
+
+.card-lrg-bkgrnd {
+  background-color: $light-grey-background;
+}
+
+.lcu-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5%;
+}

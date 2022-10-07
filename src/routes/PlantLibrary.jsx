@@ -6,6 +6,7 @@ import PlantCard from "../components/PlantCard";
 import { useEffect } from "react";
 import PlantModal from "../components/PlantModal";
 import FormModal from "../components/FormModal";
+import "../styles/Buttons.scss";
 
 export default function PlantLibrary() {
   const [plantInfo, setPlantInfo] = useState([]);
@@ -82,14 +83,13 @@ export default function PlantLibrary() {
         </Col>
       </Row>
       <Row>
-        <Button
-          className="col-2"
-          variant="success"
+        <button
+          className="col-2 btn-custom btn-add-plant"
           type="submit"
           onClick={handleClick}
         >
           Add New Plant
-        </Button>
+        </button>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}

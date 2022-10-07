@@ -5,8 +5,12 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
+import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
+import { weatherContext } from "../providers/WeatherProvider";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
+import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
+
 import {
   performSearchPlant,
   sortPlants,
@@ -14,6 +18,7 @@ import {
   waterAllPlants,
 } from "../helpers/myGardenHelpers";
 import useGardenData from "../helpers/useGardenData";
+
 export default function MyGarden() {
   const [filterPlants, setFilterPlants] = useState("needs water");
   const {
@@ -29,6 +34,14 @@ export default function MyGarden() {
     plantCardProps,
   } = useGardenData();
 
+  const { localHigh, localLow, localPrecipitation } =
+    useContext(weatherContext);
+
+  const weatherWarningMsgs = checkForWeatherWarnings(
+    localHigh,
+    localLow,
+    localPrecipitation
+  );
   //Functions for page functionality below //
   const handleSearchPlant = (event) => {
     event.preventDefault();
@@ -56,13 +69,19 @@ export default function MyGarden() {
   };
 
   return (
-    <Container className="mw-90">
-      <Row className="mt-4 ms-3">
-        <Col xs={{ span: 4 }}>
-          <SearchBar searchPlant={handleSearchPlant} />
-        </Col>
-        <Col xs={{ offset: 3 }}>
-          <Button className="ms-2 me-2" variant="success">
+    <>
+      {" "}
+      {weatherWarningMsgs.length > 0 && (
+        <Banner weatherWarning={weatherWarningMsgs} />
+      )}
+      <Container className="w-90">
+        <Row className="m-3 justify-content-center">
+          <Col xs={8}>
+            <SearchBar searchPlant={handleSearchPlant} />
+          </Col>
+        </Row>
+        <Row>
+          <button className="col-3 btn-custom btn-add-plant">
             <Link
               to="/plants"
               style={{
@@ -71,41 +90,36 @@ export default function MyGarden() {
                 textDecoration: "inherit",
               }}
             >
-              Add New Plant
+              Add New Plant To Your Garden
             </Link>
-          </Button>
-          <Button
-            className="ms-2 me-2"
-            variant="primary"
+          </button>
+          <button
+            className="col-3 offset-1 btn-custom btn-water-plant"
             onClick={() => {
               handleWaterAllPlants(selectedPlants);
             }}
           >
             Water All Plants
-          </Button>
-          <Button
-            className="ms-2 me-2"
-            variant={filterPlants === "needs water" ? "warning" : "success"}
+          </button>
+          <button
+            className="col-3 offset-1 btn-custom btn-water-warning"
+            // variant={filterPlants === "needs water" ? "warning" : "success"}
             onClick={() => {
               handleFilterPlants();
             }}
           >
-            {filterPlants === "needs water" && "View Unwatered Plants"}
+            {filterPlants === "needs water" && "View Plants That Need Water"}
             {filterPlants === "all plants" && "View All Plants"}
-          </Button>
-        </Col>
-        <PlantModal
-          show={showModal}
-          onHide={() => setShowModal(false)}
-          plantCardProps={plantCardProps}
-          modalMode="user"
-        />
-      </Row>
-      <Row className="justify-content-center">
-        <Container className="row justify-content-between">
-          {cardsList}
-        </Container>
-      </Row>
-    </Container>
+          </button>
+          <PlantModal
+            show={showModal}
+            onHide={() => setShowModal(false)}
+            plantCardProps={plantCardProps}
+            modalMode="user"
+          />
+        </Row>
+        <Row>{cardsList}</Row>
+      </Container>
+    </>
   );
 }
