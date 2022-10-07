@@ -9,7 +9,7 @@ export default function NavLink({ href, label }) {
 
   return (
     <Nav.Link
-      className={isActive ? "nav-text nav-link-selected" : "nav-text"}
+      className={isActive ? "nav-link nav-link-selected" : "nav-link"}
       href={href}
     >
       {label}

@@ -10,6 +10,7 @@ export default function PlantForm(props) {
   const { onHide } = props;
   const [validated, setValidated] = useState(false);
   const [plantInfo, setPlantInfo] = useState({
+    id: "",
     specific_name: "",
     season: "",
     maturity: "",
@@ -38,15 +39,19 @@ export default function PlantForm(props) {
 
     return axios
       .post("/api/plants", plantInfo)
-      .then((response) => {})
+      .then((response) => {
+        const id = response.data;
+        plantInfo.id = id;
+      })
       .then(() => {
         props.updateLibrary(plantInfo);
-
+      })
+      .then(() => {
         //hides modal
         onHide();
-
         //resets form
         setPlantInfo({
+          id: "",
           specific_name: "",
           season: "",
           maturity: "",

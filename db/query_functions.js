@@ -8,7 +8,7 @@ const getUserName = (userID) => {
   return `
   SELECT first_name, last_name FROM users WHERE id = ${userID}
   `;
-}
+};
 
 // Get all info about a plant from the main library (plants)
 const getPlantInfo = (plantId) => {
@@ -66,7 +66,7 @@ const addPlantToLibrary = function (plant) {
     how_far_apart_to_plant,
     how_deep_to_plant,
     how_long_until_mature)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *;`;
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id;`;
 
   return [queryString, values];
 };
@@ -85,23 +85,23 @@ const addPlantToMyGarden = function (plantId, userId) {
 const getMyGardenPlants = (userID) => {
   return `SELECT user_plants.id AS key_id, large_plant_card_photo_url, specific_name, planted_date, last_watered_at, water_needs, when_to_plant, sunlight_needs, highest_temp_tolerance, lowest_temp_tolerance, how_deep_to_plant, how_far_apart_to_plant, how_long_until_mature FROM user_plants
     JOIN plants ON plant_id = plants.id
-    WHERE user_id = ${userID}`
-}
+    WHERE user_id = ${userID}`;
+};
 
 const waterSinglePlant = (plantID) => {
   return `UPDATE user_plants 
   SET last_watered_at = CURRENT_DATE
-  where id = ${plantID}`
-}
+  where id = ${plantID}`;
+};
 
 const waterAllPlants = (idArray) => {
-  const idList = idArray
-  const searchString = idList.join(" OR id =  ")
+  const idList = idArray;
+  const searchString = idList.join(" OR id =  ");
   return `UPDATE user_plants
   SET last_watered_at = CURRENT_DATE
   WHERE id = ${searchString}
-`
-}
+`;
+};
 module.exports = {
   getUserLocation,
   getUserName,
@@ -114,5 +114,5 @@ module.exports = {
   searchPlant,
   getMyGardenPlants,
   waterSinglePlant,
-  waterAllPlants
+  waterAllPlants,
 };
