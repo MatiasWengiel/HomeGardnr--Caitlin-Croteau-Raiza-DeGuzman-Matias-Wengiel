@@ -5,8 +5,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import "../styles/LargeCardMain.scss";
+import "../styles/LargeCard.scss";
 
 export default function LargeCardMain(props) {
   const [plantData, setPlantData] = useState({});
@@ -37,7 +36,7 @@ export default function LargeCardMain(props) {
   return (
     <Container>
       <Card>
-        <Card.Body className="d-flex flex-row mb-3 justify-content-around">
+        <Card.Body className="d-flex flex-row justify-content-around card-lrg-bkgrnd">
           <div className="lcm-photo">
             <Card.Img
               width={400}
@@ -90,7 +89,10 @@ export default function LargeCardMain(props) {
               <Col className="text-end">{plantData.how_long_until_mature}</Col>
             </Row>
 
-            <button className="btn-custom btn-add-plant" onClick={() => addPlantToGarden()}>
+            <button
+              className="btn-custom btn-add-plant"
+              onClick={() => addPlantToGarden()}
+            >
               Add to My Garden
             </button>
           </div>
