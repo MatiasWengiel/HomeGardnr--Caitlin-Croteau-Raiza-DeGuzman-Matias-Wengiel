@@ -19,13 +19,17 @@ export default function PlantCard(props) {
     <Card
       style={{
         width: "15rem",
+        // backgroundColor: "#D3D3D3",
+        boxShadow: "0 0 10px rgb(0 0 0 / 40%)",
+        border: "none",
       }}
-      className="m-2 p-2 text-center"
+      className="m-4 p-2 text-center"
     >
       <Card.Title className="text-center">{plant}</Card.Title>
       {/* If there is a waterStatus, render the corresponding icon in the small card size */}
       {waterStatus && renderIcon(waterStatus, "small card")}
       <Card.Img
+        className="mb-2"
         variant="top"
         src={picture}
         alt={altText}
