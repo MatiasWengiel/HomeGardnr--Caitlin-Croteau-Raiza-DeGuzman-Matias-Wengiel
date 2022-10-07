@@ -2,11 +2,29 @@ import Navigation from "../components/Navigation";
 import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
 
+import { useContext } from "react";
+import { weatherContext } from "../providers/WeatherProvider";
+import Banner from "../components/Banner";
+import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
+
 export default function Root() {
+
+  const { localHigh, localLow, localPrecipitation } =
+    useContext(weatherContext);
+
+  const weatherWarningMsgs = checkForWeatherWarnings(
+    localHigh,
+    localLow,
+    localPrecipitation
+    );
+
   return (
     <>
       <Navigation user="Waldo" />
-      <Header />
+      <Header />{" "}
+      {weatherWarningMsgs.length > 0 && (
+        <Banner weatherWarning={weatherWarningMsgs} />
+      )}
       <div id="detail">
         <Outlet />
       </div>
