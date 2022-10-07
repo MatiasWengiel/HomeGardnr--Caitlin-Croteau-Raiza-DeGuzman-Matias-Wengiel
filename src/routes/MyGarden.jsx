@@ -109,44 +109,47 @@ export default function MyGarden() {
   };
 
   return (
-    <Container className="w-90">
+    <Container className="mw-90">
       <Row className="m-3 justify-content-center">
-        <Col xs={8}>
-          <SearchBar searchPlant={searchPlant} />
-        </Col>
+        <Col xs={8}></Col>
       </Row>
-      <Row>
-        <Button className="col-3" variant="success">
-          <Link
-            to="/plants"
-            style={{
-              color: "inherit",
-              backgroundColor: "inherit",
-              textDecoration: "inherit",
+      <Row className="justify-content-center">
+        <Col>
+          <Button className="m-2" variant="success">
+            <Link
+              to="/plants"
+              style={{
+                color: "inherit",
+                backgroundColor: "inherit",
+                textDecoration: "inherit",
+              }}
+            >
+              Add New Plant
+            </Link>
+          </Button>
+          <Button
+            className="m-2"
+            variant="primary"
+            onClick={() => {
+              handleWaterAllPlants(selectedPlants);
             }}
           >
-            Add New Plant To Your Garden
-          </Link>
-        </Button>
-        <Button
-          className="col-3 offset-1"
-          variant="primary"
-          onClick={() => {
-            handleWaterAllPlants(selectedPlants);
-          }}
-        >
-          Water All Plants
-        </Button>
-        <Button
-          className="col-3 offset-1"
-          variant={filterPlants === "needs water" ? "warning" : "success"}
-          onClick={() => {
-            handleFilterPlants();
-          }}
-        >
-          {filterPlants === "needs water" && "View Plants That Need Water"}
-          {filterPlants === "all plants" && "View All Plants"}
-        </Button>
+            Water All Plants
+          </Button>
+          <Button
+            className="m-2"
+            variant={filterPlants === "needs water" ? "warning" : "success"}
+            onClick={() => {
+              handleFilterPlants();
+            }}
+          >
+            {filterPlants === "needs water" && "View Unwatered Plants"}
+            {filterPlants === "all plants" && "View All Plants"}
+          </Button>
+        </Col>
+        <Col>
+          <SearchBar searchPlant={searchPlant} />
+        </Col>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
@@ -154,7 +157,7 @@ export default function MyGarden() {
           modalMode="user"
         />
       </Row>
-      <Row>{cardsList}</Row>
+      <Row className="justify-content-center">{cardsList}</Row>
     </Container>
   );
 }
