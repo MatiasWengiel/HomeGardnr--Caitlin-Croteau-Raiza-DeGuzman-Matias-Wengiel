@@ -3,8 +3,7 @@ import { Alert, Container, Stack } from "react-bootstrap";
 import "../styles/WeatherCard.scss";
 import axios from "axios";
 import { weatherContext } from "../providers/WeatherProvider";
-import Banner from "./Banner";
-import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
+
 
 export default function WeatherCard(props) {
   let localWarnings = "";
