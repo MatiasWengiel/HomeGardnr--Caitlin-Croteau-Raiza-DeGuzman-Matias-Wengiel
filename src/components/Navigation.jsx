@@ -63,7 +63,7 @@ export default function Navigation(props) {
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
-            <NavLink href={"/logout"} label={"Weather Events"} />
+            <NavLink href={""} label={"Weather Events"} />
           </Nav>
         </Navbar.Collapse>
       </Container>
