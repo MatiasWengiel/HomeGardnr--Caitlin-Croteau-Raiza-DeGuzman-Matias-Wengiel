@@ -8,7 +8,10 @@ import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
 
+// Add imports
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Banner from "./Banner";
+
 
 export default function Navigation(props) {
   const user = props.user;
@@ -16,6 +19,11 @@ export default function Navigation(props) {
   const [navText, setNavText] = useState(false);
   const [navBrand, setNavBrand] = useState(false);
 
+  // Capture event selected in Weather Events dropdown menu. Default false.
+  // State changes on click when user selects a weather event
+  const [event, setEvent] = useState(false);
+
+  
   const changeNavbar = () => {
     console.log(window.scrollY);
     if (window.scrollY >= 5) {
@@ -27,6 +35,45 @@ export default function Navigation(props) {
       setNavText(false);
       //update this to false if we want 2 brand images
       setNavBrand(true);
+    }
+  };
+
+  // Function to manage what happens on click selecting a weather event
+  // Display Banner comp with corresponding event message
+  const handleSelect = (eventKey) => {
+    setEvent(true);
+
+    const weatherEventMsg = [];
+
+    const highHeat = `TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.`;
+
+    const extremeCold = `TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as -20 C.`;
+
+    const heavyRain = `HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as 30 mm.`;
+
+    const sharkNado = `SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets`
+
+    if (event && eventKey == "heat") {
+      weatherEventMsg.push(highHeat);
+      <Banner weatherWarning={weatherEventMsg} />
+      setEvent(false);
+    }
+    if (event && eventKey == "polar") {
+      weatherEventMsg.push(extremeCold);
+      <Banner weatherWarning={weatherEventMsg} />;
+      setEvent(false);
+    }
+
+    if (event && eventKey == "rain") {
+      weatherEventMsg.push(heavyRain);
+      <Banner weatherWarning={weatherEventMsg}/>
+      setEvent(false);
+    }
+
+    if (event && eventKey == "shark-nado") {
+      weatherEventMsg.push(sharkNado);
+      <Banner weatherWarning={weatherEventMsg} />;
+      setEvent(false);
     }
   };
 
@@ -65,11 +112,11 @@ export default function Navigation(props) {
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
-            <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text">
+            <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text" onSelect={() => handleSelect(event)}>
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
-              <NavDropdown.Item eventKey="freeze">Polar</NavDropdown.Item>
-              <NavDropdown.Item eventKey="heavyrain">Rain</NavDropdown.Item>
-              <NavDropdown.Item eventKey="sharknado">
+              <NavDropdown.Item eventKey="polar">Polar</NavDropdown.Item>
+              <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
+              <NavDropdown.Item eventKey="shark-nado">
                 Shark-nado 🦈
               </NavDropdown.Item>
             </NavDropdown>
