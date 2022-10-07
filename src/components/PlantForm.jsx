@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "../styles/PlantForm.scss";
+import "../styles/LargeCard.scss";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -70,7 +70,7 @@ export default function PlantForm(props) {
 
   return (
     <Container
-      className="p-3 ms-auto square border border-2 rounded text-start"
+      className="p-3 ms-auto square border border-2 rounded text-start card-lrg-bkgrnd"
       sm={12}
     >
       <h1>Add a new plant!</h1>
