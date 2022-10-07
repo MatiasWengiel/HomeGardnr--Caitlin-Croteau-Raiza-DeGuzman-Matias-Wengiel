@@ -90,9 +90,9 @@ export default function LargeCardMain(props) {
               <Col className="text-end">{plantData.how_long_until_mature}</Col>
             </Row>
 
-            <Button variant="primary" onClick={() => addPlantToGarden()}>
+            <button className="btn-custom btn-add-plant" onClick={() => addPlantToGarden()}>
               Add to My Garden
-            </Button>
+            </button>
           </div>
         </Card.Body>
       </Card>

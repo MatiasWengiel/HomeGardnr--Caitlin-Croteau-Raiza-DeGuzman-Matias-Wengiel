@@ -6,16 +6,13 @@
 
 //do we want navtext to change on scroll?
 
-$button-primary-hover: #a020f0;
-$button-primary: #208d4a;
-$button-success-hover: #a020f0;
-$button-success: #ffb72b;
-$button-warning-hover: #a020f0;
-$button-warning: #f9d923;
-
-//might not want to change core styling?
-$button-secondary-hover: #a020f0;
-$button-secondary: #00a6ed;
+$button-hover: #d9d9d9;
+$button-view-plant: #208d4a;
+$button-add-plant: #9cc042;
+$button-water-plant: #298fcf;
+$button-water-warning:#ffcc00;
+$button-watered: green;
+$button-delete: #dc3545;
 
 $navbar-background: #ffb72b;
 $warning-background: red;
@@ -27,3 +24,6 @@ $weather-card: grey;
 // $button-primary: #45a05c;
 // $button-success: #61baad;
 //$button-success: #006b60;
+// $button-water-plant: #f9d923;
+//nice light blue #ABC7FF
+//darker blue $button-add-plant: #20638d;

@@ -42,13 +42,9 @@ export default function PlantCard(props) {
         <Card.Text className="m-0">
           {nextWatering && `next watering: ${nextWatering}`}
         </Card.Text>
-        <Button
-          // className="btn-view-plant"
-          // style={{ border: "none" }}
-          onClick={handleClick}
-        >
+        <button className="btn-custom btn-view-plant" onClick={handleClick}>
           View Plant
-        </Button>
+        </button>
       </Card.Body>
     </Card>
   );

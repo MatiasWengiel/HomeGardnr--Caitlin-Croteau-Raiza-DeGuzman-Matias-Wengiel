@@ -1,42 +1,81 @@
 @import "./variables.scss";
 
-.btn-primary {
-  background: unset;
-  background-color: $button-primary;
+.btn-custom {
   border: none;
-  &:first-child:hover {
-    background-color: $button-primary-hover;
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  color: white;
+  &:hover {
+    background-color: $button-hover;
     border: none;
+    color: grey;
   }
 }
 
-:not(.btn-check) + .btn:hover {
-  background-color: $button-primary-hover;
-  border: none;
+.btn-view-plant {
+  background-color: $button-view-plant;
 }
 
-// .btn-secondary {
-//   background-color: $button-secondary;
+.btn-add-plant {
+  background-color: $button-add-plant;
+}
+
+.btn-water-plant {
+  background-color: $button-water-plant;
+}
+
+.btn-water-warning {
+  background-color: $button-water-warning;
+}
+
+.btn-water-complete {
+  background-color: $button-watered;
+}
+
+.btn-delete {
+  background-color: $button-delete;
+}
+
+//-bs-btn-padding-x: 0.75rem;
+// --bs-btn-padding-y: 0.375rem;
+
+// .btn-primary {
+//   background: unset;
+//   background-color: $button-primary;
+//   border: none;
+//   &:first-child:hover {
+//     background-color: $button-primary-hover;
+//     border: none;
+//   }
+// }
+
+// :not(.btn-check) + .btn:hover {
+//   background-color: $button-primary-hover;
 //   border: none;
 // }
 
-.btn-success {
-  background-color: $button-success;
-  border: none;
-  color: black;
-  &:first-child:hover {
-    background-color: $button-success-hover;
-    border: none;
-  }
-}
+// // .btn-secondary {
+// //   background-color: $button-secondary;
+// //   border: none;
+// // }
 
-.btn-warning {
-  background-color: $button-warning;
-  border: none;
-  color: white;
-  &:first-child:hover {
-    background-color: $button-warning-hover;
-    border: none;
-    color: white;
-  }
-}
+// .btn-success {
+//   background-color: $button-success;
+//   border: none;
+//   color: black;
+//   // &:first-child:hover {
+//   //   background-color: $button-success-hover;
+//   //   border: none;
+//   // }
+// }
+
+// .btn-warning {
+//   background-color: $button-warning;
+//   border: none;
+//   color: white;
+//   // &:first-child:hover {
+//   //   background-color: $button-warning-hover;
+//   //   border: none;
+//   //   color: white;
+//   // }
+// }

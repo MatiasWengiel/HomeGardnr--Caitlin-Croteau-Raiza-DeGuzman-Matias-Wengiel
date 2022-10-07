@@ -172,12 +172,12 @@ export default function LargeCardUser(props) {
             </Accordion>
 
             <div className="lcu-buttons">
-              <Button variant="primary" onClick={() => handleWaterPlant(id)}>
+              <button className="btn-custom btn-water-plant" onClick={() => handleWaterPlant(id)}>
                 Water Plant
-              </Button>
-              <Button variant="danger" onClick={() => handleDelete(id)}>
+              </button>
+              <button className="btn-custom btn-delete" onClick={() => handleDelete(id)}>
                 Delete
-              </Button>
+              </button>
             </div>
           </div>
         </Card.Body>
