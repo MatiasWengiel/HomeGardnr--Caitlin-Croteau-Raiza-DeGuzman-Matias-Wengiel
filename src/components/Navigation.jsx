@@ -18,6 +18,7 @@ export default function Navigation(props) {
     console.log(window.scrollY);
     if (window.scrollY >= 5) {
       setNavbar(true);
+      //remove NavText change if we aren't using it
       setNavText(true);
       setNavBrand(true);
     } else {
@@ -37,9 +38,6 @@ export default function Navigation(props) {
 
   //update this if we want two logos
   const navbarBrand = navBrand ? brand1 : brand2;
-
-  //do we want the text color to change?
-  //have left waldo as a link as we may want it to eventually lead to user settings?
 
   return (
     <Navbar className={navbarBackground} expand="lg" fixed="top">

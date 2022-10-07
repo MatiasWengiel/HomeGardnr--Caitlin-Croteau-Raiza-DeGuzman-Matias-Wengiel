@@ -9,13 +9,19 @@
   background-color: $navbar-background;
 }
 
-.nav-text {
+.nav-link {
   color: black;
   font-weight: 600;
   font-size: larger;
   &:hover {
     color: #208d4a;
   }
+}
+
+.nav-text {
+  color: black;
+  font-weight: 600;
+  font-size: larger;
 }
 
 .nav-link-selected {
