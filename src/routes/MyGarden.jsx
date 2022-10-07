@@ -112,53 +112,51 @@ export default function MyGarden() {
   
 
   return (
-    <>
-      <Container className="w-90">
-        <Row className="m-3 justify-content-center">
-          <Col xs={8}>
-            <SearchBar searchPlant={searchPlant} />
-          </Col>
-        </Row>
-        <Row>
-          <button className="col-3 btn-custom btn-add-plant">
-            <Link
-              to="/plants"
-              style={{
-                color: "inherit",
-                backgroundColor: "inherit",
-                textDecoration: "inherit",
-              }}
-            >
-              Add New Plant To Your Garden
-            </Link>
-          </button>
-          <button
-            className="col-3 offset-1 btn-custom btn-water-plant"
-            onClick={() => {
-              handleWaterAllPlants(selectedPlants);
+    <Container className="w-90">
+      <Row className="m-3 justify-content-center">
+        <Col xs={8}>
+          <SearchBar searchPlant={searchPlant} />
+        </Col>
+      </Row>
+      <Row>
+        <button className="col-3 btn-custom btn-add-plant">
+          <Link
+            to="/plants"
+            style={{
+              color: "inherit",
+              backgroundColor: "inherit",
+              textDecoration: "inherit",
             }}
           >
-            Water All Plants
-          </button>
-          <button
-            className="col-3 offset-1 btn-custom btn-water-warning"
-            // variant={filterPlants === "needs water" ? "warning" : "success"}
-            onClick={() => {
-              handleFilterPlants();
-            }}
-          >
-            {filterPlants === "needs water" && "View Plants That Need Water"}
-            {filterPlants === "all plants" && "View All Plants"}
-          </button>
-          <PlantModal
-            show={showModal}
-            onHide={() => setShowModal(false)}
-            plantCardProps={plantCardProps}
-            modalMode="user"
-          />
-        </Row>
-        <Row>{cardsList}</Row>
-      </Container>
-    </>
+            Add New Plant To Your Garden
+          </Link>
+        </button>
+        <button
+          className="col-3 offset-1 btn-custom btn-water-plant"
+          onClick={() => {
+            handleWaterAllPlants(selectedPlants);
+          }}
+        >
+          Water All Plants
+        </button>
+        <button
+          className="col-3 offset-1 btn-custom btn-water-warning"
+          // variant={filterPlants === "needs water" ? "warning" : "success"}
+          onClick={() => {
+            handleFilterPlants();
+          }}
+        >
+          {filterPlants === "needs water" && "View Plants That Need Water"}
+          {filterPlants === "all plants" && "View All Plants"}
+        </button>
+        <PlantModal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          plantCardProps={plantCardProps}
+          modalMode="user"
+        />
+      </Row>
+      <Row>{cardsList}</Row>
+    </Container>
   );
 }
