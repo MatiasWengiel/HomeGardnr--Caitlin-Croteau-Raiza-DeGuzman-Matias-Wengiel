@@ -28,7 +28,8 @@ export default function PlantCard(props) {
         variant="top"
         src={picture}
         alt={altText}
-        style={{ height: "150px" }}
+        style={{ height: "150px", border: "1px solid gray" }}
+        className="mb-2"
       />
       <Card.Body className="p-0">
         <Card.Text className="m-0">
