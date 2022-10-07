@@ -36,15 +36,15 @@ export default function LargeCardMain(props) {
   return (
     <Container>
       <Card>
-        <Card.Body className="d-flex flex-row justify-content-around card-lrg-bkgrnd">
-          <div className="lcm-photo">
+        <Card.Body className="d-flex flex-row justify-content-around card-lrg">
+          <div className="card-lrg photo">
             <Card.Img
               width={400}
               height={400}
               src={plantData.large_plant_card_photo_url}
             />
           </div>
-          <div className="lcm-info">
+          <div className="card-lrg info">
             <Card.Title className="text-center">
               {plantData.specific_name}
             </Card.Title>

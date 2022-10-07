@@ -78,15 +78,15 @@ export default function LargeCardUser(props) {
   return (
     <Container>
       <Card>
-        <Card.Body className="d-flex flex-row justify-content-around card-lrg-bkgrnd">
-          <div className="lcu-photo">
+        <Card.Body className="d-flex flex-row justify-content-around card-lrg">
+          <div className="card-lrg photo">
             <Card.Img
               width={400}
               height={400}
               src={plantData.large_plant_card_photo_url}
             />
           </div>
-          <div className="lcu-info">
+          <div className="card-lrg info">
             <Card.Title className="text-center">
               {plantData.specific_name}
             </Card.Title>
@@ -170,7 +170,7 @@ export default function LargeCardUser(props) {
               </Accordion.Item>
             </Accordion>
 
-            <div className="lcu-buttons">
+            <div className="card-lrg buttons">
               <button
                 className="btn-custom btn-water-plant"
                 onClick={() => handleWaterPlant(id)}

@@ -44,7 +44,7 @@ export default function Navigation(props) {
   return (
     <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand className="nav-text" href="/">
+        <Navbar.Brand className="nav-text" href="/my_garden">
           GARDNR
           <Image src={navbarBrand} alt="Gardnr" width="50px" />
           {/* <img
