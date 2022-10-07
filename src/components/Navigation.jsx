@@ -27,7 +27,7 @@ export default function Navigation(props) {
       setNavBrand(true);
     }
   };
- 
+
   useEffect(() => {
     changeNavbar();
     window.addEventListener("scroll", changeNavbar);
@@ -70,11 +70,3 @@ export default function Navigation(props) {
     </Navbar>
   );
 }
-
-//https://dev.to/cesareuseche/react-navbar-change-background-color-on-scroll-react-js-gatsby-2a39#:~:text=To%20create%20the%20rendering%20of,the%20changeBackground%20function%2C%20like%20so.
-
-///  bg="light"
-//source code: https://www.codeply.com/p/zzFC5XoyUm
-//https://getbootstrap.com/docs/5.0/utilities/flex/
-//https://getbootstrap.com/docs/5.0/components/navbar/
-//https://stackoverflow.com/questions/65253543/how-to-align-nav-items-to-the-right-in-bootstrap-5/65254055#65254055
