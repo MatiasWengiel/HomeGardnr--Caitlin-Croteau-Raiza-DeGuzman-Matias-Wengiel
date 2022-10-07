@@ -114,7 +114,7 @@ export default function MyGarden() {
         <Col xs={{ span: 4 }}>
           <SearchBar searchPlant={searchPlant} />
         </Col>
-        <Col>
+        <Col xs={{ offset: 3 }}>
           <Button className="ms-2 me-2" variant="success">
             <Link
               to="/plants"
