@@ -5,8 +5,12 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
+import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
+import { weatherContext } from "../providers/WeatherProvider";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
+import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
+
 import {
   performSearchPlant,
   sortPlants,
@@ -21,6 +25,10 @@ export default function MyGarden() {
   const [showModal, setShowModal] = useState(false);
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
+
+  const { localHigh, localLow, localPrecipitation } = useContext(weatherContext);
+  
+  const weatherWarningMsgs = checkForWeatherWarnings(localHigh, localLow, localPrecipitation);
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
@@ -109,25 +117,26 @@ export default function MyGarden() {
   };
 
   return (
-    <Container className="w-90">
-      <Row className="m-3 justify-content-center">
-        <Col xs={8}>
-          <SearchBar searchPlant={searchPlant} />
-        </Col>
-      </Row>
-      <Row>
-        <Button className="col-3" variant="success">
-          <Link
-            to="/plants"
-            style={{
-              color: "inherit",
-              backgroundColor: "inherit",
-              textDecoration: "inherit",
-            }}
-          >
-            Add New Plant To Your Garden
-          </Link>
-        </Button>
+    <> {weatherWarningMsgs.length > 0 && <Banner weatherWarning={weatherWarningMsgs}/>}
+      <Container className="w-90">
+        <Row className="m-3 justify-content-center">
+          <Col xs={8}>
+            <SearchBar searchPlant={searchPlant} />
+          </Col>
+        </Row>
+        <Row>
+          <Button className="col-3" variant="success">
+            <Link
+              to="/plants"
+              style={{
+                color: "inherit",
+                backgroundColor: "inherit",
+                textDecoration: "inherit",
+              }}
+            >
+              Add New Plant To Your Garden
+            </Link>
+          </Button>
         <Button
           className="col-3 offset-1"
           variant="primary"
@@ -156,5 +165,6 @@ export default function MyGarden() {
       </Row>
       <Row>{cardsList}</Row>
     </Container>
+    </>
   );
 }
