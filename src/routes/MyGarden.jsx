@@ -5,11 +5,8 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
-import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
-import { weatherContext } from "../providers/WeatherProvider";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
-import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
 
 import {
   performSearchPlant,
@@ -116,10 +113,6 @@ export default function MyGarden() {
 
   return (
     <>
-      {/* {" "}
-      {weatherWarningMsgs.length > 0 && (
-        <Banner weatherWarning={weatherWarningMsgs} />
-      )} */}
       <Container className="w-90">
         <Row className="m-3 justify-content-center">
           <Col xs={8}>
