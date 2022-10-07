@@ -8,6 +8,8 @@ import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
 
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 export default function Navigation(props) {
   const user = props.user;
   const [navbar, setNavbar] = useState(false);
@@ -63,7 +65,14 @@ export default function Navigation(props) {
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
-            <NavLink href={""} label={"Weather Events"} />
+            <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text">
+              <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
+              <NavDropdown.Item eventKey="freeze">Polar</NavDropdown.Item>
+              <NavDropdown.Item eventKey="heavyrain">Rain</NavDropdown.Item>
+              <NavDropdown.Item eventKey="sharknado">
+                Shark-nado 🦈
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
