@@ -110,12 +110,12 @@ export default function MyGarden() {
 
   return (
     <Container className="mw-90">
-      <Row className="m-3 justify-content-center">
-        <Col xs={8}></Col>
-      </Row>
-      <Row className="justify-content-center">
+      <Row className="mt-4 ms-3">
+        <Col xs={{ span: 4 }}>
+          <SearchBar searchPlant={searchPlant} />
+        </Col>
         <Col>
-          <Button className="m-2" variant="success">
+          <Button className="ms-2 me-2" variant="success">
             <Link
               to="/plants"
               style={{
@@ -128,7 +128,7 @@ export default function MyGarden() {
             </Link>
           </Button>
           <Button
-            className="m-2"
+            className="ms-2 me-2"
             variant="primary"
             onClick={() => {
               handleWaterAllPlants(selectedPlants);
@@ -137,7 +137,7 @@ export default function MyGarden() {
             Water All Plants
           </Button>
           <Button
-            className="m-2"
+            className="ms-2 me-2"
             variant={filterPlants === "needs water" ? "warning" : "success"}
             onClick={() => {
               handleFilterPlants();
@@ -147,9 +147,6 @@ export default function MyGarden() {
             {filterPlants === "all plants" && "View All Plants"}
           </Button>
         </Col>
-        <Col>
-          <SearchBar searchPlant={searchPlant} />
-        </Col>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
@@ -157,7 +154,11 @@ export default function MyGarden() {
           modalMode="user"
         />
       </Row>
-      <Row className="justify-content-center">{cardsList}</Row>
+      <Row className="justify-content-center">
+        <Container className="row justify-content-between">
+          {cardsList}
+        </Container>
+      </Row>
     </Container>
   );
 }
