@@ -1,35 +1,31 @@
 // variables ideas
-// button-view-plant
-// button-add-plant
+//do we want to change the font?
 // button-delete-plant
 // button-submit-form
 // button-close-modal
 
-// navbar-background-solid
-// navbar-background-transparent
+//do we want navtext to change on scroll?
 
-// plant-cards-background
-// weather-card-background
-// main-background
-// banner-background
+$button-hover: #d9d9d9;
+$button-view-plant: #208d4a;
+$button-add-plant: #9cc042;
+$button-water-plant: #298fcf;
+// $button-water-warning:#ec911a;
+$button-water-warning: #ec8d34;
+$button-watered: #208d4a;
+$button-delete: #dc3545;
 
-// font-family
+$navbar-background: #ffb72b;
+$warning-background: red;
+$weather-card: grey;
 
-// scheduler example
-// $font-family: "Source Sans Pro", sans-serif;
-
-// $active-opacity: 1;
-// $inactive-opacity: 0.15;
-
-// $white: #fff;
-// $black: #000;
-
-// $dark-background: #222f3e;
-
-// $weeks-colors: #54a0ff, #48dbfb, #1dd1a1, #5f27cd;
-// $booked-color: #54a0ff;
-// $danger-color: #ee5253;
-// $error-color: #ff9f43;
-// $confirm-color: #10ac84;
-
-// $spacing: 2rem;
+$light-grey-background: #f7f7f7;
+//good gree: $button-primary: #208d4a;
+// $navbar-background: #ffb72b;
+//$button-success: #187498;
+// $button-primary: #45a05c;
+// $button-success: #61baad;
+//$button-success: #006b60;
+// $button-water-plant: #f9d923;
+//nice light blue #ABC7FF
+//darker blue $button-add-plant: #20638d;

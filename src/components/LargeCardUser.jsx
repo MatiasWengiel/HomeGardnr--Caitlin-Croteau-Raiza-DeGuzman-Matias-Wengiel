@@ -5,8 +5,7 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import "../styles/LargeCardUser.scss";
+import "../styles/LargeCard.scss";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 import { renderIcon } from "../helpers/cardHelpers";
 
@@ -79,7 +78,7 @@ export default function LargeCardUser(props) {
   return (
     <Container>
       <Card>
-        <Card.Body className="d-flex flex-row mb-3 justify-content-around">
+        <Card.Body className="d-flex flex-row justify-content-around card-lrg-bkgrnd">
           <div className="lcu-photo">
             <Card.Img
               width={400}
@@ -172,12 +171,18 @@ export default function LargeCardUser(props) {
             </Accordion>
 
             <div className="lcu-buttons">
-              <Button variant="primary" onClick={() => handleWaterPlant(id)}>
+              <button
+                className="btn-custom btn-water-plant"
+                onClick={() => handleWaterPlant(id)}
+              >
                 Water Plant
-              </Button>
-              <Button variant="danger" onClick={() => handleDelete(id)}>
+              </button>
+              <button
+                className="btn-custom btn-delete"
+                onClick={() => handleDelete(id)}
+              >
                 Delete
-              </Button>
+              </button>
             </div>
           </div>
         </Card.Body>

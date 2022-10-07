@@ -26,9 +26,14 @@ export default function MyGarden() {
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
 
-  const { localHigh, localLow, localPrecipitation } = useContext(weatherContext);
-  
-  const weatherWarningMsgs = checkForWeatherWarnings(localHigh, localLow, localPrecipitation);
+  const { localHigh, localLow, localPrecipitation } =
+    useContext(weatherContext);
+
+  const weatherWarningMsgs = checkForWeatherWarnings(
+    localHigh,
+    localLow,
+    localPrecipitation
+  );
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
@@ -115,9 +120,14 @@ export default function MyGarden() {
       setFilterPlants("needs water");
     }
   };
+  
 
   return (
-    <> {weatherWarningMsgs.length > 0 && <Banner weatherWarning={weatherWarningMsgs}/>}
+    <>
+      {" "}
+      {weatherWarningMsgs.length > 0 && (
+        <Banner weatherWarning={weatherWarningMsgs} />
+      )}
       <Container className="w-90">
         <Row className="m-3 justify-content-center">
           <Col xs={8}>
@@ -125,7 +135,7 @@ export default function MyGarden() {
           </Col>
         </Row>
         <Row>
-          <Button className="col-3" variant="success">
+          <button className="col-3 btn-custom btn-add-plant">
             <Link
               to="/plants"
               style={{
@@ -136,35 +146,34 @@ export default function MyGarden() {
             >
               Add New Plant To Your Garden
             </Link>
-          </Button>
-        <Button
-          className="col-3 offset-1"
-          variant="primary"
-          onClick={() => {
-            handleWaterAllPlants(selectedPlants);
-          }}
-        >
-          Water All Plants
-        </Button>
-        <Button
-          className="col-3 offset-1"
-          variant={filterPlants === "needs water" ? "warning" : "success"}
-          onClick={() => {
-            handleFilterPlants();
-          }}
-        >
-          {filterPlants === "needs water" && "View Plants That Need Water"}
-          {filterPlants === "all plants" && "View All Plants"}
-        </Button>
-        <PlantModal
-          show={showModal}
-          onHide={() => setShowModal(false)}
-          plantCardProps={plantCardProps}
-          modalMode="user"
-        />
-      </Row>
-      <Row>{cardsList}</Row>
-    </Container>
+          </button>
+          <button
+            className="col-3 offset-1 btn-custom btn-water-plant"
+            onClick={() => {
+              handleWaterAllPlants(selectedPlants);
+            }}
+          >
+            Water All Plants
+          </button>
+          <button
+            className="col-3 offset-1 btn-custom btn-water-warning"
+            // variant={filterPlants === "needs water" ? "warning" : "success"}
+            onClick={() => {
+              handleFilterPlants();
+            }}
+          >
+            {filterPlants === "needs water" && "View Plants That Need Water"}
+            {filterPlants === "all plants" && "View All Plants"}
+          </button>
+          <PlantModal
+            show={showModal}
+            onHide={() => setShowModal(false)}
+            plantCardProps={plantCardProps}
+            modalMode="user"
+          />
+        </Row>
+        <Row>{cardsList}</Row>
+      </Container>
     </>
   );
 }

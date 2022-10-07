@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import PlantForm from "./PlantForm";
 
@@ -12,7 +11,7 @@ export default function FormModal(props) {
       size="xl"
     >
       <Modal.Body>
-        <PlantForm onHide={props.onHide} updateLibrary={props.updateLibrary}/>
+        <PlantForm onHide={props.onHide} updateLibrary={props.updateLibrary} />
       </Modal.Body>
     </Modal>
   );
