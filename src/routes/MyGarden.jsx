@@ -26,14 +26,6 @@ export default function MyGarden() {
   const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
 
-  const { localHigh, localLow, localPrecipitation } =
-    useContext(weatherContext);
-
-  const weatherWarningMsgs = checkForWeatherWarnings(
-    localHigh,
-    localLow,
-    localPrecipitation
-  );
 
   useEffect(() => {
     axios.get(`/api/my_garden/all/${userID}`).then((response) => {
@@ -124,10 +116,10 @@ export default function MyGarden() {
 
   return (
     <>
-      {" "}
+      {/* {" "}
       {weatherWarningMsgs.length > 0 && (
         <Banner weatherWarning={weatherWarningMsgs} />
-      )}
+      )} */}
       <Container className="w-90">
         <Row className="m-3 justify-content-center">
           <Col xs={8}>
