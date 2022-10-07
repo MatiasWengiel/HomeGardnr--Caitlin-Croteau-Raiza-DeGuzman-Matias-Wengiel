@@ -68,6 +68,12 @@ export default function MyGarden() {
     }
   };
 
+  const filterButtonBaseStyle = "col-3 offset-1 btn-custom";
+  const filterButtonStyle =
+    filterPlants === "needs water"
+      ? `${filterButtonBaseStyle} btn-water-warning`
+      : `${filterButtonBaseStyle} btn-water-success`;
+
   return (
     <>
       {" "}
@@ -102,8 +108,7 @@ export default function MyGarden() {
             Water All Plants
           </button>
           <button
-            className="col-3 offset-1 btn-custom btn-water-warning"
-            // variant={filterPlants === "needs water" ? "warning" : "success"}
+            className={filterButtonStyle}
             onClick={() => {
               handleFilterPlants();
             }}
