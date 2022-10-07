@@ -17,14 +17,22 @@ import {
   waterSinglePlant,
   waterAllPlants,
 } from "../helpers/myGardenHelpers";
+import useGardenData from "../helpers/useGardenData";
 
 export default function MyGarden() {
-  const { userID } = useContext(userContext);
-  const [gardenInfo, setGardenInfo] = useState([]);
-  const [selectedPlants, setSelectedPlants] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [plantCardProps, setPlantCardProps] = useState();
   const [filterPlants, setFilterPlants] = useState("needs water");
+  const {
+    cardsList,
+    selectedPlants,
+    setSelectedPlants,
+    gardenPlants,
+    searchPlant,
+    generateCards,
+    filterPlantsThatNeedWater,
+    showModal,
+    setShowModal,
+    plantCardProps,
+  } = useGardenData();
 
   const { localHigh, localLow, localPrecipitation } =
     useContext(weatherContext);
@@ -34,73 +42,12 @@ export default function MyGarden() {
     localLow,
     localPrecipitation
   );
-
-  useEffect(() => {
-    axios.get(`/api/my_garden/all/${userID}`).then((response) => {
-      response.data.forEach((plant) => {
-        //Add the calculated next water date to each plant in the response
-        plant.nextWatering = calculateNextWaterDate(
-          plant.last_watered_at,
-          plant.water_needs
-        );
-        //Add a formatted version of last_watered_at to each plant for displaying
-        plant.lastWateredFormatted = dateFormatter(
-          new Date(plant.last_watered_at)
-        );
-        plant.nextWaterFormatted = dateFormatter(new Date(plant.nextWatering));
-
-        plant.waterStatus =
-          new Date(plant.nextWatering) <= new Date()
-            ? "needs water"
-            : "watered";
-      });
-      setGardenInfo(response.data);
-      setSelectedPlants(response.data);
-    });
-  }, [userID]);
-
-  //Generates an array of PlantCards based on the selectedPlants
-  const generateCards = () => {
-    //Ensures there is data in gardenInfo
-    if (selectedPlants[0]) {
-      //Sort plants alphabetically for display
-      const sortedPlants = sortPlants(selectedPlants);
-      //Creates an array of PlantCards with the corresponding information
-      return sortedPlants.map((plant) => (
-        <PlantCard
-          key={plant.key_id}
-          plant={plant.specific_name}
-          picture={plant.large_plant_card_photo_url}
-          lastWatered={plant.lastWateredFormatted}
-          nextWatering={plant.nextWaterFormatted}
-          waterStatus={plant.waterStatus}
-          handleClick={() => {
-            setShowModal(true);
-            setPlantCardProps({
-              id: plant.key_id,
-              waterStatus: plant.waterStatus,
-              nextWatering: plant.nextWaterFormatted,
-              updateMyGarden: () => waterSinglePlant(plant.key_id, gardenInfo),
-            });
-          }}
-        />
-      ));
-    }
-  };
-  //Generates the cardsList for rendering on the page
-  const cardsList = selectedPlants !== "" ? generateCards() : null;
-
   //Functions for page functionality below //
-  const searchPlant = (event) => {
+  const handleSearchPlant = (event) => {
     event.preventDefault();
     const searchTerm = event.target.value.toLowerCase();
-    setSelectedPlants(performSearchPlant(searchTerm, gardenInfo));
+    searchPlant(searchTerm);
   };
-
-  const filterPlantsThatNeedWater = () =>
-    setSelectedPlants(
-      gardenInfo.filter((plant) => plant.waterStatus === "needs water")
-    );
 
   const handleWaterAllPlants = (plantsList) => {
     //Extract the plant_id of the plants that are visible at the time
@@ -113,14 +60,13 @@ export default function MyGarden() {
 
   const handleFilterPlants = () => {
     if (filterPlants === "needs water") {
-      filterPlantsThatNeedWater();
+      filterPlantsThatNeedWater(gardenPlants);
       setFilterPlants("all plants");
     } else {
-      setSelectedPlants(gardenInfo);
+      setSelectedPlants(gardenPlants);
       setFilterPlants("needs water");
     }
   };
-  
 
   return (
     <>
@@ -131,7 +77,7 @@ export default function MyGarden() {
       <Container className="w-90">
         <Row className="m-3 justify-content-center">
           <Col xs={8}>
-            <SearchBar searchPlant={searchPlant} />
+            <SearchBar searchPlant={handleSearchPlant} />
           </Col>
         </Row>
         <Row>
