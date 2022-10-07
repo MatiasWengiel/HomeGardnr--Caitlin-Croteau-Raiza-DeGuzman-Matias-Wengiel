@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import "../styles/PlantForm.scss";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -24,13 +23,7 @@ export default function PlantForm(props) {
     imageURL: "",
   });
 
-  //need to do file input - needs it's own function
-
   const handleChange = (event) => {
-    // console.log("in handleChange");
-    // console.log({ ...plantInfo, [event.target.name]: event.target.value });
-    //set values to be stored in db as all lower case
-    // const lowerCaseValue = event.target.value.toLowerCase();
     setPlantInfo({ ...plantInfo, [event.target.name]: event.target.value });
   };
 
@@ -42,25 +35,16 @@ export default function PlantForm(props) {
     }
     setValidated(true);
     event.preventDefault();
-    // console.log(plantInfo);
 
-    //rediret or...?
-    //using mockPlantObject for testing
-    //replace with plantInfo in order to use state
-    console.log("plant info pre axios", plantInfo);
     return axios
       .post("/api/plants", plantInfo)
-      .then((response) => {
-        // console.log("response in axios", response);
-        // console.log("reponse data in axios", response.data);
-      })
+      .then((response) => {})
       .then(() => {
-        //hides modal
         props.updateLibrary(plantInfo);
-        console.log("plantInfo after post in plant form", plantInfo);
-      })
-      .then(() => {
+
+        //hides modal
         onHide();
+
         //resets form
         setPlantInfo({
           specific_name: "",
@@ -217,7 +201,7 @@ export default function PlantForm(props) {
               defaultValue={plantInfo.sunlight}
               onChange={handleChange}
             >
-              <option value="">Plant's light requirments</option>
+              <option value="">Plant's light requirements</option>
               <option value="Direct Sun">Direct Sun</option>
               <option value="Indirect Sun">Indirect Sun</option>
               <option value="Shade">Shade</option>
@@ -280,49 +264,14 @@ export default function PlantForm(props) {
           />
         </Form.Group>
         <Container className="d-flex justify-content-between">
-          <Button variant="primary" type="submit">
+          <button className="btn-custom btn-water-plant" type="submit">
             Submit
-          </Button>
-          <Button variant="danger" onClick={onHide}>
+          </button>
+          <button className="btn-custom btn-delete" onClick={onHide}>
             Cancel
-          </Button>
+          </button>
         </Container>
       </Form>
     </Container>
   );
 }
-
-//onchange info:
-//best guide:
-//https://www.agirl.codes/complete-guide-build-react-forms-with-usestate-hook
-//https://stackoverflow.com/questions/34006333/cant-type-in-react-input-text-field
-//^using defaultValue vs Value
-//https://www.brainstormcreative.co.uk/react-js/react-bootstrap-form-part-2-validation-and-errors/
-//more info on validations if we want it:
-//https://dev.to/alecgrey/controlled-forms-with-front-and-backend-validations-using-react-bootstrap-5a2
-//https://dev.to/heyjoshlee/using-the-usestate-hook-and-working-with-forms-in-react-js-m6b
-
-//as="select"
-//https://www.pluralsight.com/guides/how-to-get-select-element's-value-in-react-bootstrap
-//https://stackoverflow.com/questions/54831454/validation-for-select-elements-of-react-bootstrap-are-mis-aligned
-
-//questions:
-//it's not grabbing the values despite using state spread??
-//defaultValue vs Value
-//this - uncontrolled components?
-//why does the console log disappear even why the reset is gone?
-
-// const mockPlantObject = {
-//   genericName: "tomato",
-//   specificName: "cherry",
-//   season: "spring",
-//   maturity: "2 years",
-//   spacing: "10cm apart",
-//   depth: "10 cm deep",
-//   maxTemp: 40,
-//   minTemp: 2,
-//   sunlight: "Direct Sun",
-//   water: 6,
-//   description: "This plant is so cute!",
-//   imageURL: "http://www.this-is-a-url",
-// };
