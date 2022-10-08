@@ -12,7 +12,7 @@ export default function WeatherCard(props) {
 
   return (
     <Container className="weather-container">
-      <Alert className="text-center" variant="success">
+      <Alert className="text-center" id="alert-weathercard" variant="success">
         Today's Weather Information for{" "}
         <span style={{ fontWeight: "bold" }}>{currentCity}</span>
       </Alert>
