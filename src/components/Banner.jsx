@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Alert } from "react-bootstrap";
 
 export default function Banner(props) {
-  const weatherWarning = props.weatherWarning;
-  const setBannerMessage = props.setBannerMessage;
+  const { weatherWarning, setBannerMessage } = props;
 
   return (
     <Alert
