@@ -6,14 +6,18 @@ import { useState } from "react";
 
 
 export default function Root() {
-  const [bannerMessage, setBannerMessage] = useState([]);
+  const [bannerAndMsg, setBannerAndMsg] = useState([]);
 
   return (
     <>
-      <Navigation user="Waldo" setBannerMessage={setBannerMessage} bannerMessage={bannerMessage}/>
+      <Navigation user="Waldo" bannerAndMsg={bannerAndMsg} setBannerAndMsg={setBannerAndMsg} />
+
       <Header />
-      {bannerMessage.length > 0 && (
-        <Banner setBannerMessage={setBannerMessage} weatherWarning={bannerMessage} />
+      {bannerAndMsg.length > 0 && (
+        <Banner
+          weatherWarning={bannerAndMsg}
+          setBannerAndMsg={setBannerAndMsg}
+        />
       )}
       <div id="detail">
         <Outlet />
