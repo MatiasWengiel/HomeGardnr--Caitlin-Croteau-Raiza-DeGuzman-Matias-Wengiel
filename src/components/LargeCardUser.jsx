@@ -11,7 +11,7 @@ import { renderIcon } from "../helpers/cardHelpers";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
-  const { id, nextWatering, waterStatus, updateMyGarden } = {
+  const { id, nextWatering, waterStatus, updateMyGarden, deleteUserPlant } = {
     ...props.plantCardProps,
   };
 
@@ -47,11 +47,6 @@ export default function LargeCardUser(props) {
       .catch((error) => console.log(error));
   }, [id, nextWatering, waterStatus]);
 
-  const deleteUserPlant = (id) => {
-    axios.delete(`/api/my_garden/${id}`).catch((error) => {
-      console.log(error.message);
-    });
-  };
   const handleDelete = (id) => {
     deleteUserPlant(id);
     props.onHide();

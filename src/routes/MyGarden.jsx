@@ -7,7 +7,6 @@ import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
-
 import {
   performSearchPlant,
   sortPlants,
@@ -57,7 +56,7 @@ export default function MyGarden() {
     }
   };
 
-  const filterButtonBaseStyle = "col-3 offset-1 btn-custom";
+  const filterButtonBaseStyle = "btn-custom btn-garden";
   const filterButtonStyle =
     filterPlants === "needs water"
       ? `${filterButtonBaseStyle} btn-water-warning`

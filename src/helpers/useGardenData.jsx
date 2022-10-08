@@ -31,7 +31,6 @@ export default function useGardenData() {
           new Date(plant.nextWatering) <= new Date()
             ? "needs water"
             : "watered";
-        console.log("THIS IS A PLNT", plant);
         return plant;
       });
       setGardenPlants(plantState);
@@ -65,6 +64,7 @@ export default function useGardenData() {
               nextWatering: plant.nextWaterFormatted,
               updateMyGarden: () =>
                 waterSinglePlant(plant.key_id, gardenPlants),
+              deleteUserPlant: () => deleteUserPlant(plant.key_id),
             });
           }}
         />
@@ -89,6 +89,21 @@ export default function useGardenData() {
     setSelectedPlants(filteredPlants);
   };
 
+  const deleteUserPlant = (id) => {
+    axios
+      .delete(`/api/my_garden/${id}`)
+      .then(() => {
+        const currentPlantState = selectedPlants;
+        const updatedPlantState = currentPlantState.filter(
+          (plant) => plant.key_id !== id
+        );
+        setSelectedPlants(updatedPlantState);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return {
     cardsList,
     selectedPlants,
@@ -99,5 +114,6 @@ export default function useGardenData() {
     showModal,
     setShowModal,
     plantCardProps,
+    deleteUserPlant,
   };
 }
