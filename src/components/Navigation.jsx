@@ -14,17 +14,13 @@ import Banner from "./Banner";
 
 
 export default function Navigation(props) {
+  const { bannerMessage, setBannerMessage } = props;
+
   const user = props.user;
   const [navbar, setNavbar] = useState(false);
   const [navText, setNavText] = useState(false);
   const [navBrand, setNavBrand] = useState(false);
 
-  // Capture event selected in Weather Events dropdown menu. Default false.
-  // State changes on click when user selects a weather event
-
-  const { bannerMessage, setBannerMessage } = props;
-
-  
   const changeNavbar = () => {
     console.log(window.scrollY);
     if (window.scrollY >= 5) {
