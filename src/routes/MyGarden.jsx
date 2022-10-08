@@ -68,6 +68,12 @@ export default function MyGarden() {
     }
   };
 
+  const filterButtonBaseStyle = "col-3 offset-1 btn-custom";
+  const filterButtonStyle =
+    filterPlants === "needs water"
+      ? `${filterButtonBaseStyle} btn-water-warning`
+      : `${filterButtonBaseStyle} btn-water-success`;
+
   return (
     <>
       {" "}
@@ -99,16 +105,24 @@ export default function MyGarden() {
                 handleFilterPlants();
               }}
             >
-              {filterPlants === "needs water" && "View Unwatered Plants"}
-              {filterPlants === "all plants" && "View All Plants"}
+              Add New Plant To Your Garden
             </button>
             <button
-              className="btn-custom btn-garden btn-water-plant"
+              className="col-3 offset-1 btn-custom btn-water-plant"
               onClick={() => {
                 handleWaterAllPlants(selectedPlants);
               }}
             >
               Water All Plants
+            </button>
+            <button
+              className={filterButtonStyle}
+              onClick={() => {
+                handleFilterPlants();
+              }}
+            >
+              {filterPlants === "needs water" && "View Plants That Need Water"}
+              {filterPlants === "all plants" && "View All Plants"}
             </button>
           </Col>
           <PlantModal
