@@ -14,9 +14,7 @@ import Banner from "./Banner";
 
 
 export default function Navigation(props) {
-  const { bannerMessage, setBannerMessage } = props;
-
-  const user = props.user;
+  const { user, bannerMessage, setBannerMessage } = props;
   const [navbar, setNavbar] = useState(false);
   const [navText, setNavText] = useState(false);
   const [navBrand, setNavBrand] = useState(false);
