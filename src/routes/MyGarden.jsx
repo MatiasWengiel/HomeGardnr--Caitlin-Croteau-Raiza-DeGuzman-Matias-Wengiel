@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { weatherContext } from "../providers/WeatherProvider";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
-
+import "../styles/MyGarden.scss";
 import {
   performSearchPlant,
   sortPlants,
@@ -75,42 +75,42 @@ export default function MyGarden() {
         <Banner weatherWarning={weatherWarningMsgs} />
       )}
       <Container className="w-90">
-        <Row className="m-3 justify-content-center">
-          <Col xs={8}>
+        <Row className="mt-5 mb-4 search-and-plant-buttons">
+          <Col className="col-4 ms-4  p-0">
             <SearchBar searchPlant={handleSearchPlant} />
           </Col>
-        </Row>
-        <Row>
-          <button className="col-3 btn-custom btn-add-plant">
-            <Link
-              to="/plants"
-              style={{
-                color: "inherit",
-                backgroundColor: "inherit",
-                textDecoration: "inherit",
+          <Col className="d-flex justify-content-end">
+            <button className="btn-custom btn-garden btn-add-plant">
+              <Link
+                to="/plants"
+                style={{
+                  color: "inherit",
+                  backgroundColor: "inherit",
+                  textDecoration: "inherit",
+                }}
+              >
+                Add New Plant
+              </Link>
+            </button>
+            <button
+              className="btn-custom btn-garden  btn-water-warning"
+              // variant={filterPlants === "needs water" ? "warning" : "success"}
+              onClick={() => {
+                handleFilterPlants();
               }}
             >
-              Add New Plant To Your Garden
-            </Link>
-          </button>
-          <button
-            className="col-3 offset-1 btn-custom btn-water-plant"
-            onClick={() => {
-              handleWaterAllPlants(selectedPlants);
-            }}
-          >
-            Water All Plants
-          </button>
-          <button
-            className="col-3 offset-1 btn-custom btn-water-warning"
-            // variant={filterPlants === "needs water" ? "warning" : "success"}
-            onClick={() => {
-              handleFilterPlants();
-            }}
-          >
-            {filterPlants === "needs water" && "View Plants That Need Water"}
-            {filterPlants === "all plants" && "View All Plants"}
-          </button>
+              {filterPlants === "needs water" && "View Unwatered Plants"}
+              {filterPlants === "all plants" && "View All Plants"}
+            </button>
+            <button
+              className="btn-custom btn-garden btn-water-plant"
+              onClick={() => {
+                handleWaterAllPlants(selectedPlants);
+              }}
+            >
+              Water All Plants
+            </button>
+          </Col>
           <PlantModal
             show={showModal}
             onHide={() => setShowModal(false)}
@@ -118,7 +118,7 @@ export default function MyGarden() {
             modalMode="user"
           />
         </Row>
-        <Row>{cardsList}</Row>
+        <Row className="justify-content-between">{cardsList}</Row>
       </Container>
     </>
   );
