@@ -45,19 +45,19 @@ export default function Navigation(props) {
     const sharkNado = `SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets`
 
     if (eventKey == "heat") {
-      setBannerMessage((prev) => [...prev, highHeat])
+      setBannerMessage([highHeat]);
     }
 
     if (eventKey == "polar") {
-      setBannerMessage((prev) => [...prev, extremeCold]);
+      setBannerMessage([extremeCold]);
     }
 
     if (eventKey == "rain") {
-      setBannerMessage((prev) => [...prev, heavyRain]);
+      setBannerMessage([heavyRain]);
     }
 
     if (eventKey == "shark-nado") {
-      setBannerMessage((prev) => [...prev, sharkNado]);
+      setBannerMessage([sharkNado]);
     }
   };
 
