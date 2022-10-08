@@ -6,7 +6,7 @@ export default function Banner(props) {
 
   return (
     <Alert
-      className="text-center"
+      className="text-center rounded-0"
       variant="danger"
       onClose={() => setBannerAndMsg([])}
       dismissible
