@@ -29,7 +29,7 @@ module.exports = (db) => {
 
   router.delete("/:id", (req, res) => {
     db.query(deleteUserPlant(req.params.id)).then(() => {
-      res.status(201);
+      res.send(201);
     })
       .catch((error) => {
         console.log(error);
