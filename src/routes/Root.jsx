@@ -1,9 +1,8 @@
 import Navigation from "../components/Navigation";
 import Header from "../components/Header";
-import { Outlet } from "react-router-dom";
-
-import { useState } from "react";
 import Banner from "../components/Banner";
+import { Outlet } from "react-router-dom";
+import { useState } from "react";
 
 
 export default function Root() {
