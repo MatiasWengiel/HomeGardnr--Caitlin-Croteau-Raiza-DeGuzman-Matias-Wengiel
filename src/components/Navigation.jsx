@@ -48,7 +48,7 @@ export default function Navigation(props) {
       setBannerMessage([highHeat]);
     }
 
-    if (eventKey == "polar") {
+    if (eventKey == "cold") {
       setBannerMessage([extremeCold]);
     }
 
@@ -100,7 +100,7 @@ export default function Navigation(props) {
             {/*  */}
             <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text" onSelect={handleSelect}>
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
-              <NavDropdown.Item eventKey="polar">Polar</NavDropdown.Item>
+              <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
               <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
               <NavDropdown.Item eventKey="shark-nado">
                 Shark-nado 🦈
