@@ -68,11 +68,8 @@ export default function PlantLibrary() {
   };
 
   function updateLibrary(newPlant) {
-    console.log("newPlant in update library", newPlant);
     setPlantInfo([...plantInfo, newPlant]);
-    console.log("plant info in library after update)", plantInfo);
     setSelectedPlants([...selectedPlants, newPlant]);
-    // console.log("selected plants in library after update)", selectedPlants);
   }
 
   return (

@@ -1,13 +1,13 @@
 import { dateFormatter, calculateNextWaterDate } from "./dateHelpers"
 //Case insensitive search for plants that have the typed letter(s) in their name
-export const performSearchPlant = (searchTerm, gardenInfo) => {
-  const filtered = gardenInfo.filter((plant) =>
-    plant.specific_name
-      .toLowerCase()
-      .includes(searchTerm)
-  )
-  return filtered
-}
+// export const performSearchPlant = (searchTerm, gardenInfo) => {
+//   const filtered = gardenInfo.filter((plant) =>
+//     plant.specific_name
+//       .toLowerCase()
+//       .includes(searchTerm)
+//   )
+//   return filtered
+// }
 
 
 export const sortPlants = (plantArray) => {

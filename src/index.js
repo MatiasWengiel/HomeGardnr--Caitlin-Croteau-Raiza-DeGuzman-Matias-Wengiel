@@ -14,6 +14,8 @@ import LargeCardUser from "./components/LargeCardUser";
 import PlantLibrary from "./routes/PlantLibrary";
 import PlantForm from "./components/PlantForm";
 import MyGarden from "./routes/MyGarden";
+import Index from "./components/Index";
+
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Index />,
+      },
       {
         path: "/plants/",
         element: <PlantLibrary />,
