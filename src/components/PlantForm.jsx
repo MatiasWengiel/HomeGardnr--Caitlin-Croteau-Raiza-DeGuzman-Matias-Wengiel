@@ -120,7 +120,7 @@ export default function PlantForm(props) {
             <Form.Control
               required
               type="text"
-              placeholder="Ex: 2 years"
+              placeholder="Ex: 80 days"
               name="maturity"
               defaultValue={plantInfo.maturity}
               onChange={handleChange}
@@ -232,7 +232,7 @@ export default function PlantForm(props) {
               <option value="3">4</option>
               <option value="3">5</option>
               <option value="3">6</option>
-              <option value="3">Every Day</option>
+              <option value="3">7</option>
             </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please select a number.
