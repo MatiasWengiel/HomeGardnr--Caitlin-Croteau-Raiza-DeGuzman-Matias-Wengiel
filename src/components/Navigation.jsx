@@ -21,7 +21,8 @@ export default function Navigation(props) {
 
   // Capture event selected in Weather Events dropdown menu. Default false.
   // State changes on click when user selects a weather event
-  const [event, setEvent] = useState(false);
+
+  const { bannerMessage, setBannerMessage } = props;
 
   
   const changeNavbar = () => {
@@ -41,9 +42,6 @@ export default function Navigation(props) {
   // Function to manage what happens on click selecting a weather event
   // Display Banner comp with corresponding event message
   const handleSelect = (eventKey) => {
-    setEvent(true);
-
-    const weatherEventMsg = [];
 
     const highHeat = `TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.`;
 
@@ -53,27 +51,20 @@ export default function Navigation(props) {
 
     const sharkNado = `SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets`
 
-    if (event && eventKey == "heat") {
-      weatherEventMsg.push(highHeat);
-      <Banner weatherWarning={weatherEventMsg} />
-      setEvent(false);
-    }
-    if (event && eventKey == "polar") {
-      weatherEventMsg.push(extremeCold);
-      <Banner weatherWarning={weatherEventMsg} />;
-      setEvent(false);
+    if (eventKey == "heat") {
+      setBannerMessage((prev) => [...prev, highHeat])
     }
 
-    if (event && eventKey == "rain") {
-      weatherEventMsg.push(heavyRain);
-      <Banner weatherWarning={weatherEventMsg}/>
-      setEvent(false);
+    if (eventKey == "polar") {
+      setBannerMessage((prev) => [...prev, extremeCold]);
     }
 
-    if (event && eventKey == "shark-nado") {
-      weatherEventMsg.push(sharkNado);
-      <Banner weatherWarning={weatherEventMsg} />;
-      setEvent(false);
+    if (eventKey == "rain") {
+      setBannerMessage((prev) => [...prev, heavyRain]);
+    }
+
+    if (eventKey == "shark-nado") {
+      setBannerMessage((prev) => [...prev, sharkNado]);
     }
   };
 
@@ -112,7 +103,9 @@ export default function Navigation(props) {
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
-            <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text" onSelect={() => handleSelect(event)}>
+
+            {/*  */}
+            <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text" onSelect={handleSelect}>
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
               <NavDropdown.Item eventKey="polar">Polar</NavDropdown.Item>
               <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
@@ -120,6 +113,8 @@ export default function Navigation(props) {
                 Shark-nado 🦈
               </NavDropdown.Item>
             </NavDropdown>
+            {/*  */}
+
           </Nav>
         </Navbar.Collapse>
       </Container>
