@@ -93,7 +93,7 @@ export default function Navigation(props) {
             <NavLink href={"/weather"} label={"Weather Info"} />
 
             {/*  */}
-            <NavDropdown title="Weather Events" id="nav-dropdown" className="nav-text" onSelect={handleSelect}>
+            <NavDropdown title="Weather Events" id="nav-dropdown" onSelect={handleSelect}>
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
               <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
               <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
