@@ -7,10 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
-
-// Add imports
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Banner from "./Banner";
 
 
 export default function Navigation(props) {
