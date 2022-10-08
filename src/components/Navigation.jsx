@@ -33,8 +33,7 @@ export default function Navigation(props) {
     }
   };
 
-  // Function to manage what happens on click selecting a weather event
-  // Display Banner comp with corresponding event message
+  /* Handles user's selection from Weather Events menu. Displays Banner comp with corresponding weather event message. */
   const handleSelect = (eventKey) => {
 
     const highHeat = `TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.`;
