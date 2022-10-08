@@ -92,7 +92,7 @@ export default function Navigation(props) {
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
 
-            {/*  */}
+            {/* Remove this after demo. Add back 'Logout' to navbar */}
             <NavDropdown title="Weather Events" id="nav-dropdown" onSelect={handleSelect}>
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
               <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
@@ -101,7 +101,6 @@ export default function Navigation(props) {
                 Shark-nado 🦈
               </NavDropdown.Item>
             </NavDropdown>
-            {/*  */}
 
           </Nav>
         </Navbar.Collapse>
