@@ -11,7 +11,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 export default function Navigation(props) {
-  const { user, bannerMessage, setBannerMessage } = props;
+  const { user, bannerAndMsg, setBannerAndMsg } = props;
   const [navbar, setNavbar] = useState(false);
   const [navText, setNavText] = useState(false);
   const [navBrand, setNavBrand] = useState(false);
@@ -42,19 +42,19 @@ export default function Navigation(props) {
     const sharkNado = "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
 
     if (eventKey == "heat") {
-      setBannerMessage([highHeat]);
+      setBannerAndMsg([highHeat]);
     }
 
     if (eventKey == "cold") {
-      setBannerMessage([extremeCold]);
+      setBannerAndMsg([extremeCold]);
     }
 
     if (eventKey == "rain") {
-      setBannerMessage([heavyRain]);
+      setBannerAndMsg([heavyRain]);
     }
 
     if (eventKey == "shark-nado") {
-      setBannerMessage([sharkNado]);
+      setBannerAndMsg([sharkNado]);
     }
   };
 
