@@ -19,7 +19,6 @@ export default function Navigation(props) {
   const [navBrand, setNavBrand] = useState(false);
 
   const changeNavbar = () => {
-    console.log(window.scrollY);
     if (window.scrollY >= 5) {
       setNavbar(true);
       //remove NavText change if we aren't using it
@@ -35,14 +34,17 @@ export default function Navigation(props) {
 
   /* Handles user's selection from Weather Events menu. Displays Banner comp with corresponding weather event message. */
   const handleSelect = (eventKey) => {
+    const highHeat =
+      "TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.";
 
-    const highHeat = "TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.";
+    const extremeCold =
+      "TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as -20 C.";
 
-    const extremeCold = "TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as -20 C.";
+    const heavyRain =
+      "HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as 30 mm.";
 
-    const heavyRain = "HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as 30 mm.";
-
-    const sharkNado = "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
+    const sharkNado =
+      "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
 
     if (eventKey == "heat") {
       setBannerAndMsg([highHeat]);

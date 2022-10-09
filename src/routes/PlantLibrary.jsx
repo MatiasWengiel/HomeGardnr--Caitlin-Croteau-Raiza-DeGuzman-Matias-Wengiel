@@ -16,6 +16,7 @@ export default function PlantLibrary() {
   const [plantId, setPlantId] = useState();
 
   useEffect(() => {
+    console.log("axios call in plant library")
     axios.get(`/api/plants`).then((response) => {
       console.log("data", response.data);
       setPlantInfo(response.data);

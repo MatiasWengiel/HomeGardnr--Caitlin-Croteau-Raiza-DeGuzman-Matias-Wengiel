@@ -1,19 +1,19 @@
 const getUserLocation = (userId) => {
   return `
-  SELECT location FROM users WHERE id = ${userId}
+  SELECT location FROM users WHERE id = ${userId};
   `;
 };
 
 const getUserName = (userID) => {
   return `
-  SELECT first_name, last_name FROM users WHERE id = ${userID}
+  SELECT first_name, last_name FROM users WHERE id = ${userID};
   `;
 };
 
 // Get all info about a plant from the main library (plants)
 const getPlantInfo = (plantId) => {
   return `
-    SELECT * FROM plants WHERE id = ${plantId}
+    SELECT * FROM plants WHERE id = ${plantId};
   `;
 };
 
@@ -22,20 +22,20 @@ const getUserPlantInfo = (plantId) => {
   return `
     SELECT * FROM user_plants
     JOIN plants ON plant_id = plants.id
-    WHERE user_plants.id = ${plantId}
+    WHERE user_plants.id = ${plantId};
   `;
 };
 
 // Delete a plant from user's garden (user_plants)
 const deleteUserPlant = (plantId) => {
   return `
-    DELETE FROM user_plants WHERE id = ${plantId}
+    DELETE FROM user_plants WHERE id = ${plantId};
   `;
 };
 
 const searchPlant = () => {
   return `
-  SELECT * FROM plants 
+  SELECT * FROM plants; 
     `;
 };
 
@@ -85,13 +85,13 @@ const addPlantToMyGarden = function (plantId, userId) {
 const getMyGardenPlants = (userID) => {
   return `SELECT user_plants.id AS key_id, large_plant_card_photo_url, specific_name, planted_date, last_watered_at, water_needs, when_to_plant, sunlight_needs, highest_temp_tolerance, lowest_temp_tolerance, how_deep_to_plant, how_far_apart_to_plant, how_long_until_mature FROM user_plants
     JOIN plants ON plant_id = plants.id
-    WHERE user_id = ${userID}`;
+    WHERE user_id = ${userID};`;
 };
 
 const waterSinglePlant = (plantID) => {
   return `UPDATE user_plants 
   SET last_watered_at = CURRENT_DATE
-  where id = ${plantID}`;
+  where id = ${plantID};`;
 };
 
 const waterAllPlants = (idArray) => {
@@ -99,7 +99,7 @@ const waterAllPlants = (idArray) => {
   const searchString = idList.join(" OR id =  ");
   return `UPDATE user_plants
   SET last_watered_at = CURRENT_DATE
-  WHERE id = ${searchString}
+  WHERE id = ${searchString};
 `;
 };
 module.exports = {
