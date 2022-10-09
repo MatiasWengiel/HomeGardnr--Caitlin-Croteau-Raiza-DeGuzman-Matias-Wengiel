@@ -41,9 +41,11 @@ export default function MyGarden() {
     //Extract the plant_id of the plants that are visible at the time
     const idArray = selectedPlants.map((plant) => plant.key_id);
     //Update database, but only the plants that were visible at the time
-    axios.put(`/api/my_garden/waterAll/${idArray}`);
-    //Update state with the corresponding data
-    setSelectedPlants(waterAllPlants(plantsList));
+    if (idArray.length) {
+      axios.put(`/api/my_garden/waterAll/${idArray}`);
+      //Update state with the corresponding data
+      setSelectedPlants(waterAllPlants(plantsList));
+    }
   };
 
   const handleFilterPlants = () => {
@@ -66,7 +68,10 @@ export default function MyGarden() {
     <Container className="w-90">
       <Row className="mt-5 mb-4 pe-1 search-and-plant-buttons">
         <Col className="col-4 ms-4  p-0">
-          <SearchBar searchPlant={handleSearchPlant} />
+          <SearchBar
+            searchPlant={handleSearchPlant}
+            placeholder="Which plant are you looking for?"
+          />
         </Col>
         <Col className="d-flex justify-content-end">
           <button className="btn-custom btn-garden btn-add-plant">
