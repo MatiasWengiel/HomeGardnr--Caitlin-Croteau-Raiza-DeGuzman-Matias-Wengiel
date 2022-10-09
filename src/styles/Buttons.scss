@@ -6,9 +6,25 @@
   padding: 0.375rem 0.75rem;
   color: white;
   &:hover {
-    background-color: $button-hover;
-    border: none;
-    color: grey;
+    // background-color: $button-hover;
+    // border: 8px solid;
+    // border-color:  gold;
+    // color: grey;
+
+    // #1 full button grey outline
+    // box-shadow: 0px 0px 5px 5px silver;
+
+    //#2
+    //add plant button - change colour
+    // background-color: #8CAC3B;
+    //view plant - change colour
+    // background-color: #1c7e42;
+
+    //#3 off-kilter outline blur
+    // box-shadow: 8px 8px 15px lightgreen;
+
+    //#4 adjust brightness
+    filter: brightness(0.9);
   }
 }
 

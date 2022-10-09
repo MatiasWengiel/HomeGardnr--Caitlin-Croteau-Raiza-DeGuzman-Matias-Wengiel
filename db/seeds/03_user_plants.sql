@@ -17,3 +17,6 @@ VALUES (CURRENT_DATE - 1, CURRENT_DATE - 1, 7, 1);
 
 INSERT INTO user_plants (planted_date, last_watered_at, plant_id, user_id)
 VALUES (CURRENT_DATE - 2, CURRENT_DATE - 2, 1, 2);
+
+INSERT INTO user_plants (planted_date, last_watered_at, plant_id, user_id)
+VALUES (CURRENT_DATE - 3, CURRENT_DATE - 3, 3, 1);
