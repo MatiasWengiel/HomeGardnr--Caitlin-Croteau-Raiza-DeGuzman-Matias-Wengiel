@@ -7,7 +7,7 @@ export default function SearchBar(props) {
         <Form.Group controlId="searchBar">
           <Form.Control
             type="text"
-            placeholder="Search for your next plant here!"
+            placeholder={props.placeholder}
             onChange={props.searchPlant}
           />
         </Form.Group>

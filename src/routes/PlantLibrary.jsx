@@ -76,7 +76,10 @@ export default function PlantLibrary() {
     <Container className="w-90">
       <Row className="mt-5 mb-4 pe-1 search-and-add-button">
         <Col className="col-4 ms-4 p-0">
-          <SearchBar searchPlant={searchPlant} />
+          <SearchBar
+            searchPlant={searchPlant}
+            placeholder="Search for your next plant here!"
+          />
         </Col>
         <Col className="d-flex justify-content-end">
           <button

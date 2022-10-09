@@ -66,7 +66,10 @@ export default function MyGarden() {
     <Container className="w-90">
       <Row className="mt-5 mb-4 pe-1 search-and-plant-buttons">
         <Col className="col-4 ms-4  p-0">
-          <SearchBar searchPlant={handleSearchPlant} />
+          <SearchBar
+            searchPlant={handleSearchPlant}
+            placeholder="Which plant are you looking for?"
+          />
         </Col>
         <Col className="d-flex justify-content-end">
           <button className="btn-custom btn-garden btn-add-plant">
