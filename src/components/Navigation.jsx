@@ -7,7 +7,10 @@ import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import brand3 from "./images/GardnrOnly3.png";
+import brand4 from "./images/GardnrOnly2.png";
+
 
 export default function Navigation(props) {
   const { user, bannerAndMsg, setBannerAndMsg } = props;
@@ -68,14 +71,14 @@ export default function Navigation(props) {
   const navbarBackground = navbar ? "navbar-scroll" : "custom-navbar";
 
   //update this if we want two logos
-  const navbarBrand = navBrand ? brand1 : brand2;
+  const navbarBrand = navBrand ? brand3 : brand4;
 
   return (
     <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="nav-text" href="/my_garden">
-          GARDNR
-          <Image src={navbarBrand} alt="Gardnr" width="50px" />
+          <Image src={navbarBrand} alt="Gardnr" width="90px" />
+          <Image src={brand1} alt="happy-plant" width="50px" />
           {/* <img
               src={brand}
               width="50"

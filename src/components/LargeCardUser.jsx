@@ -79,7 +79,6 @@ export default function LargeCardUser(props) {
         <Card.Body className="d-flex flex-row justify-content-around card-lrg">
           <div className="card-lrg photo">
             <Card.Img
-              width={400}
               height={400}
               src={plantData.large_plant_card_photo_url}
             />
