@@ -9,6 +9,10 @@ import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import brand3 from "./images/GardnrOnly1.png";
+import brand4 from "./images/GardnrOnly2.png";
+import brand5 from "./images/GardnrOnly3.png";
+
 
 export default function Navigation(props) {
   const { user, bannerAndMsg, setBannerAndMsg } = props;
@@ -67,14 +71,15 @@ export default function Navigation(props) {
   const navbarBackground = navbar ? "navbar-scroll" : "custom-navbar";
 
   //update this if we want two logos
-  const navbarBrand = navBrand ? brand1 : brand2;
+  const navbarBrand = navBrand ? brand4 : brand2;
 
   return (
     <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="nav-text" href="/my_garden">
-          GARDNR
-          <Image src={navbarBrand} alt="Gardnr" width="50px" />
+          {/* GARDNR */}
+          <Image src={navbarBrand} alt="Gardnr" width="90px" />
+          <img src={brand1} width="50" height="50"/>
           {/* <img
               src={brand}
               width="50"
@@ -93,7 +98,11 @@ export default function Navigation(props) {
             <NavLink href={"/weather"} label={"Weather Info"} />
 
             {/* Remove this after demo. Add back 'Logout' to navbar */}
-            <NavDropdown title="Weather Events" id="nav-dropdown" onSelect={handleSelect}>
+            <NavDropdown
+              title="Weather Events"
+              id="nav-dropdown"
+              onSelect={handleSelect}
+            >
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
               <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
               <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
@@ -101,7 +110,6 @@ export default function Navigation(props) {
                 Shark-nado 🦈
               </NavDropdown.Item>
             </NavDropdown>
-
           </Nav>
         </Navbar.Collapse>
       </Container>
