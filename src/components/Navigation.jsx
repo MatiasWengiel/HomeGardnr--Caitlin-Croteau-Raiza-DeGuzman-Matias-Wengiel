@@ -7,8 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 export default function Navigation(props) {
   const { user, bannerAndMsg, setBannerAndMsg } = props;
@@ -17,7 +16,6 @@ export default function Navigation(props) {
   const [navBrand, setNavBrand] = useState(false);
 
   const changeNavbar = () => {
-    console.log(window.scrollY);
     if (window.scrollY >= 5) {
       setNavbar(true);
       //remove NavText change if we aren't using it
@@ -33,14 +31,17 @@ export default function Navigation(props) {
 
   /* Handles user's selection from Weather Events menu. Displays Banner comp with corresponding weather event message. */
   const handleSelect = (eventKey) => {
+    const highHeat =
+      "TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.";
 
-    const highHeat = "TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.";
+    const extremeCold =
+      "TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as -20 C.";
 
-    const extremeCold = "TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as -20 C.";
+    const heavyRain =
+      "HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as 30 mm.";
 
-    const heavyRain = "HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as 30 mm.";
-
-    const sharkNado = "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
+    const sharkNado =
+      "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
 
     if (eventKey == "heat") {
       setBannerAndMsg([highHeat]);
@@ -93,7 +94,11 @@ export default function Navigation(props) {
             <NavLink href={"/weather"} label={"Weather Info"} />
 
             {/* Remove this after demo. Add back 'Logout' to navbar */}
-            <NavDropdown title="Weather Events" id="nav-dropdown" onSelect={handleSelect}>
+            <NavDropdown
+              title="Weather Events"
+              id="nav-dropdown"
+              onSelect={handleSelect}
+            >
               <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
               <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
               <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
@@ -101,7 +106,6 @@ export default function Navigation(props) {
                 Shark-nado 🦈
               </NavDropdown.Item>
             </NavDropdown>
-
           </Nav>
         </Navbar.Collapse>
       </Container>
