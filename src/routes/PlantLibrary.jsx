@@ -74,19 +74,19 @@ export default function PlantLibrary() {
 
   return (
     <Container className="w-90">
-      <Row className="m-3 justify-content-center">
-        <Col xs={8}>
+      <Row className="mt-5 mb-4 pe-1 search-and-add-button">
+        <Col className="col-4 ms-4 p-0">
           <SearchBar searchPlant={searchPlant} />
         </Col>
-      </Row>
-      <Row>
-        <button
-          className="col-2 btn-custom btn-add-plant"
-          type="submit"
-          onClick={handleClick}
-        >
-          Add New Plant
-        </button>
+        <Col className="d-flex justify-content-end">
+          <button
+            className="btn-custom btn-garden btn-add-plant"
+            type="submit"
+            onClick={handleClick}
+          >
+            Add New Plant
+          </button>
+        </Col>
         <PlantModal
           show={showModal}
           onHide={() => setShowModal(false)}
@@ -99,7 +99,7 @@ export default function PlantLibrary() {
           updateLibrary={updateLibrary}
         />
       </Row>
-      <Row>{cardsList}</Row>
+      <Row className="justify-content-between">{cardsList}</Row>
     </Container>
   );
 }
