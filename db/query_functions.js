@@ -43,7 +43,7 @@ const addPlantToLibrary = function (plant) {
   const values = [
     plant.specific_name,
     plant.description,
-    plant.imageURL,
+    plant.large_plant_card_photo_url,
     plant.season,
     plant.water,
     plant.sunlight,
