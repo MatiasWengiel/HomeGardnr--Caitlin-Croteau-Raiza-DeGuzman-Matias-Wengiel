@@ -64,7 +64,7 @@ export default function MyGarden() {
 
   return (
     <Container className="w-90">
-      <Row className="mt-5 mb-4 search-and-plant-buttons">
+      <Row className="mt-5 mb-4 pe-1 search-and-plant-buttons">
         <Col className="col-4 ms-4  p-0">
           <SearchBar searchPlant={handleSearchPlant} />
         </Col>
