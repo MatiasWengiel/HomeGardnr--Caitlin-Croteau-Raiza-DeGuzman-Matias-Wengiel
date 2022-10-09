@@ -21,7 +21,7 @@ export default function PlantForm(props) {
     sunlight: "",
     water: "",
     description: "",
-    imageURL: "",
+    large_plant_card_photo_url: "",
   });
 
   const handleChange = (event) => {
@@ -62,7 +62,7 @@ export default function PlantForm(props) {
           sunlight: "",
           water: "",
           description: "",
-          imageURL: "",
+          large_plant_card_photo_url: "",
         });
       })
       .catch((error) => {
@@ -263,8 +263,8 @@ export default function PlantForm(props) {
             required
             placeholder="Please submit a valid url."
             type="text"
-            name="imageURL"
-            defaultValue={plantInfo.imageURL}
+            name="large_plant_card_photo_url"
+            defaultValue={plantInfo.large_plant_card_photo_url}
             onChange={handleChange}
           />
         </Form.Group>

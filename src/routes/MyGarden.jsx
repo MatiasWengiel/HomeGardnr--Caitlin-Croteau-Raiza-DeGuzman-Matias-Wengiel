@@ -5,12 +5,8 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
-import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
-import { weatherContext } from "../providers/WeatherProvider";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
-import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
-import "../styles/MyGarden.scss";
 import {
   performSearchPlant,
   sortPlants,
@@ -34,14 +30,6 @@ export default function MyGarden() {
     plantCardProps,
   } = useGardenData();
 
-  const { localHigh, localLow, localPrecipitation } =
-    useContext(weatherContext);
-
-  const weatherWarningMsgs = checkForWeatherWarnings(
-    localHigh,
-    localLow,
-    localPrecipitation
-  );
   //Functions for page functionality below //
   const handleSearchPlant = (event) => {
     event.preventDefault();
@@ -75,56 +63,50 @@ export default function MyGarden() {
       : `${filterButtonBaseStyle} btn-water-success`;
 
   return (
-    <>
-      {" "}
-      {weatherWarningMsgs.length > 0 && (
-        <Banner weatherWarning={weatherWarningMsgs} />
-      )}
-      <Container className="w-90">
-        <Row className="mt-5 mb-4 search-and-plant-buttons">
-          <Col className="col-4 ms-4  p-0">
-            <SearchBar searchPlant={handleSearchPlant} />
-          </Col>
-          <Col className="d-flex justify-content-end">
-            <button className="btn-custom btn-garden btn-add-plant">
-              <Link
-                to="/plants"
-                style={{
-                  color: "inherit",
-                  backgroundColor: "inherit",
-                  textDecoration: "inherit",
-                }}
-              >
-                Add New Plant
-              </Link>
-            </button>
-            <button
-              className={filterButtonStyle}
-              onClick={() => {
-                handleFilterPlants();
+    <Container className="w-90">
+      <Row className="mt-5 mb-4 pe-1 search-and-plant-buttons">
+        <Col className="col-4 ms-4  p-0">
+          <SearchBar searchPlant={handleSearchPlant} />
+        </Col>
+        <Col className="d-flex justify-content-end">
+          <button className="btn-custom btn-garden btn-add-plant">
+            <Link
+              to="/plants"
+              style={{
+                color: "inherit",
+                backgroundColor: "inherit",
+                textDecoration: "inherit",
               }}
             >
-              {filterPlants === "needs water" && "View Unwatered Plants"}
-              {filterPlants === "all plants" && "View All Plants"}
-            </button>
-            <button
-              className="btn-custom btn-garden btn-water-plant"
-              onClick={() => {
-                handleWaterAllPlants(selectedPlants);
-              }}
-            >
-              Water All Plants
-            </button>
-          </Col>
-          <PlantModal
-            show={showModal}
-            onHide={() => setShowModal(false)}
-            plantCardProps={plantCardProps}
-            modalMode="user"
-          />
-        </Row>
-        <Row className="justify-content-between">{cardsList}</Row>
-      </Container>
-    </>
+              Add New Plant
+            </Link>
+          </button>
+          <button
+            className={filterButtonStyle}
+            onClick={() => {
+              handleFilterPlants();
+            }}
+          >
+            {filterPlants === "needs water" && "View Unwatered Plants"}
+            {filterPlants === "all plants" && "View All Plants"}
+          </button>
+          <button
+            className="btn-custom btn-garden btn-water-plant"
+            onClick={() => {
+              handleWaterAllPlants(selectedPlants);
+            }}
+          >
+            Water All Plants
+          </button>
+        </Col>
+        <PlantModal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+          plantCardProps={plantCardProps}
+          modalMode="user"
+        />
+      </Row>
+      <Row className="justify-content-between">{cardsList}</Row>
+    </Container>
   );
 }
