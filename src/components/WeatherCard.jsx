@@ -11,8 +11,8 @@ export default function WeatherCard(props) {
   const { currentCity, localHigh, localLow, localPrecipitation, forecastLink } = useContext(weatherContext);
 
   return (
-    <Container className="weather-container">
-      <Alert variant="secondary">
+    <Container className="mb-5 weather-container">
+      <Alert className="text-center" id="alert-weathercard">
         Today's Weather Information for{" "}
         <span style={{ fontWeight: "bold" }}>{currentCity}</span>
       </Alert>
