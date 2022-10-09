@@ -9,11 +9,10 @@
     // background-color: $button-hover;
     // border: 8px solid;
     // border-color:  gold;
-
     // color: grey;
 
     // #1 full button grey outline
-    box-shadow: 0px 0px 5px 5px silver;
+    // box-shadow: 0px 0px 5px 5px silver;
 
     //#2
     //add plant button - change colour
@@ -23,6 +22,9 @@
 
     //#3 off-kilter outline blur
     // box-shadow: 8px 8px 15px lightgreen;
+
+    //#4 adjust brightness
+    filter: brightness(0.9);
   }
 }
 
