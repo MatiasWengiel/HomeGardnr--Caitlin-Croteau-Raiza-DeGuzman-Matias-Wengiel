@@ -41,9 +41,11 @@ export default function MyGarden() {
     //Extract the plant_id of the plants that are visible at the time
     const idArray = selectedPlants.map((plant) => plant.key_id);
     //Update database, but only the plants that were visible at the time
-    axios.put(`/api/my_garden/waterAll/${idArray}`);
-    //Update state with the corresponding data
-    setSelectedPlants(waterAllPlants(plantsList));
+    if (idArray.length) {
+      axios.put(`/api/my_garden/waterAll/${idArray}`);
+      //Update state with the corresponding data
+      setSelectedPlants(waterAllPlants(plantsList));
+    }
   };
 
   const handleFilterPlants = () => {
