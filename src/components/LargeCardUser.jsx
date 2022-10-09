@@ -8,9 +8,11 @@ import Col from "react-bootstrap/Col";
 import "../styles/LargeCard.scss";
 import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
 import { renderIcon } from "../helpers/cardHelpers";
+import DeleteConfirmation from "./DeleteConfirmation";
 
 export default function LargeCardUser(props) {
   const [plantData, setPlantData] = useState({});
+  const [viewDeleteConfirmation, setViewDeleteConfirmation] = useState(false);
   const { id, nextWatering, waterStatus, updateMyGarden, deleteUserPlant } = {
     ...props.plantCardProps,
   };
@@ -50,6 +52,7 @@ export default function LargeCardUser(props) {
   const handleDelete = (id) => {
     deleteUserPlant(id);
     props.onHide();
+    setViewDeleteConfirmation(false);
   };
 
   const handleWaterPlant = (id) => {
@@ -172,9 +175,14 @@ export default function LargeCardUser(props) {
               >
                 Water Plant
               </button>
+              <DeleteConfirmation
+                handleDelete={handleDelete}
+                viewDeleteConfirmation={viewDeleteConfirmation}
+                closeWarningModal={() => setViewDeleteConfirmation(false)}
+              />
               <button
                 className="btn-custom btn-delete"
-                onClick={() => handleDelete(id)}
+                onClick={() => setViewDeleteConfirmation(true)}
               >
                 Delete
               </button>
