@@ -4,7 +4,7 @@ import "./styles/Index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
 import WeatherProvider from "./providers/WeatherProvider";
-import UserProvider from "./providers/UserProvider"
+import UserProvider from "./providers/UserProvider";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import WeatherCard from "./components/WeatherCard";
@@ -15,7 +15,6 @@ import PlantLibrary from "./routes/PlantLibrary";
 import PlantForm from "./components/PlantForm";
 import MyGarden from "./routes/MyGarden";
 import Index from "./components/Index";
-
 
 const router = createBrowserRouter([
   {
@@ -53,13 +52,11 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <UserProvider>
-      <WeatherProvider>
-        <RouterProvider router={router} />
-      </WeatherProvider>
-    </UserProvider>
-  </React.StrictMode>
+  <UserProvider>
+    <WeatherProvider>
+      <RouterProvider router={router} />
+    </WeatherProvider>
+  </UserProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

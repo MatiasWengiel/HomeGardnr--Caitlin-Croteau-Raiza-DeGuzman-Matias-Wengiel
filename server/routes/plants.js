@@ -37,15 +37,24 @@ module.exports = (db) => {
 
   //GET request to return the full plant table info
   router.get("/", (req, res) => {
-    db.query(searchPlant()).then((data) => res.json(data.rows));
+    db.query(searchPlant())
+      .then((data) => res.json(data.rows))
+      .catch((error) => {
+        console.log(error);
+        res.status(500).send();
+      });
   });
 
   // GET request for an individual plant, selected by visitor
   router.get("/:id", (req, res) => {
-    db.query(getPlantInfo(req.params.id)).then((data) => {
-      console.log(data);
-      res.json(data.rows);
-    });
+    db.query(getPlantInfo(req.params.id))
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).send();
+      });
   });
 
   return router;
