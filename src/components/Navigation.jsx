@@ -77,7 +77,6 @@ export default function Navigation(props) {
     <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="nav-text" href="/my_garden">
-          {/* GARDNR */}
           <Image src={navbarBrand} alt="Gardnr" width="90px" />
           <Image src={brand1} alt="happy-plant" width="50px" />
           {/* <img
