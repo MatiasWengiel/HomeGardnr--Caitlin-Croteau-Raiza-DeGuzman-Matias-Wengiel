@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import NavLink from "./NavLink";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import brand4 from "./images/GardnrOnly2.png";
+import brand2 from "./images/GardnrOnly3.png";
 
 export default function Navigation(props) {
   const { user, setBannerAndMsg } = props;
@@ -65,7 +65,7 @@ export default function Navigation(props) {
     <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="nav-text" href="/my_garden">
-          <Image src={brand4} alt="Gardnr" width="90px" />
+          <Image src={brand2} alt="Gardnr" width="90px" />
           <Image src={brand1} alt="happy-plant" width="50px" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav flex-grow-1 justify-content-evenly" />
