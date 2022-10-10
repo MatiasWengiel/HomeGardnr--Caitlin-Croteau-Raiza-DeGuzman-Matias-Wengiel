@@ -1,4 +1,4 @@
-import { Card, Button, Image } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { renderIcon } from "../helpers/cardHelpers";
 import "../styles/Buttons.scss";
 
@@ -19,7 +19,6 @@ export default function PlantCard(props) {
     <Card
       style={{
         width: "15rem",
-        // backgroundColor: "#D3D3D3",
         boxShadow: "0 0 10px rgb(0 0 0 / 40%)",
         border: "none",
       }}
