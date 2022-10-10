@@ -5,30 +5,21 @@ import Image from "react-bootstrap/Image";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
-import brand2 from "../icons/dry-soil.png";
 import NavLink from "./NavLink";
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import brand3 from "./images/GardnrOnly3.png";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import brand4 from "./images/GardnrOnly2.png";
 
-
 export default function Navigation(props) {
-  const { user, bannerAndMsg, setBannerAndMsg } = props;
+  const { user, setBannerAndMsg } = props;
   const [navbar, setNavbar] = useState(false);
-  const [navText, setNavText] = useState(false);
-  const [navBrand, setNavBrand] = useState(false);
+  // const [navText, setNavText] = useState(false);
+  // const [navBrand, setNavBrand] = useState(false);
 
   const changeNavbar = () => {
     if (window.scrollY >= 5) {
       setNavbar(true);
-      //remove NavText change if we aren't using it
-      setNavText(true);
-      setNavBrand(true);
     } else {
       setNavbar(false);
-      setNavText(false);
-      //update this to false if we want 2 brand images
-      setNavBrand(true);
     }
   };
 
@@ -46,19 +37,19 @@ export default function Navigation(props) {
     const sharkNado =
       "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
 
-    if (eventKey == "heat") {
+    if (eventKey === "heat") {
       setBannerAndMsg([highHeat]);
     }
 
-    if (eventKey == "cold") {
+    if (eventKey === "cold") {
       setBannerAndMsg([extremeCold]);
     }
 
-    if (eventKey == "rain") {
+    if (eventKey === "rain") {
       setBannerAndMsg([heavyRain]);
     }
 
-    if (eventKey == "shark-nado") {
+    if (eventKey === "shark-nado") {
       setBannerAndMsg([sharkNado]);
     }
   };
@@ -70,22 +61,12 @@ export default function Navigation(props) {
 
   const navbarBackground = navbar ? "navbar-scroll" : "custom-navbar";
 
-  //update this if we want two logos
-  const navbarBrand = navBrand ? brand3 : brand4;
-
   return (
     <Navbar className={navbarBackground} expand="lg" fixed="top">
       <Container>
         <Navbar.Brand className="nav-text" href="/my_garden">
-          <Image src={navbarBrand} alt="Gardnr" width="90px" />
+          <Image src={brand4} alt="Gardnr" width="90px" />
           <Image src={brand1} alt="happy-plant" width="50px" />
-          {/* <img
-              src={brand}
-              width="50"
-              height="50"
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            /> */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav flex-grow-1 justify-content-evenly" />
         <Navbar.Collapse id="basic-navbar-nav">
