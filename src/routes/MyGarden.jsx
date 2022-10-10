@@ -1,18 +1,10 @@
-import { useEffect, useContext, useState } from "react";
-import { userContext } from "../providers/UserProvider";
+import { useState } from "react";
 import axios from "axios";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
-import PlantCard from "../components/PlantCard";
 import PlantModal from "../components/PlantModal";
 import { Link } from "react-router-dom";
-import { calculateNextWaterDate, dateFormatter } from "../helpers/dateHelpers";
-import {
-  performSearchPlant,
-  sortPlants,
-  waterSinglePlant,
-  waterAllPlants,
-} from "../helpers/myGardenHelpers";
+import { waterAllPlants } from "../helpers/myGardenHelpers";
 import useGardenData from "../helpers/useGardenData";
 
 export default function MyGarden() {

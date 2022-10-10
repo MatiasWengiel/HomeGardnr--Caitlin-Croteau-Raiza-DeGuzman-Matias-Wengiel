@@ -32,7 +32,7 @@ module.exports = (db) => {
       res.send(201);
     })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   });
   router.put("/waterAll/:idArray", (req, res) => {
