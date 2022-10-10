@@ -27,7 +27,6 @@ module.exports = () => {
 
         //Create object with information for return statement
         const weatherInfo = { location, dailyMin, dailyMax, rain, forecastLink }
-        console.log(weatherInfo)
         return res.json(weatherInfo)
 
       } catch (error) {
