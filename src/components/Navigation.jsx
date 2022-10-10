@@ -12,8 +12,6 @@ import brand2 from "./images/GardnrOnly3.png";
 export default function Navigation(props) {
   const { user, setBannerAndMsg } = props;
   const [navbar, setNavbar] = useState(false);
-  // const [navText, setNavText] = useState(false);
-  // const [navBrand, setNavBrand] = useState(false);
 
   const changeNavbar = () => {
     if (window.scrollY >= 5) {
