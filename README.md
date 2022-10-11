@@ -13,7 +13,7 @@ This application was developed by [Caitlin Croteau](https://github.com/caitlincr
 Screenshots coming soon...
 
 ## Initial Setup
-**Backend and Database Setup**
+**Backend Setup**
 
 1. Create a ```.env``` file
 
