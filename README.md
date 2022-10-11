@@ -1,4 +1,4 @@
-GARDNR
+GARDNR 🍃
 =========
 Never again struggle to remember your plants' watering schedules with Gardnr.
 
