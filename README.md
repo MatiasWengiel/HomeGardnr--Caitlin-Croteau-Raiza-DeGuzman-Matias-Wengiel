@@ -35,7 +35,7 @@ Screenshots coming soon...
 
     ```npm run install```
 
-2. Setup the ```gardnr``` database by running the command below. This command will create the tables and seed each one.
+2. Setup the ```gardnr``` database by running the command below. This command will create the tables and seed them.
 
     ```npm run db:reset```
 
