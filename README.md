@@ -49,6 +49,11 @@ Screenshots coming soon...
 
 5. The project will served at: ```https://localhost:3000```
 
+## Tech Stack
+- Front-End: ```React```
+- Back-End: ```Express```
+- Database: ```Postgresql```
+
 ## Dependencies
 ```
 testing-library/jest-dom: ^5.16.5,
