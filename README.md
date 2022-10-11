@@ -19,7 +19,7 @@ Screenshots coming soon...
 
 2. Locate the ```.env.example``` file and copy its contents into ```.env```.
 
-3. Open ```psql``` and create a database called ```gardnr```.
+3. Open ```Postgresql``` and create a database called ```gardnr```.
 
 4. Update your ```.env``` file by entering the correct values for ```DB_USER```, ```DB_PASS```, and ```DB_NAME```.
 
