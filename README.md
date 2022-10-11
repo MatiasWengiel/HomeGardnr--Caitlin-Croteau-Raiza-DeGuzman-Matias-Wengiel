@@ -8,12 +8,28 @@ The app simulates a user logged in view and upon opening the app, you will be ta
 
 This app was developed by [Caitlin Croteau](https://github.com/caitlincroteau), [Matias Wengiel](https://github.com/MatiasWengiel), and [Raiza De Guzman](https://github.com/Raiza-D) as a final project for Lighthouse Labs' Web Flex Program.
 
-
 ## Final Product
 
 Screenshots coming soon...
 
 ## Initial Setup
+**Backend and Database Setup**
+
+1. Create a ```.env``` file
+
+2. Locate the ```.env.example``` file and copy its contents into ```.env```.
+
+3. Open ```psql``` and create a database called ```gardnr```.
+
+4. Update your ```.env``` file by entering the correct values for ```DB_USER```, ```DB_PASS```, and ```DB_NAME```.
+
+4. Obtain a trial API key from [AccuWeather API](https://developer.accuweather.com/)
+
+5. Place the API key in the ```.env``` file like so: ```WEATHER_API_KEY=pasteyourkeyhere```
+
+**Getting Started**
+
+1. 
 
 
 ## Dependencies
