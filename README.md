@@ -25,12 +25,29 @@ Screenshots coming soon...
 
 4. Obtain a trial API key from [AccuWeather API](https://developer.accuweather.com/)
 
-5. Place the API key in the ```.env``` file like so: ```WEATHER_API_KEY=pasteyourkeyhere```
+5. Place the API key in the ```.env``` file like so:
+
+    ```WEATHER_API_KEY=pasteyourkeyhere```
 
 **Getting Started**
 
-1. 
+1. From the project's root directory, run the command below. This command will install all the required dependencies.
 
+    ```npm run install```
+
+2. Setup the ```gardnr``` database by running the command below. This command will create the tables and seed each one.
+
+    ```npm run db:reset```
+
+3. In a separate Terminal window, start the server by running this command in the project's root directory:
+
+    ```npm run startServer```
+
+4. In another Terminal window, start the Webpack Development server by running this command in the project's root directory:
+
+    ```npm start```
+
+5. The project will served at: ```https://localhost:3000```
 
 ## Dependencies
 ```
