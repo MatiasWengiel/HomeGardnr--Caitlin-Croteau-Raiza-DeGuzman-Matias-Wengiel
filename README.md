@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+GARDNR 🍃
+=========
+Never again struggle to remember your plants' watering schedules with Gardnr.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application lets you keep track of all the plants in your garden, the last time each one was watered, and their next watering dates. The app interacts with the [AccuWeather API](https://developer.accuweather.com/) to provide you with basic local weather data and triggers alerts for any adverse weather events that you may need to act on to protect your plants.
 
-## Available Scripts
+The app simulates a user logged in view and upon opening the app, you will be taken directly to the 'My Garden' page.
 
-In the project directory, you can run:
+This application was developed by [Caitlin Croteau](https://github.com/caitlincroteau), [Matias Wengiel](https://github.com/MatiasWengiel), and [Raiza De Guzman](https://github.com/Raiza-D) as a final project for Lighthouse Labs' Web Flex Program.
 
-### `npm start`
+## Final Product
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Screenshots coming soon...
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Initial Setup
+**Backend Setup**
 
-### `npm test`
+1. Create a ```.env``` file
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Locate the ```.env.example``` file and copy its contents into ```.env```.
 
-### `npm run build`
+3. Open ```Postgresql``` and create a database called ```gardnr```.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Update your ```.env``` file by entering the correct values for ```DB_USER```, ```DB_PASS```, and ```DB_NAME```.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Obtain a trial API key from [AccuWeather API](https://developer.accuweather.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Place the API key in the ```.env``` file like so:
 
-### `npm run eject`
+    ```WEATHER_API_KEY=pasteyourkeyhere```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Getting Started**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. From the project's root directory, run the command below. This command will install all the required dependencies.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```npm run install```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Setup the ```gardnr``` database by running the command below. This command will create the tables and seed them.
 
-## Learn More
+    ```npm run db:reset```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. In a separate Terminal window, start the API server by running this command in the project's root directory:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```npm run startServer```
 
-### Code Splitting
+4. In another Terminal window, start the Webpack Development server by running this command in the project's root directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```npm start```
 
-### Analyzing the Bundle Size
+5. The project will served at: ```https://localhost:3000```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Tech Stack
+- Front-End: ```React```
+- Back-End: ```Express```
+- Database: ```Postgresql```
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Dependencies
+```
+testing-library/jest-dom: ^5.16.5,
+testing-library/react: ^13.4.0,
+testing-library/user-event: ^13.5.0,
+axios: ^0.27.2,
+bootstrap: ^5.2.1,
+dotenv: ^16.0.2,
+morgan: ^1.10.0,
+pg: ^8.8.0,
+react: ^18.2.0,
+react-bootstrap: ^2.5.0,
+react-dom: ^18.2.0,
+react-router-dom: ^6.4.1,
+react-scripts: 5.0.1,
+sass: ^1.54.9,
+sass-middleware: ^0.0.3,
+web-vitals: ^2.1.4
+```
