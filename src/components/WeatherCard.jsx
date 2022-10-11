@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { Alert, Container, Stack } from "react-bootstrap";
 import "../styles/WeatherCard.scss";
 import { weatherContext } from "../providers/WeatherProvider";
