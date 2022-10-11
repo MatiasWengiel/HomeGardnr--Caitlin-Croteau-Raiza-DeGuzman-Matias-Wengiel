@@ -39,7 +39,7 @@ Screenshots coming soon...
 
     ```npm run db:reset```
 
-3. In a separate Terminal window, start the server by running this command in the project's root directory:
+3. In a separate Terminal window, start the API server by running this command in the project's root directory:
 
     ```npm run startServer```
 
