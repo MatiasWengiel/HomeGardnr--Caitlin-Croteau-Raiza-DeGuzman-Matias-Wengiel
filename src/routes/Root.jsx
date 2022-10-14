@@ -2,8 +2,6 @@ import Navigation from "../components/Navigation";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
-
 import { useContext } from "react";
 import { weatherContext } from "../providers/WeatherProvider";
 import { checkForWeatherWarnings } from "../helpers/weatherHelpers.js";
