@@ -43,21 +43,7 @@ export default function Navigation(props) {
             <Navbar.Text className="nav-text pe-2">Hello, {user}!</Navbar.Text>
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
-            <NavLink href={"/weather"} label={"Weather Info"} />
-
-            {/* Remove this after demo. Add back 'Logout' to navbar */}
-            <NavDropdown
-              title="Weather Events"
-              id="nav-dropdown"
-              onSelect={handleSelect}
-            >
-              <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
-              <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
-              <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
-              <NavDropdown.Item eventKey="shark-nado">
-                Shark-nado 🦈
-              </NavDropdown.Item>
-            </NavDropdown>
+            <NavLink href={"/weather"} label={"Logout"} />
           </Nav>
         </Navbar.Collapse>
       </Container>
