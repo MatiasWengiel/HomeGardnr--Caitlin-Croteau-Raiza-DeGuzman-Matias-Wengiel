@@ -43,7 +43,8 @@ export default function Navigation(props) {
             <Navbar.Text className="nav-text pe-2">Hello, {user}!</Navbar.Text>
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
-            <NavLink href={"/weather"} label={"Logout"} />
+            <NavLink href={"/weather"} label={"Weather Info"} />
+            <NavLink href={"/"} label={"Logout"} />
           </Nav>
         </Navbar.Collapse>
       </Container>
