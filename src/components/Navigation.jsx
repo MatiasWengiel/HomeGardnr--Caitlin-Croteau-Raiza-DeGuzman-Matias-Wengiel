@@ -6,11 +6,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import brand1 from "../icons/happy-plant.png";
 import NavLink from "./NavLink";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import brand2 from "./images/GardnrOnly3.png";
 
 export default function Navigation(props) {
-  const { user, setBannerAndMsg } = props;
+  const user = props.user;
   const [navbar, setNavbar] = useState(false);
 
   const changeNavbar = () => {
@@ -21,37 +20,7 @@ export default function Navigation(props) {
     }
   };
 
-  /* Handles user's selection from Weather Events menu. Displays Banner comp with corresponding weather event message. */
-  const handleSelect = (eventKey) => {
-    const highHeat =
-      "TAKE ACTION -- 🥵🥵 Extreme heat expected for the day. Temperatures as high as 35 C expected.";
-
-    const extremeCold =
-      "TAKE ACTION -- 🥶🥶 Freezing temperatures expected for the day. Temperatures could drop as low as -20 C.";
-
-    const heavyRain =
-      "HEAVY RAIN -- 🌧🌧 Heavy rainfall expected today, as much as 30 mm.";
-
-    const sharkNado =
-      "SHARKS -- 🦈🦈 Do not swim in the flooded, shark-infested streets.";
-
-    if (eventKey === "heat") {
-      setBannerAndMsg([highHeat]);
-    }
-
-    if (eventKey === "cold") {
-      setBannerAndMsg([extremeCold]);
-    }
-
-    if (eventKey === "rain") {
-      setBannerAndMsg([heavyRain]);
-    }
-
-    if (eventKey === "shark-nado") {
-      setBannerAndMsg([sharkNado]);
-    }
-  };
-
+  
   useEffect(() => {
     changeNavbar();
     window.addEventListener("scroll", changeNavbar);
@@ -74,20 +43,7 @@ export default function Navigation(props) {
             <NavLink href={"/plants"} label={"Plant Library"} />
             <NavLink href={"/my_garden"} label={"My Garden"} />
             <NavLink href={"/weather"} label={"Weather Info"} />
-
-            {/* Remove this after demo. Add back 'Logout' to navbar */}
-            <NavDropdown
-              title="Weather Events"
-              id="nav-dropdown"
-              onSelect={handleSelect}
-            >
-              <NavDropdown.Item eventKey="heat">Heat</NavDropdown.Item>
-              <NavDropdown.Item eventKey="cold">Cold</NavDropdown.Item>
-              <NavDropdown.Item eventKey="rain">Rain</NavDropdown.Item>
-              <NavDropdown.Item eventKey="shark-nado">
-                Shark-nado 🦈
-              </NavDropdown.Item>
-            </NavDropdown>
+            <NavLink href={"/"} label={"Logout"} />
           </Nav>
         </Navbar.Collapse>
       </Container>
