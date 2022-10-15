@@ -12,6 +12,16 @@ This application was developed by [Caitlin Croteau](https://github.com/caitlincr
 
 Screenshots coming soon...
 
+!["Search for a plant in the Plant Library database to see if it exists."]()
+
+!["Add a new plant form. Submitting this form will add the plant to the Plant Library as well as in the user's garden My Garden."]()
+
+!["View Unwatered Plants will display plants that need watering."]()
+
+!["Weather Information view displays local weather data provided by the weather API."]()
+
+!["Weather alert displays if there are any adverse weather events. This is a mock alert for demonstration purposes."]()
+
 ## Initial Setup
 **Backend Setup**
 
