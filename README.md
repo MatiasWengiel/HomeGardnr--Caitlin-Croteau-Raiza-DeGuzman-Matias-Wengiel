@@ -12,15 +12,15 @@ This application was developed by [Caitlin Croteau](https://github.com/caitlincr
 
 Screenshots coming soon...
 
-!["Search for a plant in the Plant Library database to see if it exists."]()
+!["Search for a plant in the Plant Library database to see if it exists."](https://github.com/MatiasWengiel/HomeGardnr--Caitlin-Croteau-Raiza-DeGuzman-Matias-Wengiel/blob/task/finish-README/docs/Gardnr-searchplantlibraryM.png?raw=true)
 
-!["Add a new plant form. Submitting this form will add the plant to the Plant Library as well as in the user's garden My Garden."]()
+!["Add a new plant form. Submitting this form will add the plant to the Plant Library as well as in the user's garden My Garden."](https://github.com/MatiasWengiel/HomeGardnr--Caitlin-Croteau-Raiza-DeGuzman-Matias-Wengiel/blob/task/finish-README/docs/Gardnr-newplantform.png?raw=true)
 
-!["View Unwatered Plants will display plants that need watering."]()
+!["View Unwatered Plants will display plants that need watering."](https://github.com/MatiasWengiel/HomeGardnr--Caitlin-Croteau-Raiza-DeGuzman-Matias-Wengiel/blob/task/finish-README/docs/Gardnr-viewunwateredplants.png?raw=true)
 
-!["Weather Information view displays local weather data provided by the weather API."]()
+!["Weather Information view displays local weather data provided by the weather API."](https://github.com/MatiasWengiel/HomeGardnr--Caitlin-Croteau-Raiza-DeGuzman-Matias-Wengiel/blob/task/finish-README/docs/Gardnr-weathercard.png?raw=true)
 
-!["Weather alert displays if there are any adverse weather events. This is a mock alert for demonstration purposes."]()
+!["Weather alert displays if there are any adverse weather events. This is a mock alert for demonstration purposes."](https://github.com/MatiasWengiel/HomeGardnr--Caitlin-Croteau-Raiza-DeGuzman-Matias-Wengiel/blob/task/finish-README/docs/Gardnr-weatherwarning.png?raw=true)
 
 ## Initial Setup
 **Backend Setup**
